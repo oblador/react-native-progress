@@ -17,40 +17,37 @@ var makeCirclePath = function(x, y, radius) {
     .close();
 };
 
-var Ring = React.createClass({
+var Circle = React.createClass({
   propTypes: {
     radius: PropTypes.number.isRequired,
     offset: PropTypes.shape({
       top:  PropTypes.number,
       left: PropTypes.number,
     }),
-    thickness: PropTypes.number,
-    color: PropTypes.string,
+    strokeWidth: PropTypes.number,
   },
 
   getDefaultProps: function() {
     return {
       offset: { top: 0, left: 0 },
-      thickness: 1,
-      color: 'rgba(0, 122, 255, 1)',
+      strokeWidth: 0,
     };
   },
 
   render() {
-    var { radius, offset, color, thickness, ...props } = this.props;
+    var { radius, offset, strokeWidth, ...props } = this.props;
     var path = makeCirclePath(
-      (offset.left || 0) + thickness/2,
-      (offset.top || 0) + thickness/2,
-      radius - thickness/2
+      (offset.left || 0) + strokeWidth/2,
+      (offset.top || 0) + strokeWidth/2,
+      radius - strokeWidth/2
     );
     return (
       <Shape d={path}
-        stroke={color}
         strokeCap="butt"
-        strokeWidth={thickness}
+        strokeWidth={strokeWidth}
         {...props} />
     );
   }
 });
 
-module.exports = Ring;
+module.exports = Circle;

@@ -3,7 +3,7 @@ var React = require('react-native');
 var { View, PropTypes, Animated } = React;
 var { Surface, Shape, Path } = require('../react-native/Libraries/ART/ReactNativeART');
 
-var Ring = require('./Shapes/Ring');
+var Circle = require('./Shapes/Circle');
 
 var ProgressCircle = React.createClass({
   propTypes: {
@@ -47,7 +47,7 @@ var ProgressCircle = React.createClass({
         toValue: progress,
       }).start();
     } else {
-      this.setState({ progress: props.progress });
+      this.setState({ progress });
     }
   },
 
@@ -73,6 +73,7 @@ var ProgressCircle = React.createClass({
     } = this.props;
 
     var circumference = (size - borderWidth - thickness) * Math.PI;
+    var radius = size/2 - borderWidth;
     var offset = {
       top: borderWidth,
       left: borderWidth,
@@ -83,20 +84,22 @@ var ProgressCircle = React.createClass({
         <Surface
           width={size}
           height={size}>
-          {unfilledColor ? (<Ring
-            radius={size/2 - borderWidth}
+          {unfilledColor ? (<Circle
+            radius={radius}
             offset={offset}
-            color={unfilledColor}
-            thickness={thickness} />) : false}
-          {progress ? (<Ring
-            ref={element => this._progressCircle = element}
-            radius={size/2 - borderWidth}
+            stroke={unfilledColor}
+            strokeWidth={thickness} />) : false}
+          {progress ? (<Circle
+            radius={radius}
             offset={offset}
-            color={color}
+            stroke={color}
             strokeDash={[circumference * progress, 700]}
-            thickness={thickness} />) : false}
+            strokeWidth={thickness} />) : false}
           {borderWidth ?
-            (<Ring radius={size/2} color={borderColor || color} />) : false}
+            (<Circle
+              radius={size/2}
+              stroke={borderColor || color}
+              strokeWidth={borderWidth} />) : false}
         </Surface>
         {children}
       </View>
