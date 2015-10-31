@@ -34,11 +34,15 @@ var ProgressCircle = React.createClass({
       color,
       borderColor,
       unfilledColor,
+      indeterminate,
       children,
       ...props
     } = this.props;
 
-    var circumference = (size - borderWidth - thickness) * Math.PI;
+    borderWidth = borderWidth || (indeterminate ? 1 : 0);
+
+    var innerCircumference = (size - borderWidth - thickness) * Math.PI;
+    var outerCircumference = (size - borderWidth) * Math.PI;
     var radius = size/2 - borderWidth;
     var offset = {
       top: borderWidth,
@@ -55,16 +59,17 @@ var ProgressCircle = React.createClass({
             offset={offset}
             stroke={unfilledColor}
             strokeWidth={thickness} />) : false}
-          {progress ? (<Circle
+          {!indeterminate && progress ? (<Circle
             radius={radius}
             offset={offset}
             stroke={color}
-            strokeDash={[circumference * progress, 700]}
+            strokeDash={[innerCircumference * progress, innerCircumference]}
             strokeWidth={thickness} />) : false}
           {borderWidth ?
             (<Circle
               radius={size/2}
               stroke={borderColor || color}
+              strokeDash={[outerCircumference * (indeterminate ? 0.9 : 1), outerCircumference]}
               strokeWidth={borderWidth} />) : false}
         </Surface>
         {children}

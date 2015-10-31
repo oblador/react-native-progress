@@ -32,11 +32,12 @@ var ProgressPie = React.createClass({
       color,
       borderColor,
       unfilledColor,
+      indeterminate,
       children,
       ...props
     } = this.props;
 
-    var angle = progress * Math.PI * 2;
+    var angle = (indeterminate ? 0.2 : progress) * Math.PI * 2;
     var radius = size/2 - borderWidth;
     var offset = {
       top: borderWidth,
@@ -52,7 +53,7 @@ var ProgressPie = React.createClass({
             radius={radius}
             offset={offset}
             fill={unfilledColor} />) : false}
-          {progress ? (<Sector
+          {angle ? (<Sector
             radius={radius}
             angle={angle}
             offset={offset}
