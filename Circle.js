@@ -7,7 +7,6 @@ var Circle = require('./Shapes/Circle');
 
 var ProgressCircle = React.createClass({
   propTypes: {
-    animated: PropTypes.bool,
     size: PropTypes.number.isRequired,
     progress: PropTypes.number.isRequired,
     thickness: PropTypes.number,
@@ -19,7 +18,6 @@ var ProgressCircle = React.createClass({
 
   getDefaultProps: function() {
     return {
-      animated: true,
       progress: 0,
       thickness: 3,
       borderWidth: 1,
@@ -27,41 +25,9 @@ var ProgressCircle = React.createClass({
     };
   },
 
-  getInitialState: function() {
-    var progress = Math.min(Math.max(this.props.progress, 0), 1);
-    var animationValue = new Animated.Value(progress);
-    return {
-      progress,
-      animationValue,
-    };
-  },
-
-  componentWillReceiveProps: function(props) {
-    var progress = Math.min(Math.max(props.progress, 0), 1);
-    if(progress === this.state.progress) {
-      return;
-    }
-
-    if(this.props.animated) {
-      Animated.spring(this.state.animationValue, {
-        toValue: progress,
-      }).start();
-    } else {
-      this.setState({ progress });
-    }
-  },
-
-  componentDidMount: function() {
-    this.state.animationValue.addListener(event => this.setState({ progress: event.value }));
-  },
-
-  componentWillUnmount: function() {
-    this.state.animationValue.removeAllListeners();
-  },
-
   render() {
-    var { progress } = this.state;
     var {
+      progress,
       size,
       thickness,
       borderWidth,
