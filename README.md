@@ -2,7 +2,7 @@
 
 Progress indicators and spinners for React Native using ReactART. 
 
-![progress-demo](https://cloud.githubusercontent.com/assets/378279/10870073/65c13a66-808f-11e5-863b-b9f2134fa3c6.gif)
+![progress-demo](https://cloud.githubusercontent.com/assets/378279/10871017/85c0b1f2-80a8-11e5-8a25-79c5e713180d.gif)
 
 **Note: Full android support will come when ReactART is ported to android.**
 
