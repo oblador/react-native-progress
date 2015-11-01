@@ -7,18 +7,19 @@ var Circle = require('./Shapes/Circle');
 
 var ProgressCircle = React.createClass({
   propTypes: {
-    size: PropTypes.number.isRequired,
-    progress: PropTypes.number.isRequired,
+    size: PropTypes.number,
+    progress: PropTypes.number,
     thickness: PropTypes.number,
-    borderWidth: PropTypes.number,
     color: PropTypes.string,
-    borderColor: PropTypes.string,
     unfilledColor: PropTypes.string,
+    borderWidth: PropTypes.number,
+    borderColor: PropTypes.string,
   },
 
   getDefaultProps: function() {
     return {
       progress: 0,
+      size: 40,
       thickness: 3,
       borderWidth: 1,
       color: 'rgba(0, 122, 255, 1)',

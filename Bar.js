@@ -13,15 +13,15 @@ var INDETERMINATE_WIDTH_FACTOR = 0.3;
 var ProgressBar = React.createClass({
   propTypes: {
     animated: PropTypes.bool,
-    progress: PropTypes.number.isRequired,
+    indeterminate: PropTypes.bool,
+    progress: PropTypes.number,
     width: PropTypes.number,
     height: PropTypes.number,
-    borderRadius: PropTypes.number,
-    borderWidth: PropTypes.number,
     color: PropTypes.string,
-    borderColor: PropTypes.string,
     unfilledColor: PropTypes.string,
-    indeterminate: PropTypes.bool,
+    borderWidth: PropTypes.number,
+    borderColor: PropTypes.string,
+    borderRadius: PropTypes.number,
   },
 
   getDefaultProps: function() {

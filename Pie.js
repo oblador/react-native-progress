@@ -8,17 +8,18 @@ var Sector = require('./Shapes/Sector');
 
 var ProgressPie = React.createClass({
   propTypes: {
-    size: PropTypes.number.isRequired,
-    progress: PropTypes.number.isRequired,
-    borderWidth: PropTypes.number,
+    size: PropTypes.number,
+    progress: PropTypes.number,
     color: PropTypes.string,
-    borderColor: PropTypes.string,
     unfilledColor: PropTypes.string,
+    borderWidth: PropTypes.number,
+    borderColor: PropTypes.string,
   },
 
   getDefaultProps: function() {
     return {
       progress: 0,
+      size: 40,
       borderWidth: 1,
       color: 'rgba(0, 122, 255, 1)',
     };
