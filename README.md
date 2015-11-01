@@ -61,6 +61,26 @@ All of the props under *Properties* in addition to the following:
 |---|---|---|
 |**`size`**|Diameter of the pie. |`40`|
 
+## Example
+
+See `Example` folder. 
+
+## [Changelog](https://github.com/oblador/react-native-progress/releases)
+
+## Todo
+ - [x] Progress bar
+ - [x] Circular progress indicator
+ - [x] Pie progress indicator
+ - [x] Animation
+ - [x] Indeterminate state
+ - [ ] Progress percentage text
+ - [ ] Optional color change on success/failure
+ - [ ] Snail/rainbow style spinners
+
+## Thanks
+
+To [Mandarin Drummond](https://github.com/MandarinConLaBarba) for giving me the NPM name. 
+
 ## License
 
 [MIT License](http://opensource.org/licenses/mit-license.html). © Joel Arvidsson 2015
