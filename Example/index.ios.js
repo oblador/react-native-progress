@@ -43,7 +43,7 @@ var Example = React.createClass({
         }
         this.setState({ progress });
       }, 500);
-    }, 2000);
+    }, 1500);
   },
 
   render: function() {
@@ -55,16 +55,18 @@ var Example = React.createClass({
           progress={this.state.progress}
           indeterminate={this.state.indeterminate}
         />
-        <Progress.Circle
-          style={styles.progress}
-          progress={this.state.progress}
-          indeterminate={this.state.indeterminate}
-        />
-        <Progress.Pie
-          style={styles.progress}
-          progress={this.state.progress}
-          indeterminate={this.state.indeterminate}
-        />
+        <View style={styles.circles}>
+          <Progress.Circle
+            style={styles.progress}
+            progress={this.state.progress}
+            indeterminate={this.state.indeterminate}
+          />
+          <Progress.Pie
+            style={styles.progress}
+            progress={this.state.progress}
+            indeterminate={this.state.indeterminate}
+          />
+        </View>
       </View>
     );
   }
@@ -82,6 +84,10 @@ var styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+  circles: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   progress: {
     margin: 10,
