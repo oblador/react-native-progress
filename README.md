@@ -1,18 +1,32 @@
 # react-native-progress
 
-Progress indicators and spinners for React Native using ART. 
+Progress indicators and spinners for React Native using ReactART. 
 
 ![progress-demo](https://cloud.githubusercontent.com/assets/378279/10867278/26d9665c-8030-11e5-8127-fe3bf6047d45.gif)
 
-**Note: Full android support will come when ART is ported to android.**
+**Note: Full android support will come when ReactART is ported to android.**
 
 ## Installation
 
 `$ npm install react-native-progress --save`
 
+### ReactART based components
+
+`$ npm install art --save`
+
 To use the `Pie` or `Circle` components, you need to include the ART library in your project. To do this, simply add the `ART.xcodeproj` (found in `node_modules/react-native/Libraries/ART`) to the **Libraries** group and add `libART.a` to **Link Binary With Libraries** under **Build Phases**. [More info and screenshots about how to do this is available in the React Native documentation](http://facebook.github.io/react-native/docs/linking-libraries-ios.html#content).
 
+Until [this pull request](https://github.com/facebook/react-native/pull/3308) to expose ReactART as a public API is merged, you will need to polyfill this because of packager limitations. Simply inject this code before requiring this module: 
+
+```js
+if(!React.ART) {
+  React.ART = require('ReactNativeART');
+}
+```
+
 ## Usage
+
+*Note: If you don't want the ReactART based components and it's dependencies, do a deep require instead: `var ProgressBar = require('react-native-progress/Bar');`.*
 
 ```js
 var Progress = require('react-native-progress');
@@ -76,6 +90,7 @@ See `Example` folder.
  - [ ] Progress percentage text
  - [ ] Optional color change on success/failure
  - [ ] Snail/rainbow style spinners
+ - [ ] Safari style navigation progress bar
 
 ## Thanks
 
