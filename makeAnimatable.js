@@ -7,7 +7,7 @@ var {
   Easing,
 } = React;
 
-var makeAnimatable = function(Component) {
+var makeAnimatable = function(Component, indeterminateProgress) {
   var AnimatedComponent = Animated.createAnimatedComponent(Component);
   return React.createClass({
     propTypes: {
@@ -40,12 +40,16 @@ var makeAnimatable = function(Component) {
           this.spin();
         } else {
           Animated.spring(this.state.rotation, {
-            toValue: 0,
-          }).start();
+            toValue: (this._rotation > 0.5 ? 1 : 0),
+          }).start(endState => {
+            if(endState.finished) {
+              this.state.rotation.setValue(0);
+            }
+          });
         }
       }
-      if(!props.indeterminate && props.progress !== this.props.progress) {
-        var progress = Math.min(Math.max(props.progress, 0), 1);
+      var progress = (props.indeterminate ? indeterminateProgress || 0 : Math.min(Math.max(props.progress, 0), 1));
+      if(progress !== this.state.progress) {
         if(props.animated) {
           Animated.spring(this.state.animationValue, {
             toValue: progress,
@@ -72,8 +76,14 @@ var makeAnimatable = function(Component) {
 
     componentDidMount: function() {
       this.state.animationValue.addListener(event => this.setState({ progress: event.value }));
+      this.state.rotation.addListener(event => this._rotation = event.value );
       if(this.props.indeterminate) {
         this.spin();
+        if(indeterminateProgress) {
+          Animated.spring(this.state.animationValue, {
+            toValue: indeterminateProgress,
+          }).start();
+        }
       }
     },
 

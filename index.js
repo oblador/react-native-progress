@@ -8,5 +8,5 @@ var makeAnimatable = require('./makeAnimatable');
 module.exports = {
   Bar,
   Circle: makeAnimatable(Circle),
-  Pie: makeAnimatable(Pie),
+  Pie: makeAnimatable(Pie, 0.2),
 };

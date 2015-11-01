@@ -44,7 +44,7 @@ var ProgressPie = React.createClass({
       ...props
     } = this.props;
 
-    var angle = (indeterminate ? 0.2 : progress) * Math.PI * 2;
+    var angle = progress * Math.PI * 2;
     var radius = size/2 - borderWidth;
     var offset = {
       top: borderWidth,
