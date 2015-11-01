@@ -4,13 +4,13 @@ Progress indicators and spinners for React Native using ART.
 
 ![progress-demo](https://cloud.githubusercontent.com/assets/378279/10867278/26d9665c-8030-11e5-8127-fe3bf6047d45.gif)
 
-**Note: Full android support will be come when ART is ported to android.**
+**Note: Full android support will come when ART is ported to android.**
 
 ## Installation
 
 `$ npm install react-native-progress --save`
 
-To use the Pie or Circle components, you need to include the ART library in your project. To do this, simply add the `ART.xcodeproj` (found in `node_modules/react-native/Libraries/ART`) to the *Libraries* group and add `libART.a` to **Link Binary With Libraries** under **Build Phases**. [More info and screenshots about how to do this is available in the React Native documentation](http://facebook.github.io/react-native/docs/linking-libraries-ios.html#content).
+To use the `Pie` or `Circle` components, you need to include the ART library in your project. To do this, simply add the `ART.xcodeproj` (found in `node_modules/react-native/Libraries/ART`) to the **Libraries** group and add `libART.a` to **Link Binary With Libraries** under **Build Phases**. [More info and screenshots about how to do this is available in the React Native documentation](http://facebook.github.io/react-native/docs/linking-libraries-ios.html#content).
 
 ## Usage
 
