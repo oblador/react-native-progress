@@ -12,6 +12,11 @@ var {
   View,
 } = React;
 
+// Polyfill React.ART if needed
+if(!React.ART) {
+  React.ART = require('ReactNativeART');
+}
+
 var Progress = require('react-native-progress');
 
 var Example = React.createClass({
