@@ -75,9 +75,10 @@ All of the props under *Properties* in addition to the following:
 |---|---|---|
 |**`size`**|Diameter of the pie. |`40`|
 
-## Example
+## Examples
 
-See `Example` folder. 
+* [`Example` project bundled with this module](https://github.com/oblador/react-native-progress/tree/master/Example) 
+* [react-native-image-progress](https://github.com/oblador/react-native-image-progress)
 
 ## [Changelog](https://github.com/oblador/react-native-progress/releases)
 
