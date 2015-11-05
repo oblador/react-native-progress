@@ -53,6 +53,7 @@ var makeAnimatable = function(Component, indeterminateProgress) {
         if(props.animated) {
           Animated.spring(this.state.animationValue, {
             toValue: progress,
+            bounciness: 0,
           }).start();
         } else {
           this.setState({ progress });
