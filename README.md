@@ -2,7 +2,7 @@
 
 Progress indicators and spinners for React Native using ReactART. 
 
-![progress-demo](https://cloud.githubusercontent.com/assets/378279/10871017/85c0b1f2-80a8-11e5-8a25-79c5e713180d.gif)
+![progress-demo](https://cloud.githubusercontent.com/assets/378279/11183877/36ab74d0-8c42-11e5-9e92-fe9f856020b6.gif)
 
 **Note: Full android support will come when ReactART is ported to android.**
 
@@ -34,9 +34,10 @@ var Progress = require('react-native-progress');
 <Progress.Bar progress={0.3} width={200} />
 <Progress.Pie progress={0.4} size={50} />
 <Progress.Circle size={30} indeterminate={true} />
+<Progress.CircleSnail colors={['red', 'green', 'blue']} />
 ```
 
-### Properties for all components
+### Properties for all progress components
 
 | Prop | Description | Default |
 |---|---|---|
@@ -65,7 +66,7 @@ All of the props under *Properties* in addition to the following:
 | Prop | Description | Default |
 |---|---|---|
 |**`size`**|Diameter of the circle. |`40`|
-|**`thickness`**|Thickness inner circle. |`3`|
+|**`thickness`**|Thickness of the inner circle. |`3`|
 
 ### `Progress.Pie`
 
@@ -74,6 +75,16 @@ All of the props under *Properties* in addition to the following:
 | Prop | Description | Default |
 |---|---|---|
 |**`size`**|Diameter of the pie. |`40`|
+
+### `Progress.CircleSnail`
+
+| Prop | Description | Default |
+|---|---|---|
+|**`animating`**|If the circle should animate. |`true`|
+|**`hidesWhenStopped`**|If the circle should be removed when not animating. |`true`|
+|**`size`**|Diameter of the circle. |`40`|
+|**`color`**|Color of the circle, use an array of colors for rainbow effect. |`rgba(0, 122, 255, 1)`|
+|**`thickness`**|Thickness of the circle. |`3`|
 
 ## Examples
 
@@ -90,7 +101,7 @@ All of the props under *Properties* in addition to the following:
  - [x] Indeterminate state
  - [ ] Progress percentage text
  - [ ] Optional color change on success/failure
- - [ ] Snail/rainbow style spinners
+ - [x] Snail/rainbow style spinners
  - [ ] Safari style navigation progress bar
 
 ## Thanks
