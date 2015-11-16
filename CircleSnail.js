@@ -22,7 +22,10 @@ var CircleSnail = React.createClass({
     hidesWhenStopped: PropTypes.bool,
     size: PropTypes.number,
     thickness: PropTypes.number,
-    color: PropTypes.string,
+    color: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.string),
+    ])
   },
 
   getDefaultProps: function() {
@@ -40,6 +43,7 @@ var CircleSnail = React.createClass({
       startAngle: new Animated.Value(-MIN_ARC_ANGLE),
       endAngle: new Animated.Value(0),
       rotation: new Animated.Value(0),
+      colorIndex: 0,
     };
   },
 
@@ -78,6 +82,11 @@ var CircleSnail = React.createClass({
       })
     ]).start(endState => {
       if(endState.finished) {
+        if(Array.isArray(this.props.color)) {
+          this.setState({
+            colorIndex: iteration % this.props.color.length,
+          });
+        }
         this.animate(iteration + 1);
       }
     });
@@ -119,11 +128,15 @@ var CircleSnail = React.createClass({
       return null;
     }
 
-    var radius = (size)/2 - thickness;
+    var radius = size/2 - thickness;
     var offset = {
       top: thickness,
       left: thickness,
     };
+
+    if(Array.isArray(color)) {
+      color = color[this.state.colorIndex];
+    }
 
     return (
       <Animated.View {...props} style={[
