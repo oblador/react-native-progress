@@ -67,6 +67,19 @@ var Example = React.createClass({
             indeterminate={this.state.indeterminate}
           />
         </View>
+        <View style={styles.circles}>
+          <Progress.CircleSnail
+            style={styles.progress}
+          />
+        <Progress.CircleSnail
+            style={styles.progress}
+            color={[
+              '#F44336',
+              '#2196F3',
+              '#009688',
+            ]}
+          />
+        </View>
       </View>
     );
   }
