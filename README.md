@@ -2,7 +2,7 @@
 
 Progress indicators and spinners for React Native using ReactART. 
 
-![progress-demo](https://cloud.githubusercontent.com/assets/378279/11183877/36ab74d0-8c42-11e5-9e92-fe9f856020b6.gif)
+![progress-demo](https://cloud.githubusercontent.com/assets/378279/11212043/64fb1420-8d01-11e5-9ec0-5e175a837c62.gif)
 
 **Note: Full android support will come when ReactART is ported to android.**
 
@@ -67,6 +67,9 @@ All of the props under *Properties* in addition to the following:
 |---|---|---|
 |**`size`**|Diameter of the circle. |`40`|
 |**`thickness`**|Thickness of the inner circle. |`3`|
+|**`showsText`**|Wether or not to show a text representation of current progress. |`false`|
+|**`formatText(progress)`**|A function returning a string to be displayed for the textual representation. |*See source*|
+|**`textStyle`**|Styles for progress text, defaults to a same `color` as circle and `fontSize` proportional to `size` prop. |*None*|
 
 ### `Progress.Pie`
 
@@ -99,7 +102,7 @@ All of the props under *Properties* in addition to the following:
  - [x] Pie progress indicator
  - [x] Animation
  - [x] Indeterminate state
- - [ ] Progress percentage text
+ - [x] Progress percentage text
  - [ ] Optional color change on success/failure
  - [x] Snail/rainbow style spinners
  - [ ] Safari style navigation progress bar
