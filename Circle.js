@@ -22,6 +22,7 @@ var ProgressCircle = React.createClass({
     borderWidth: PropTypes.number,
     borderColor: PropTypes.string,
     showsText: PropTypes.bool,
+    formatText: PropTypes.func,
     textStyle: PropTypes.any,
   },
 
@@ -33,6 +34,7 @@ var ProgressCircle = React.createClass({
       borderWidth: 1,
       color: 'rgba(0, 122, 255, 1)',
       showsText: false,
+      formatText: progress => Math.round(progress * 100) + '%',
     };
   },
 
@@ -48,6 +50,7 @@ var ProgressCircle = React.createClass({
       indeterminate,
       children,
       showsText,
+      formatText,
       textStyle,
       ...props
     } = this.props;
@@ -102,7 +105,7 @@ var ProgressCircle = React.createClass({
               color: color,
               fontSize: textSize/4.5,
               fontWeight: '300',
-            }, textStyle]}>{Math.round(progress * 100)}%</Text>
+            }, textStyle]}>{formatText(progress)}</Text>
           </View>
         ) : false}
         {children}
