@@ -4,6 +4,7 @@ var React = require('react-native');
 var {
   View,
   PropTypes,
+  Text,
   ART: {
     Surface
   }
@@ -20,6 +21,8 @@ var ProgressCircle = React.createClass({
     unfilledColor: PropTypes.string,
     borderWidth: PropTypes.number,
     borderColor: PropTypes.string,
+    showsText: PropTypes.bool,
+    textStyle: PropTypes.any,
   },
 
   getDefaultProps: function() {
@@ -29,6 +32,7 @@ var ProgressCircle = React.createClass({
       thickness: 3,
       borderWidth: 1,
       color: 'rgba(0, 122, 255, 1)',
+      showsText: false,
     };
   },
 
@@ -43,6 +47,8 @@ var ProgressCircle = React.createClass({
       unfilledColor,
       indeterminate,
       children,
+      showsText,
+      textStyle,
       ...props
     } = this.props;
 
@@ -55,6 +61,8 @@ var ProgressCircle = React.createClass({
       top: borderWidth,
       left: borderWidth,
     };
+    var textOffset = borderWidth + thickness;
+    var textSize = size - textOffset * 2;
 
     return (
       <View {...props}>
@@ -79,6 +87,24 @@ var ProgressCircle = React.createClass({
               strokeDash={[outerCircumference * (indeterminate ? 0.9 : 1), outerCircumference]}
               strokeWidth={borderWidth} />) : false}
         </Surface>
+        {!indeterminate && progress && showsText ? (
+          <View style={{
+            position: 'absolute',
+            left: textOffset,
+            top: textOffset,
+            width: textSize,
+            height: textSize,
+            borderRadius: textSize/2,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <Text style={[{
+              color: color,
+              fontSize: textSize/4.5,
+              fontWeight: '300',
+            }, textStyle]}>{Math.round(progress * 100)}%</Text>
+          </View>
+        ) : false}
         {children}
       </View>
     )
