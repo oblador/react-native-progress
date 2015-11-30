@@ -24,6 +24,7 @@ var ProgressCircle = React.createClass({
     showsText: PropTypes.bool,
     formatText: PropTypes.func,
     textStyle: PropTypes.any,
+    direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
   },
 
   getDefaultProps: function() {
@@ -35,6 +36,7 @@ var ProgressCircle = React.createClass({
       color: 'rgba(0, 122, 255, 1)',
       showsText: false,
       formatText: progress => Math.round(progress * 100) + '%',
+      direction: 'clockwise',
     };
   },
 
@@ -52,6 +54,7 @@ var ProgressCircle = React.createClass({
       showsText,
       formatText,
       textStyle,
+      direction,
       ...props
     } = this.props;
 
@@ -82,12 +85,14 @@ var ProgressCircle = React.createClass({
             offset={offset}
             stroke={color}
             strokeDash={[innerCircumference * progress, innerCircumference]}
+            direction={direction}
             strokeWidth={thickness} />) : false}
           {borderWidth ?
             (<Circle
               radius={size/2}
               stroke={borderColor || color}
               strokeDash={[outerCircumference * (indeterminate ? 0.9 : 1), outerCircumference]}
+              direction={direction}
               strokeWidth={borderWidth} />) : false}
         </Surface>
         {!indeterminate && progress && showsText ? (

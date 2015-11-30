@@ -14,6 +14,7 @@ var makeAnimatable = function(Component, indeterminateProgress) {
       animated: PropTypes.bool,
       indeterminate: PropTypes.bool,
       progress: PropTypes.number.isRequired,
+      direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
     },
 
     getDefaultProps: function() {
@@ -21,6 +22,7 @@ var makeAnimatable = function(Component, indeterminateProgress) {
         animated: true,
         indeterminate: false,
         progress: 0,
+        direction: 'clockwise',
       };
     },
 
@@ -64,7 +66,7 @@ var makeAnimatable = function(Component, indeterminateProgress) {
     spin: function() {
       this.state.rotation.setValue(0);
       Animated.timing(this.state.rotation, {
-        toValue: 1,
+        toValue: this.props.direction === 'counter-clockwise' ? -1 : 1,
         duration: 1000,
         easing: Easing.linear,
         isInteraction: false,
