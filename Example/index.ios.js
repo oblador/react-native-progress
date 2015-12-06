@@ -66,6 +66,12 @@ var Example = React.createClass({
             progress={this.state.progress}
             indeterminate={this.state.indeterminate}
           />
+          <Progress.Circle
+            style={styles.progress}
+            progress={this.state.progress}
+            indeterminate={this.state.indeterminate}
+            direction="counter-clockwise"
+          />
         </View>
         <View style={styles.circles}>
           <Progress.CircleSnail

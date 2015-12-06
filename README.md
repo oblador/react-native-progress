@@ -70,6 +70,7 @@ All of the props under *Properties* in addition to the following:
 |**`showsText`**|Wether or not to show a text representation of current progress. |`false`|
 |**`formatText(progress)`**|A function returning a string to be displayed for the textual representation. |*See source*|
 |**`textStyle`**|Styles for progress text, defaults to a same `color` as circle and `fontSize` proportional to `size` prop. |*None*|
+|**`direction`**|Direction of the circle `clockwise` or `counter-clockwise` |`clockwise`|
 
 ### `Progress.Pie`
 
