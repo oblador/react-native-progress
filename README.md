@@ -12,17 +12,7 @@ Progress indicators and spinners for React Native using ReactART.
 
 ### ReactART based components
 
-`$ npm install art --save`
-
 To use the `Pie` or `Circle` components, you need to include the ART library in your project. To do this, simply add the `ART.xcodeproj` (found in `node_modules/react-native/Libraries/ART`) to the **Libraries** group and add `libART.a` to **Link Binary With Libraries** under **Build Phases**. [More info and screenshots about how to do this is available in the React Native documentation](http://facebook.github.io/react-native/docs/linking-libraries-ios.html#content).
-
-Until [this pull request](https://github.com/facebook/react-native/pull/3308) to expose ReactART as a public API is merged, you will need to polyfill this because of packager limitations. Simply inject this code before requiring this module: 
-
-```js
-if(!React.ART) {
-  React.ART = require('ReactNativeART');
-}
-```
 
 ## Usage
 
