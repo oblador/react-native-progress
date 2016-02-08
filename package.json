@@ -36,8 +36,5 @@
     "type": "git",
     "url": "git://github.com/oblador/react-native-progress.git"
   },
-  "license": "MIT",
-  "peerDependencies": {
-    "react-native": ">=0.15.0 || 0.15.0-rc || 0.16.0-rc"
-  }
+  "license": "MIT"
 }
