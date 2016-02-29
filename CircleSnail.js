@@ -72,13 +72,13 @@ var CircleSnail = React.createClass({
         toValue: -MAX_ARC_ANGLE * iteration - MIN_ARC_ANGLE,
         duration: 1000,
         isInteraction: false,
-        easing: Easing.quad(Easing.inOut),
+        easing: Easing.inOut(Easing.quad),
       }),
       Animated.timing(this.state.endAngle, {
         toValue: -MAX_ARC_ANGLE * iteration,
         duration: 1000,
         isInteraction: false,
-        easing: Easing.quad(Easing.inOut),
+        easing: Easing.inOut(Easing.quad),
       })
     ]).start(endState => {
       if(endState.finished) {
