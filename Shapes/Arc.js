@@ -9,20 +9,30 @@ var {
   }
 } = React;
 
-var makeArcPath = function(x, y, startAngle, endAngle, radius) {
+var makeArcPath = function(x, y, startAngle, endAngle, radius, direction) {
+  var arcMethod = direction === 'counter-clockwise' ? 'counterArc' : 'arc';
   var circle = Math.PI * 2;
+  if(endAngle - startAngle >= circle) {
+    endAngle = circle + (endAngle % circle);
+  } else {
+    endAngle = endAngle % circle;
+  }
   startAngle = startAngle % circle;
-  endAngle = endAngle % circle;
   var angle = startAngle > endAngle ? circle - startAngle + endAngle : endAngle - startAngle;
+
 
   var path = Path();
 
   if(angle >= circle) {
     path
       .moveTo(x + radius, y)
-      .arc(0, radius*2, radius, radius)
-      .arc(0, radius*-2, radius, radius);
+      [arcMethod](0, radius*2, radius, radius)
+      [arcMethod](0, radius*-2, radius, radius)
+      .close();
   } else {
+    var directionFactor = direction === 'counter-clockwise' ? -1 : 1;
+    endAngle *= directionFactor;
+    startAngle *= directionFactor;
     var startSine = Math.sin(startAngle);
     var startCosine = Math.cos(startAngle);
     var endSine = Math.sin(endAngle);
@@ -32,7 +42,7 @@ var makeArcPath = function(x, y, startAngle, endAngle, radius) {
 
     path
       .moveTo(x + radius * (1 + startSine), y + radius - radius * startCosine)
-      .arc(radius * deltaSine, radius * -deltaCosine, radius, radius, angle > Math.PI);
+      [arcMethod](radius * deltaSine, radius * -deltaCosine, radius, radius, angle > Math.PI);
   }
   return path;
 };
@@ -46,26 +56,33 @@ var Arc = React.createClass({
       top:  PropTypes.number,
       left: PropTypes.number,
     }),
+    strokeWidth: PropTypes.number,
+    direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
   },
 
   getDefaultProps: function() {
     return {
       startAngle: 0,
       offset: { top: 0, left: 0 },
+      strokeWidth: 0,
+      direction: 'clockwise',
     };
   },
 
   render() {
-    var { startAngle, endAngle, radius, offset, ...props } = this.props;
+    var { startAngle, endAngle, radius, offset, direction, strokeWidth, ...props } = this.props;
     var path = makeArcPath(
-      (offset.left || 0),
-      (offset.top || 0),
+      (offset.left || 0) + strokeWidth/2,
+      (offset.top || 0) + strokeWidth/2,
       startAngle,
       endAngle,
-      radius
+      radius - strokeWidth/2,
+      direction
     );
     return (
       <Shape d={path}
+        strokeCap="butt"
+        strokeWidth={strokeWidth}
         {...props} />
     );
   }

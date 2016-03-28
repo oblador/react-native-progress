@@ -161,6 +161,7 @@ var CircleSnail = React.createClass({
             offset={offset}
             startAngle={this.state.startAngle}
             endAngle={this.state.endAngle}
+            strokeCap="round"
             strokeWidth={thickness} />
         </Surface>
         {children}

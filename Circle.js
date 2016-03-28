@@ -10,7 +10,7 @@ var {
   }
 } = React;
 
-var Circle = require('./Shapes/Circle');
+var Arc = require('./Shapes/Arc');
 
 var ProgressCircle = React.createClass({
   propTypes: {
@@ -60,8 +60,6 @@ var ProgressCircle = React.createClass({
 
     borderWidth = borderWidth || (indeterminate ? 1 : 0);
 
-    var innerCircumference = (size - borderWidth - thickness) * Math.PI;
-    var outerCircumference = (size - borderWidth) * Math.PI;
     var radius = size/2 - borderWidth;
     var offset = {
       top: borderWidth,
@@ -75,24 +73,29 @@ var ProgressCircle = React.createClass({
         <Surface
           width={size}
           height={size}>
-          {unfilledColor ? (<Circle
+          {unfilledColor && progress !== 1 ? (<Arc
             radius={radius}
             offset={offset}
+            startAngle={progress * 2 * Math.PI}
+            endAngle={2 * Math.PI}
+            direction={direction}
             stroke={unfilledColor}
             strokeWidth={thickness} />) : false}
-          {!indeterminate && progress ? (<Circle
+          {!indeterminate && progress ? (<Arc
             radius={radius}
             offset={offset}
-            stroke={color}
-            strokeDash={[innerCircumference * progress, innerCircumference]}
+            startAngle={0}
+            endAngle={progress * 2 * Math.PI}
             direction={direction}
+            stroke={color}
             strokeWidth={thickness} />) : false}
           {borderWidth ?
-            (<Circle
+            (<Arc
               radius={size/2}
-              stroke={borderColor || color}
-              strokeDash={[outerCircumference * (indeterminate ? 0.9 : 1), outerCircumference]}
+              startAngle={0}
+              endAngle={(indeterminate ? 1.8 : 2) * Math.PI}
               direction={direction}
+              stroke={borderColor || color}
               strokeWidth={borderWidth} />) : false}
         </Surface>
         {!indeterminate && progress && showsText ? (
