@@ -1,25 +1,25 @@
 'use strict';
 
-var React = require('react-native');
+var React = require('react');
+var ReactNative = require('react-native');
 var {
   View,
-  PropTypes,
   ART: {
     Surface
   }
-} = React;
+} = ReactNative;
 
 var Circle = require('./Shapes/Circle');
 var Sector = require('./Shapes/Sector');
 
 var ProgressPie = React.createClass({
   propTypes: {
-    size: PropTypes.number,
-    progress: PropTypes.number,
-    color: PropTypes.string,
-    unfilledColor: PropTypes.string,
-    borderWidth: PropTypes.number,
-    borderColor: PropTypes.string,
+    size: React.PropTypes.number,
+    progress: React.PropTypes.number,
+    color: React.PropTypes.string,
+    unfilledColor: React.PropTypes.string,
+    borderWidth: React.PropTypes.number,
+    borderColor: React.PropTypes.string,
   },
 
   getDefaultProps: function() {

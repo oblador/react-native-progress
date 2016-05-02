@@ -1,28 +1,28 @@
 'use strict';
 
-var React = require('react-native');
+var React = require('react');
+var ReactNative = require('react-native');
 var {
   Animated,
   Easing,
   View,
-  PropTypes,
-} = React
+} = ReactNative
 
 var INDETERMINATE_WIDTH_FACTOR = 0.3;
 var BAR_WIDTH_ZERO_POSITION = INDETERMINATE_WIDTH_FACTOR / (1+INDETERMINATE_WIDTH_FACTOR);
 
 var ProgressBar = React.createClass({
   propTypes: {
-    animated: PropTypes.bool,
-    indeterminate: PropTypes.bool,
-    progress: PropTypes.number,
-    width: PropTypes.number,
-    height: PropTypes.number,
-    color: PropTypes.string,
-    unfilledColor: PropTypes.string,
-    borderWidth: PropTypes.number,
-    borderColor: PropTypes.string,
-    borderRadius: PropTypes.number,
+    animated: React.PropTypes.bool,
+    indeterminate: React.PropTypes.bool,
+    progress: React.PropTypes.number,
+    width: React.PropTypes.number,
+    height: React.PropTypes.number,
+    color: React.PropTypes.string,
+    unfilledColor: React.PropTypes.string,
+    borderWidth: React.PropTypes.number,
+    borderColor: React.PropTypes.string,
+    borderRadius: React.PropTypes.number,
   },
 
   getDefaultProps: function() {

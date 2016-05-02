@@ -4,13 +4,14 @@
  */
 'use strict';
 
-var React = require('react-native');
+var React = require('react');
+var ReactNative = require('react-native');
 var {
   AppRegistry,
   StyleSheet,
   Text,
   View,
-} = React;
+} = ReactNative;
 
 var Progress = require('react-native-progress');
 
