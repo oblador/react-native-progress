@@ -1,13 +1,13 @@
 'use strict';
 
-var React = require('react-native');
+var React = require('react');
+var ReactNative = require('react-native');
 var {
-  PropTypes,
   ART: {
     Shape,
     Path
   }
-} = React;
+} = ReactNative;
 
 var makeArcPath = function(x, y, startAngle, endAngle, radius, direction) {
   var arcMethod = direction === 'counter-clockwise' ? 'counterArc' : 'arc';
@@ -49,15 +49,15 @@ var makeArcPath = function(x, y, startAngle, endAngle, radius, direction) {
 
 var Arc = React.createClass({
   propTypes: {
-    startAngle: PropTypes.number.isRequired, // in radians
-    endAngle: PropTypes.number.isRequired, // in radians
-    radius: PropTypes.number.isRequired,
-    offset: PropTypes.shape({
-      top:  PropTypes.number,
-      left: PropTypes.number,
+    startAngle: React.PropTypes.number.isRequired, // in radians
+    endAngle: React.PropTypes.number.isRequired, // in radians
+    radius: React.PropTypes.number.isRequired,
+    offset: React.PropTypes.shape({
+      top:  React.PropTypes.number,
+      left: React.PropTypes.number,
     }),
-    strokeWidth: PropTypes.number,
-    direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
+    strokeWidth: React.PropTypes.number,
+    direction: React.PropTypes.oneOf(['clockwise', 'counter-clockwise']),
   },
 
   getDefaultProps: function() {

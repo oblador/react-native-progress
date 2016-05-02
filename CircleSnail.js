@@ -1,15 +1,15 @@
 'use strict';
 
-var React = require('react-native');
+var React = require('react');
+var ReactNative = require('react-native');
 var {
   View,
-  PropTypes,
   Animated,
   Easing,
   ART: {
     Surface
   }
-} = React;
+} = ReactNative;
 
 var Arc = Animated.createAnimatedComponent(require('./Shapes/Arc'))
 
@@ -18,13 +18,13 @@ var MAX_ARC_ANGLE = 1.5 * Math.PI;
 
 var CircleSnail = React.createClass({
   propTypes: {
-    animating: PropTypes.bool,
-    hidesWhenStopped: PropTypes.bool,
-    size: PropTypes.number,
-    thickness: PropTypes.number,
-    color: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.arrayOf(PropTypes.string),
+    animating: React.PropTypes.bool,
+    hidesWhenStopped: React.PropTypes.bool,
+    size: React.PropTypes.number,
+    thickness: React.PropTypes.number,
+    color: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.arrayOf(React.PropTypes.string),
     ])
   },
 

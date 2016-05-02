@@ -1,30 +1,30 @@
 'use strict';
 
-var React = require('react-native');
+var React = require('react');
+var ReactNative = require('react-native');
 var {
   View,
-  PropTypes,
   Text,
   ART: {
     Surface
   }
-} = React;
+} = ReactNative;
 
 var Arc = require('./Shapes/Arc');
 
 var ProgressCircle = React.createClass({
   propTypes: {
-    size: PropTypes.number,
-    progress: PropTypes.number,
-    thickness: PropTypes.number,
-    color: PropTypes.string,
-    unfilledColor: PropTypes.string,
-    borderWidth: PropTypes.number,
-    borderColor: PropTypes.string,
-    showsText: PropTypes.bool,
-    formatText: PropTypes.func,
-    textStyle: PropTypes.any,
-    direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
+    size: React.PropTypes.number,
+    progress: React.PropTypes.number,
+    thickness: React.PropTypes.number,
+    color: React.PropTypes.string,
+    unfilledColor: React.PropTypes.string,
+    borderWidth: React.PropTypes.number,
+    borderColor: React.PropTypes.string,
+    showsText: React.PropTypes.bool,
+    formatText: React.PropTypes.func,
+    textStyle: React.PropTypes.any,
+    direction: React.PropTypes.oneOf(['clockwise', 'counter-clockwise']),
   },
 
   getDefaultProps: function() {

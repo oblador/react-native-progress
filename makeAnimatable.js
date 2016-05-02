@@ -1,20 +1,20 @@
 'use strict';
 
-var React = require('react-native');
+var React = require('react');
+var ReactNative = require('react-native');
 var {
-  PropTypes,
   Animated,
   Easing,
-} = React;
+} = ReactNative;
 
 var makeAnimatable = function(Component, indeterminateProgress) {
   var AnimatedComponent = Animated.createAnimatedComponent(Component);
   return React.createClass({
     propTypes: {
-      animated: PropTypes.bool,
-      indeterminate: PropTypes.bool,
-      progress: PropTypes.number.isRequired,
-      direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
+      animated: React.PropTypes.bool,
+      indeterminate: React.PropTypes.bool,
+      progress: React.PropTypes.number.isRequired,
+      direction: React.PropTypes.oneOf(['clockwise', 'counter-clockwise']),
     },
 
     getDefaultProps: function() {
