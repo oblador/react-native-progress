@@ -4,7 +4,7 @@
   "description": "Progress indicators and spinners for React Native using ReactART",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint *.js Shapes"
   },
   "keywords": [
     "react-native",
@@ -36,5 +36,11 @@
     "type": "git",
     "url": "git://github.com/oblador/react-native-progress.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-eslint": "^6.0.4",
+    "eslint": "^2.9.0",
+    "eslint-plugin-react": "^5.0.1"
+  }
 }
