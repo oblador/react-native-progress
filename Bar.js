@@ -105,6 +105,7 @@ export default class ProgressBar extends Component {
       ...restProps,
     } = this.props;
 
+    const innerWidth = width - borderWidth * 2;
     const containerStyle = {
       width,
       borderWidth,
@@ -118,12 +119,12 @@ export default class ProgressBar extends Component {
       height,
       width: this.state.progress.interpolate({
         inputRange: [0, 1],
-        outputRange: [0, width],
+        outputRange: [0, innerWidth],
       }),
       transform: [{
         translateX: this.state.animationValue.interpolate({
           inputRange: [0, 1],
-          outputRange: [width * -INDETERMINATE_WIDTH_FACTOR, width],
+          outputRange: [innerWidth * -INDETERMINATE_WIDTH_FACTOR, innerWidth],
         }),
       }],
     };
