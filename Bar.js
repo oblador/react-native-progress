@@ -1,60 +1,60 @@
-'use strict';
+import React, {
+  Component,
+  PropTypes,
+} from 'react';
 
-var React = require('react-native');
-var {
+import {
   Animated,
   Easing,
   View,
-  PropTypes,
-} = React
+} from 'react-native';
 
-var INDETERMINATE_WIDTH_FACTOR = 0.3;
-var BAR_WIDTH_ZERO_POSITION = INDETERMINATE_WIDTH_FACTOR / (1+INDETERMINATE_WIDTH_FACTOR);
+const INDETERMINATE_WIDTH_FACTOR = 0.3;
+const BAR_WIDTH_ZERO_POSITION = INDETERMINATE_WIDTH_FACTOR / (1 + INDETERMINATE_WIDTH_FACTOR);
 
-var ProgressBar = React.createClass({
-  propTypes: {
+export default class ProgressBar extends Component {
+  static propTypes = {
     animated: PropTypes.bool,
-    indeterminate: PropTypes.bool,
-    progress: PropTypes.number,
-    width: PropTypes.number,
-    height: PropTypes.number,
-    color: PropTypes.string,
-    unfilledColor: PropTypes.string,
-    borderWidth: PropTypes.number,
     borderColor: PropTypes.string,
     borderRadius: PropTypes.number,
-  },
+    borderWidth: PropTypes.number,
+    color: PropTypes.string,
+    height: PropTypes.number,
+    indeterminate: PropTypes.bool,
+    progress: PropTypes.number,
+    unfilledColor: PropTypes.string,
+    width: PropTypes.number,
+  };
 
-  getDefaultProps: function() {
-    return {
-      animated: true,
-      progress: 0,
-      width: 150,
-      height: 6,
-      borderWidth: 1,
-      borderRadius: 4,
-      color: 'rgba(0, 122, 255, 1)',
-      indeterminate: false,
-    };
-  },
+  static defaultProps = {
+    animated: true,
+    borderRadius: 4,
+    borderWidth: 1,
+    color: 'rgba(0, 122, 255, 1)',
+    height: 6,
+    indeterminate: false,
+    progress: 0,
+    width: 150,
+  };
 
-  getInitialState: function() {
-    var progress = Math.min(Math.max(this.props.progress, 0), 1);
-    return {
-      progress: new Animated.Value(this.props.indeterminate ? INDETERMINATE_WIDTH_FACTOR : progress),
+  constructor(props) {
+    super(props);
+    const progress = Math.min(Math.max(props.progress, 0), 1);
+    this.state = {
+      progress: new Animated.Value(props.indeterminate ? INDETERMINATE_WIDTH_FACTOR : progress),
       animationValue: new Animated.Value(BAR_WIDTH_ZERO_POSITION),
     };
-  },
+  }
 
-  componentDidMount: function() {
-    if(this.props.indeterminate) {
+  componentDidMount() {
+    if (this.props.indeterminate) {
       this.animate();
     }
-  },
+  }
 
-  componentWillReceiveProps: function(props) {
-    if(props.indeterminate !== this.props.indeterminate) {
-      if(props.indeterminate) {
+  componentWillReceiveProps(props) {
+    if (props.indeterminate !== this.props.indeterminate) {
+      if (props.indeterminate) {
         this.animate();
       } else {
         Animated.spring(this.state.animationValue, {
@@ -62,10 +62,10 @@ var ProgressBar = React.createClass({
         }).start();
       }
     }
-    if(props.indeterminate !== this.props.indeterminate || props.progress !== this.props.progress) {
-      var progress = (props.indeterminate ? INDETERMINATE_WIDTH_FACTOR : Math.min(Math.max(props.progress, 0), 1));
+    if (props.indeterminate !== this.props.indeterminate || props.progress !== this.props.progress) {
+      const progress = (props.indeterminate ? INDETERMINATE_WIDTH_FACTOR : Math.min(Math.max(props.progress, 0), 1));
 
-      if(props.animated) {
+      if (props.animated) {
         Animated.spring(this.state.progress, {
           toValue: progress,
           bounciness: 0,
@@ -74,9 +74,9 @@ var ProgressBar = React.createClass({
         this.state.progress.setValue(progress);
       }
     }
-  },
+  }
 
-  animate: function() {
+  animate() {
     this.state.animationValue.setValue(0);
     Animated.timing(this.state.animationValue, {
       toValue: 1,
@@ -84,28 +84,28 @@ var ProgressBar = React.createClass({
       easing: Easing.linear,
       isInteraction: false,
     }).start(endState => {
-      if(endState.finished) {
+      if (endState.finished) {
         this.animate();
       }
     });
-  },
+  }
 
-  render: function() {
-    var {
-      width,
-      height,
-      style,
+  render() {
+    const {
+      borderColor,
       borderRadius,
       borderWidth,
-      color,
-      borderColor,
-      unfilledColor,
-      indeterminate,
       children,
-      ...props
+      color,
+      height,
+      indeterminate,
+      style,
+      unfilledColor,
+      width,
+      ...restProps,
     } = this.props;
 
-    var containerStyle = {
+    const containerStyle = {
       width,
       borderWidth,
       borderColor: borderColor || color,
@@ -113,7 +113,7 @@ var ProgressBar = React.createClass({
       overflow: 'hidden',
       backgroundColor: unfilledColor,
     };
-    var progressStyle = {
+    const progressStyle = {
       backgroundColor: color,
       height,
       width: this.state.progress.interpolate({
@@ -123,18 +123,16 @@ var ProgressBar = React.createClass({
       transform: [{
         translateX: this.state.animationValue.interpolate({
           inputRange: [0, 1],
-          outputRange: [width * -INDETERMINATE_WIDTH_FACTOR, width]
-        })
-      }]
+          outputRange: [width * -INDETERMINATE_WIDTH_FACTOR, width],
+        }),
+      }],
     };
 
     return (
-      <View style={[containerStyle, style]} {...props}>
+      <View style={[containerStyle, style]} {...restProps}>
         <Animated.View style={progressStyle} />
         {children}
       </View>
     );
   }
-});
-
-module.exports = ProgressBar;
+}

@@ -16,10 +16,10 @@ To use the `Pie` or `Circle` components, you need to include the ART library in 
 
 ## Usage
 
-*Note: If you don't want the ReactART based components and it's dependencies, do a deep require instead: `var ProgressBar = require('react-native-progress/Bar');`.*
+*Note: If you don't want the ReactART based components and it's dependencies, do a deep require instead: `import ProgressBar from 'react-native-progress/Bar';`.*
 
 ```js
-var Progress = require('react-native-progress');
+import * as Progress from 'react-native-progress';
 
 <Progress.Bar progress={0.3} width={200} />
 <Progress.Pie progress={0.4} size={50} />

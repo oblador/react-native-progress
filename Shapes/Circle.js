@@ -1,59 +1,55 @@
-'use strict';
+/* eslint new-cap: ["error", { "capIsNew": false }] */
 
-var React = require('react-native');
-var {
+import React, {
+  Component,
   PropTypes,
-  ART: {
-    Shape,
-    Path
-  }
-} = React;
+} from 'react';
 
-var makeCirclePath = function(x, y, radius, direction) {
-  var arcMethod = direction === 'counter-clockwise' ? 'counterArc' : 'arc';
+import { ART } from 'react-native';
 
-  return Path()
+function makeCirclePath(x, y, radius, direction) {
+  const arcMethod = direction === 'counter-clockwise' ? 'counterArc' : 'arc';
+
+  return ART.Path()
     .moveTo(x, y)
     .move(radius, 0)
-    [arcMethod](0, radius*2, radius, radius)
-    [arcMethod](0, radius*-2, radius, radius)
+    [arcMethod](0, radius * 2, radius, radius)
+    [arcMethod](0, radius * -2, radius, radius)
     .close();
-};
+}
 
-var Circle = React.createClass({
-  propTypes: {
+export default class Circle extends Component {
+  static propTypes = {
     radius: PropTypes.number.isRequired,
     offset: PropTypes.shape({
-      top:  PropTypes.number,
+      top: PropTypes.number,
       left: PropTypes.number,
     }),
     strokeWidth: PropTypes.number,
     direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
-  },
+  };
 
-  getDefaultProps: function() {
-    return {
-      offset: { top: 0, left: 0 },
-      strokeWidth: 0,
-      direction: 'clockwise',
-    };
-  },
+  static defaultProps = {
+    offset: { top: 0, left: 0 },
+    strokeWidth: 0,
+    direction: 'clockwise',
+  };
 
   render() {
-    var { radius, offset, strokeWidth, direction, ...props } = this.props;
-    var path = makeCirclePath(
-      (offset.left || 0) + strokeWidth/2,
-      (offset.top || 0) + strokeWidth/2,
-      radius - strokeWidth/2,
-      direction,
+    const { radius, offset, strokeWidth, direction, ...restProps } = this.props;
+    const path = makeCirclePath(
+      (offset.left || 0) + strokeWidth / 2,
+      (offset.top || 0) + strokeWidth / 2,
+      radius - strokeWidth / 2,
+      direction
     );
     return (
-      <Shape d={path}
+      <ART.Shape
+        d={path}
         strokeCap="butt"
         strokeWidth={strokeWidth}
-        {...props} />
+        {...restProps}
+      />
     );
   }
-});
-
-module.exports = Circle;
+}

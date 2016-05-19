@@ -1,76 +1,74 @@
-'use strict';
-
-var React = require('react-native');
-var {
-  View,
+import React, {
+  Component,
   PropTypes,
+} from 'react';
+
+import {
+  ART,
   Text,
-  ART: {
-    Surface
-  }
-} = React;
+  View,
+} from 'react-native';
 
-var Arc = require('./Shapes/Arc');
+import Arc from './Shapes/Arc';
 
-var ProgressCircle = React.createClass({
-  propTypes: {
-    size: PropTypes.number,
-    progress: PropTypes.number,
-    thickness: PropTypes.number,
-    color: PropTypes.string,
-    unfilledColor: PropTypes.string,
-    borderWidth: PropTypes.number,
+export default class ProgressCircle extends Component {
+  static propTypes = {
     borderColor: PropTypes.string,
-    showsText: PropTypes.bool,
-    formatText: PropTypes.func,
-    textStyle: PropTypes.any,
+    borderWidth: PropTypes.number,
+    color: PropTypes.string,
     direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
-  },
+    formatText: PropTypes.func,
+    indeterminate: PropTypes.bool,
+    progress: PropTypes.number,
+    showsText: PropTypes.bool,
+    size: PropTypes.number,
+    textStyle: PropTypes.any,
+    thickness: PropTypes.number,
+    unfilledColor: PropTypes.string,
+  };
 
-  getDefaultProps: function() {
-    return {
-      progress: 0,
-      size: 40,
-      thickness: 3,
-      borderWidth: 1,
-      color: 'rgba(0, 122, 255, 1)',
-      showsText: false,
-      formatText: progress => Math.round(progress * 100) + '%',
-      direction: 'clockwise',
-    };
-  },
+  static defaultProps = {
+    borderWidth: 1,
+    color: 'rgba(0, 122, 255, 1)',
+    direction: 'clockwise',
+    formatText: progress => Math.round(progress * 100) + '%',
+    progress: 0,
+    showsText: false,
+    size: 40,
+    thickness: 3,
+  };
 
   render() {
-    var {
-      progress,
-      size,
-      thickness,
+    let {
+      borderColor,
       borderWidth,
       color,
-      borderColor,
-      unfilledColor,
-      indeterminate,
       children,
-      showsText,
-      formatText,
-      textStyle,
       direction,
-      ...props
+      formatText,
+      indeterminate,
+      progress,
+      showsText,
+      size,
+      textStyle,
+      thickness,
+      unfilledColor,
+      ...restProps,
     } = this.props;
 
     borderWidth = borderWidth || (indeterminate ? 1 : 0);
 
-    var radius = size/2 - borderWidth;
-    var offset = {
+    const radius = size / 2 - borderWidth;
+    const offset = {
       top: borderWidth,
       left: borderWidth,
     };
-    var textOffset = borderWidth + thickness;
-    var textSize = size - textOffset * 2;
+    const textOffset = borderWidth + thickness;
+    const textSize = size - textOffset * 2;
 
     return (
-      <View {...props}>
-        <Surface
+      <View {...restProps}>
+        <ART.Surface
           width={size}
           height={size}>
           {unfilledColor && progress !== 1 ? (<Arc
@@ -91,13 +89,13 @@ var ProgressCircle = React.createClass({
             strokeWidth={thickness} />) : false}
           {borderWidth ?
             (<Arc
-              radius={size/2}
+              radius={size / 2}
               startAngle={0}
               endAngle={(indeterminate ? 1.8 : 2) * Math.PI}
               direction={direction}
               stroke={borderColor || color}
               strokeWidth={borderWidth} />) : false}
-        </Surface>
+        </ART.Surface>
         {!indeterminate && progress && showsText ? (
           <View style={{
             position: 'absolute',
@@ -105,21 +103,19 @@ var ProgressCircle = React.createClass({
             top: textOffset,
             width: textSize,
             height: textSize,
-            borderRadius: textSize/2,
+            borderRadius: textSize / 2,
             alignItems: 'center',
             justifyContent: 'center',
           }}>
             <Text style={[{
               color: color,
-              fontSize: textSize/4.5,
+              fontSize: textSize / 4.5,
               fontWeight: '300',
             }, textStyle]}>{formatText(progress)}</Text>
           </View>
         ) : false}
         {children}
       </View>
-    )
+    );
   }
-});
-
-module.exports = ProgressCircle;
+}

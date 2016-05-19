@@ -1,58 +1,75 @@
-'use strict';
-
-var React = require('react-native');
-var {
+import React, {
+  Component,
   PropTypes,
+} from 'react';
+
+import {
   Animated,
   Easing,
-} = React;
+} from 'react-native';
 
-var makeAnimatable = function(Component, indeterminateProgress) {
-  var AnimatedComponent = Animated.createAnimatedComponent(Component);
-  return React.createClass({
-    propTypes: {
+export default function makeAnimatable(component, indeterminateProgress) {
+  const AnimatedComponent = Animated.createAnimatedComponent(component);
+  return class AnimatableComponent extends Component {
+    static propTypes = {
       animated: PropTypes.bool,
+      direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
       indeterminate: PropTypes.bool,
       progress: PropTypes.number.isRequired,
-      direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
-    },
+    };
 
-    getDefaultProps: function() {
-      return {
-        animated: true,
-        indeterminate: false,
-        progress: 0,
-        direction: 'clockwise',
-      };
-    },
+    static defaultProps = {
+      animated: true,
+      direction: 'clockwise',
+      indeterminate: false,
+      progress: 0,
+    };
 
-    getInitialState: function() {
-      var progress = Math.min(Math.max(this.props.progress, 0), 1);
-      var animationValue = new Animated.Value(progress);
-      return {
+    constructor(props) {
+      super(props);
+
+      const progress = Math.min(Math.max(props.progress, 0), 1);
+      this.state = {
+        animationValue: new Animated.Value(progress),
         progress,
-        animationValue,
         rotation: new Animated.Value(0),
       };
-    },
+    }
 
-    componentWillReceiveProps: function(props) {
-      if(props.indeterminate !== this.props.indeterminate) {
-        if(props.indeterminate) {
+    componentDidMount() {
+      this.state.animationValue.addListener(event => this.setState({ progress: event.value }));
+      this.state.rotation.addListener(event => { this._rotation = event.value; });
+      if (this.props.indeterminate) {
+        this.spin();
+        if (indeterminateProgress) {
+          Animated.spring(this.state.animationValue, {
+            toValue: indeterminateProgress,
+          }).start();
+        }
+      }
+    }
+
+    componentWillUnmount() {
+      this.state.animationValue.removeAllListeners();
+    }
+
+    componentWillReceiveProps(props) {
+      if (props.indeterminate !== this.props.indeterminate) {
+        if (props.indeterminate) {
           this.spin();
         } else {
           Animated.spring(this.state.rotation, {
             toValue: (this._rotation > 0.5 ? 1 : 0),
           }).start(endState => {
-            if(endState.finished) {
+            if (endState.finished) {
               this.state.rotation.setValue(0);
             }
           });
         }
       }
-      var progress = (props.indeterminate ? indeterminateProgress || 0 : Math.min(Math.max(props.progress, 0), 1));
-      if(progress !== this.state.progress) {
-        if(props.animated) {
+      const progress = (props.indeterminate ? indeterminateProgress || 0 : Math.min(Math.max(props.progress, 0), 1));
+      if (progress !== this.state.progress) {
+        if (props.animated) {
           Animated.spring(this.state.animationValue, {
             toValue: progress,
             bounciness: 0,
@@ -61,9 +78,9 @@ var makeAnimatable = function(Component, indeterminateProgress) {
           this.setState({ progress });
         }
       }
-    },
+    }
 
-    spin: function() {
+    spin() {
       this.state.rotation.setValue(0);
       Animated.timing(this.state.rotation, {
         toValue: this.props.direction === 'counter-clockwise' ? -1 : 1,
@@ -71,31 +88,15 @@ var makeAnimatable = function(Component, indeterminateProgress) {
         easing: Easing.linear,
         isInteraction: false,
       }).start(endState => {
-        if(endState.finished) {
+        if (endState.finished) {
           this.spin();
         }
       });
-    },
+    }
 
-    componentDidMount: function() {
-      this.state.animationValue.addListener(event => this.setState({ progress: event.value }));
-      this.state.rotation.addListener(event => this._rotation = event.value );
-      if(this.props.indeterminate) {
-        this.spin();
-        if(indeterminateProgress) {
-          Animated.spring(this.state.animationValue, {
-            toValue: indeterminateProgress,
-          }).start();
-        }
-      }
-    },
 
-    componentWillUnmount: function() {
-      this.state.animationValue.removeAllListeners();
-    },
-
-    render: function() {
-      var { progress, size, style, children, ...props } = this.props;
+    render() {
+      const { progress, size, style, children, ...props } = this.props;
       return (<AnimatedComponent
         progress={this.state.progress}
         size={size}
@@ -106,12 +107,10 @@ var makeAnimatable = function(Component, indeterminateProgress) {
             rotate: this.state.rotation.interpolate({
               inputRange: [0, 1],
               outputRange: ['0deg', '360deg'],
-            })
-          }]
+            }),
+          }],
         }, style]}
         {...props}>{children}</AnimatedComponent>);
     }
-  });
-};
-
-module.exports = makeAnimatable;
+  };
+}

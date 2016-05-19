@@ -1,72 +1,71 @@
-'use strict';
-
-var React = require('react-native');
-var {
-  View,
+import React, {
+  Component,
   PropTypes,
+} from 'react';
+
+import {
   Animated,
+  ART,
   Easing,
-  ART: {
-    Surface
-  }
-} = React;
+} from 'react-native';
 
-var Arc = Animated.createAnimatedComponent(require('./Shapes/Arc'))
+import Arc from './Shapes/Arc';
 
-var MIN_ARC_ANGLE = 0.1;
-var MAX_ARC_ANGLE = 1.5 * Math.PI;
+const AnimatedArc = Animated.createAnimatedComponent(Arc);
 
-var CircleSnail = React.createClass({
-  propTypes: {
+const MIN_ARC_ANGLE = 0.1;
+const MAX_ARC_ANGLE = 1.5 * Math.PI;
+
+export default class CircleSnail extends Component {
+  static propTypes = {
     animating: PropTypes.bool,
-    hidesWhenStopped: PropTypes.bool,
-    size: PropTypes.number,
-    thickness: PropTypes.number,
     color: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.arrayOf(PropTypes.string),
-    ])
-  },
+    ]),
+    hidesWhenStopped: PropTypes.bool,
+    size: PropTypes.number,
+    thickness: PropTypes.number,
+  };
 
-  getDefaultProps: function() {
-    return {
-      animating: true,
-      hidesWhenStopped: false,
-      size: 40,
-      thickness: 3,
-      color: 'rgba(0, 122, 255, 1)',
-    };
-  },
+  static defaultProps = {
+    animating: true,
+    color: 'rgba(0, 122, 255, 1)',
+    hidesWhenStopped: false,
+    size: 40,
+    thickness: 3,
+  };
 
-  getInitialState: function() {
-    return {
+  constructor(props) {
+    super(props);
+
+    this.state = {
       startAngle: new Animated.Value(-MIN_ARC_ANGLE),
       endAngle: new Animated.Value(0),
       rotation: new Animated.Value(0),
       colorIndex: 0,
     };
-  },
+  }
 
-  componentWillMount: function() {
-    if(this.props.animating) {
+  componentDidMount() {
+    if (this.props.animating) {
       this.animate();
       this.spin();
     }
-  },
+  }
 
-  componentWillReceiveProps: function(props) {
-    if(props.animating !== this.props.animating) {
-      if(props.animating) {
+  componentWillReceiveProps(props) {
+    if (props.animating !== this.props.animating) {
+      if (props.animating) {
         this.animate();
         this.spin();
       } else {
         this.stopAnimations();
       }
     }
-  },
+  }
 
-  animate: function(iteration) {
-    iteration = iteration || 1;
+  animate(iteration = 1) {
     Animated.sequence([
       Animated.timing(this.state.startAngle, {
         toValue: -MAX_ARC_ANGLE * iteration - MIN_ARC_ANGLE,
@@ -79,10 +78,10 @@ var CircleSnail = React.createClass({
         duration: 1000,
         isInteraction: false,
         easing: Easing.inOut(Easing.quad),
-      })
+      }),
     ]).start(endState => {
-      if(endState.finished) {
-        if(Array.isArray(this.props.color)) {
+      if (endState.finished) {
+        if (Array.isArray(this.props.color)) {
           this.setState({
             colorIndex: iteration % this.props.color.length,
           });
@@ -90,30 +89,30 @@ var CircleSnail = React.createClass({
         this.animate(iteration + 1);
       }
     });
-  },
+  }
 
-  spin: function() {
+  spin() {
     Animated.timing(this.state.rotation, {
       toValue: 1,
       duration: 5000,
       easing: Easing.linear,
       isInteraction: false,
     }).start(endState => {
-      if(endState.finished) {
+      if (endState.finished) {
         this.state.rotation.setValue(0);
         this.spin();
       }
     });
-  },
+  }
 
-  stopAnimations: function() {
+  stopAnimations() {
     this.state.startAngle.stopAnimation();
     this.state.endAngle.stopAnimation();
     this.state.rotation.stopAnimation();
-  },
+  }
 
   render() {
-    var {
+    const {
       animating,
       hidesWhenStopped,
       size,
@@ -121,25 +120,21 @@ var CircleSnail = React.createClass({
       color,
       style,
       children,
-      ...props
+      ...restProps,
     } = this.props;
 
-    if(!animating && hidesWhenStopped) {
+    if (!animating && hidesWhenStopped) {
       return null;
     }
 
-    var radius = size/2 - thickness;
-    var offset = {
+    const radius = size / 2 - thickness;
+    const offset = {
       top: thickness,
       left: thickness,
     };
 
-    if(Array.isArray(color)) {
-      color = color[this.state.colorIndex];
-    }
-
     return (
-      <Animated.View {...props} style={[
+      <Animated.View {...restProps} style={[
         style,
         {
           backgroundColor: 'transparent',
@@ -148,26 +143,24 @@ var CircleSnail = React.createClass({
             rotate: this.state.rotation.interpolate({
               inputRange: [0, 1],
               outputRange: ['0deg', '-360deg'],
-            })
-          }]
-        }
+            }),
+          }],
+        },
       ]}>
-        <Surface
+        <ART.Surface
           width={size}
           height={size}>
-          <Arc
+          <AnimatedArc
             radius={radius}
-            stroke={color}
+            stroke={Array.isArray(color) ? color[this.state.colorIndex] : color}
             offset={offset}
             startAngle={this.state.startAngle}
             endAngle={this.state.endAngle}
             strokeCap="round"
             strokeWidth={thickness} />
-        </Surface>
+        </ART.Surface>
         {children}
       </Animated.View>
-    )
+    );
   }
-});
-
-module.exports = CircleSnail;
+}

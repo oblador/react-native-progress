@@ -1,38 +1,35 @@
-'use strict';
-
-var React = require('react-native');
-var {
-  View,
+import React, {
+  Component,
   PropTypes,
-  ART: {
-    Surface
-  }
-} = React;
+} from 'react';
 
-var Circle = require('./Shapes/Circle');
-var Sector = require('./Shapes/Sector');
+import {
+  ART,
+  View,
+} from 'react-native';
 
-var ProgressPie = React.createClass({
-  propTypes: {
-    size: PropTypes.number,
-    progress: PropTypes.number,
-    color: PropTypes.string,
-    unfilledColor: PropTypes.string,
-    borderWidth: PropTypes.number,
+import Circle from './Shapes/Circle';
+import Sector from './Shapes/Sector';
+
+export default class ProgressPie extends Component {
+  static propTypes = {
     borderColor: PropTypes.string,
-  },
+    borderWidth: PropTypes.number,
+    color: PropTypes.string,
+    progress: PropTypes.number,
+    size: PropTypes.number,
+    unfilledColor: PropTypes.string,
+  };
 
-  getDefaultProps: function() {
-    return {
-      progress: 0,
-      size: 40,
-      borderWidth: 1,
-      color: 'rgba(0, 122, 255, 1)',
-    };
-  },
+  static defaultProps = {
+    borderWidth: 1,
+    color: 'rgba(0, 122, 255, 1)',
+    progress: 0,
+    size: 40,
+  };
 
   render() {
-    var {
+    const {
       progress,
       size,
       borderWidth,
@@ -41,19 +38,19 @@ var ProgressPie = React.createClass({
       unfilledColor,
       indeterminate,
       children,
-      ...props
+      ...restProps,
     } = this.props;
 
-    var angle = progress * Math.PI * 2;
-    var radius = size/2 - borderWidth;
-    var offset = {
+    const angle = progress * Math.PI * 2;
+    const radius = size / 2 - borderWidth;
+    const offset = {
       top: borderWidth,
       left: borderWidth,
     };
 
     return (
-      <View {...props}>
-        <Surface
+      <View {...restProps}>
+        <ART.Surface
           width={size}
           height={size}>
           {unfilledColor ? (<Circle
@@ -67,14 +64,12 @@ var ProgressPie = React.createClass({
             fill={color} />) : false}
           {borderWidth ?
             (<Circle
-              radius={size/2}
+              radius={size / 2}
               stroke={borderColor || color}
               strokeWidth={borderWidth} />) : false}
-        </Surface>
+        </ART.Surface>
         {children}
       </View>
-    )
+    );
   }
-});
-
-module.exports = ProgressPie;
+}

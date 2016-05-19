@@ -1,14 +1,8 @@
-'use strict';
+import ProgressCircle from './Circle';
+import ProgressPie from './Pie';
+import makeAnimatable from './makeAnimatable';
 
-var Bar = require('./Bar');
-var Circle = require('./Circle');
-var Pie = require('./Pie');
-var CircleSnail = require('./CircleSnail');
-var makeAnimatable = require('./makeAnimatable');
-
-module.exports = {
-  Bar,
-  Circle: makeAnimatable(Circle),
-  Pie: makeAnimatable(Pie, 0.2),
-  CircleSnail: CircleSnail,
-};
+export { default as Bar } from './Bar';
+export const Circle = makeAnimatable(ProgressCircle);
+export { default as CircleSnail } from './CircleSnail';
+export const Pie = makeAnimatable(ProgressPie, 0.2);
