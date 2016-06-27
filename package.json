@@ -1,6 +1,6 @@
 {
   "name": "react-native-progress",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Progress indicators and spinners for React Native using ReactART",
   "main": "index.js",
   "scripts": {
