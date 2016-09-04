@@ -31,7 +31,7 @@ import * as Progress from 'react-native-progress';
 
 | Prop | Description | Default |
 |---|---|---|
-|**`animated`**|Wether or not to animate changes to `progress`. |`true`|
+|**`animated`**|Whether or not to animate changes to `progress`. |`true`|
 |**`indeterminate`**|If set to true, the indicator will spin and `progress` prop will be ignored. |`false`|
 |**`progress`**|Progress of whatever the indicator is indicating. A number between 0 and 1. |`0`|
 |**`color`**|Fill color of the indicator. |`rgba(0, 122, 255, 1)`|
@@ -57,7 +57,7 @@ All of the props under *Properties* in addition to the following:
 |---|---|---|
 |**`size`**|Diameter of the circle. |`40`|
 |**`thickness`**|Thickness of the inner circle. |`3`|
-|**`showsText`**|Wether or not to show a text representation of current progress. |`false`|
+|**`showsText`**|Whether or not to show a text representation of current progress. |`false`|
 |**`formatText(progress)`**|A function returning a string to be displayed for the textual representation. |*See source*|
 |**`textStyle`**|Styles for progress text, defaults to a same `color` as circle and `fontSize` proportional to `size` prop. |*None*|
 |**`direction`**|Direction of the circle `clockwise` or `counter-clockwise` |`clockwise`|
