@@ -4,15 +4,13 @@ Progress indicators and spinners for React Native using ReactART.
 
 ![progress-demo](https://cloud.githubusercontent.com/assets/378279/11212043/64fb1420-8d01-11e5-9ec0-5e175a837c62.gif)
 
-**Note: Full android support will come when ReactART is ported to android.**
-
 ## Installation
 
 `$ npm install react-native-progress --save`
 
 ### ReactART based components
 
-To use the `Pie` or `Circle` components, you need to include the ART library in your project. 
+To use the `Pie` or `Circle` components, you need to include the ART library in your project on iOS, for android it's already included. 
 
 #### For CocoaPod users:
 
@@ -99,17 +97,6 @@ All of the props under *Properties* in addition to the following:
 * [react-native-image-progress](https://github.com/oblador/react-native-image-progress)
 
 ## [Changelog](https://github.com/oblador/react-native-progress/releases)
-
-## Todo
- - [x] Progress bar
- - [x] Circular progress indicator
- - [x] Pie progress indicator
- - [x] Animation
- - [x] Indeterminate state
- - [x] Progress percentage text
- - [ ] Optional color change on success/failure
- - [x] Snail/rainbow style spinners
- - [ ] Safari style navigation progress bar
 
 ## Thanks
 

@@ -92,7 +92,6 @@ export default class ProgressCircle extends Component {
               radius={size / 2}
               startAngle={0}
               endAngle={(indeterminate ? 1.8 : 2) * Math.PI}
-              direction={direction}
               stroke={borderColor || color}
               strokeWidth={borderWidth} />) : false}
         </ART.Surface>

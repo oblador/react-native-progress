@@ -12,7 +12,6 @@ const CIRCLE = Math.PI * 2;
 function makeArcPath(x, y, startAngleArg, endAngleArg, radius, direction) {
   let startAngle = startAngleArg;
   let endAngle = endAngleArg;
-  const arcMethod = direction === 'counter-clockwise' ? 'counterArc' : 'arc';
   if (endAngle - startAngle >= CIRCLE) {
     endAngle = CIRCLE + (endAngle % CIRCLE);
   } else {
@@ -21,31 +20,29 @@ function makeArcPath(x, y, startAngleArg, endAngleArg, radius, direction) {
   startAngle = startAngle % CIRCLE;
   const angle = startAngle > endAngle ? CIRCLE - startAngle + endAngle : endAngle - startAngle;
 
-
-  let path = ART.Path();
-
   if (angle >= CIRCLE) {
-    path
+    return ART.Path()
       .moveTo(x + radius, y)
-      [arcMethod](0, radius * 2, radius, radius)
-      [arcMethod](0, radius * -2, radius, radius)
+      .arc(0, radius * 2, radius, radius)
+      .arc(0, radius * -2, radius, radius)
       .close();
-  } else {
-    const directionFactor = direction === 'counter-clockwise' ? -1 : 1;
-    endAngle *= directionFactor;
-    startAngle *= directionFactor;
-    const startSine = Math.sin(startAngle);
-    const startCosine = Math.cos(startAngle);
-    const endSine = Math.sin(endAngle);
-    const endCosine = Math.cos(endAngle);
-    const deltaSine = endSine - startSine;
-    const deltaCosine = endCosine - startCosine;
-
-    path
-      .moveTo(x + radius * (1 + startSine), y + radius - radius * startCosine)
-      [arcMethod](radius * deltaSine, radius * -deltaCosine, radius, radius, angle > Math.PI);
   }
-  return path;
+
+  const directionFactor = direction === 'counter-clockwise' ? -1 : 1;
+  endAngle *= directionFactor;
+  startAngle *= directionFactor;
+  const startSine = Math.sin(startAngle);
+  const startCosine = Math.cos(startAngle);
+  const endSine = Math.sin(endAngle);
+  const endCosine = Math.cos(endAngle);
+  const deltaSine = endSine - startSine;
+  const deltaCosine = endCosine - startCosine;
+
+  const arcFlag = angle > Math.PI ? 1 : 0;
+  const reverseFlag = direction === 'counter-clockwise' ? 0 : 1;
+
+  return `M${x + radius * (1 + startSine)} ${y + radius - radius * startCosine}
+          A${radius} ${radius} 0 ${arcFlag} ${reverseFlag} ${x + radius * (1 + endSine)} ${y + radius - radius * endCosine}`;
 }
 
 export default class Arc extends Component {
