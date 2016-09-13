@@ -41,9 +41,11 @@ function makeArcPath(x, y, startAngleArg, endAngleArg, radius, direction) {
     const deltaSine = endSine - startSine;
     const deltaCosine = endCosine - startCosine;
 
-    path
-      .moveTo(x + radius * (1 + startSine), y + radius - radius * startCosine)
-      [arcMethod](radius * deltaSine, radius * -deltaCosine, radius, radius, angle > Math.PI);
+    const arcFlag = angle > Math.PI ? 1 : 0;
+    const reverseFlag = direction === 'counter-clockwise' ? 0 : 1;
+
+    return `M${x + radius * (1 + startSine)} ${y + radius - radius * startCosine}
+              A${radius} ${radius} 0 ${arcFlag} ${reverseFlag} ${x + radius * (1 + endSine)} ${y + radius - radius * endCosine}`;
   }
   return path;
 }
