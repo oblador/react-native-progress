@@ -116,6 +116,7 @@ export default class ProgressBar extends Component {
     };
     const progressStyle = {
       backgroundColor: color,
+      borderRadius,
       height,
       width: this.state.progress.interpolate({
         inputRange: [0, 1],
