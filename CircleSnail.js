@@ -27,6 +27,8 @@ export default class CircleSnail extends Component {
     hidesWhenStopped: PropTypes.bool,
     size: PropTypes.number,
     thickness: PropTypes.number,
+    duration: PropTypes.number,
+    spinDuration: PropTypes.number,
   };
 
   static defaultProps = {
