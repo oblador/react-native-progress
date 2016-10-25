@@ -90,6 +90,8 @@ All of the props under *Properties* in addition to the following:
 |**`size`**|Diameter of the circle. |`40`|
 |**`color`**|Color of the circle, use an array of colors for rainbow effect. |`rgba(0, 122, 255, 1)`|
 |**`thickness`**|Thickness of the circle. |`3`|
+|**`duration`**|Duration of animation. |`1000`|
+|**`spinDuration`**|Duration of spin (orbit) animation. |`5000`|
 
 ## Examples
 

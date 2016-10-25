@@ -27,6 +27,8 @@ export default class CircleSnail extends Component {
     hidesWhenStopped: PropTypes.bool,
     size: PropTypes.number,
     thickness: PropTypes.number,
+    duration: PropTypes.number,
+    spinDuration: PropTypes.number,
   };
 
   static defaultProps = {
@@ -71,13 +73,13 @@ export default class CircleSnail extends Component {
     Animated.sequence([
       Animated.timing(this.state.startAngle, {
         toValue: -MAX_ARC_ANGLE * iteration - MIN_ARC_ANGLE,
-        duration: 1000,
+        duration: this.props.duration || 1000,
         isInteraction: false,
         easing: Easing.inOut(Easing.quad),
       }),
       Animated.timing(this.state.endAngle, {
         toValue: -MAX_ARC_ANGLE * iteration,
-        duration: 1000,
+        duration: this.props.duration || 1000,
         isInteraction: false,
         easing: Easing.inOut(Easing.quad),
       }),
@@ -96,7 +98,7 @@ export default class CircleSnail extends Component {
   spin() {
     Animated.timing(this.state.rotation, {
       toValue: 1,
-      duration: 5000,
+      duration: this.props.spinDuration || 5000,
       easing: Easing.linear,
       isInteraction: false,
     }).start(endState => {
