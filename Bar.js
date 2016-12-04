@@ -117,15 +117,19 @@ export default class ProgressBar extends Component {
     const progressStyle = {
       backgroundColor: color,
       height,
-      width: this.state.progress.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0, innerWidth],
-      }),
+      width: innerWidth,
       transform: [{
         translateX: this.state.animationValue.interpolate({
           inputRange: [0, 1],
           outputRange: [innerWidth * -INDETERMINATE_WIDTH_FACTOR, innerWidth],
         }),
+      }, {
+        translateX: this.state.progress.interpolate({
+          inputRange: [0, 1],
+          outputRange: [innerWidth / -2, 0],
+        }),
+      }, {
+        scaleX: this.state.progress,
       }],
     };
 
