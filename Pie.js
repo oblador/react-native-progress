@@ -4,20 +4,42 @@ import React, {
 } from 'react';
 
 import {
+  Animated,
   ART,
+  StyleSheet,
   View,
 } from 'react-native';
 
 import Circle from './Shapes/Circle';
 import Sector from './Shapes/Sector';
+import withAnimation from './withAnimation';
 
-export default class ProgressPie extends Component {
+const CIRCLE = Math.PI * 2;
+
+const AnimatedSurface = Animated.createAnimatedComponent(ART.Surface);
+const AnimatedSector = Animated.createAnimatedComponent(Sector);
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'transparent',
+    overflow: 'hidden',
+  },
+});
+
+export class ProgressPie extends Component {
   static propTypes = {
+    animated: PropTypes.bool,
     borderColor: PropTypes.string,
     borderWidth: PropTypes.number,
     color: PropTypes.string,
-    progress: PropTypes.number,
+    children: PropTypes.node,
+    progress: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.instanceOf(Animated.Value),
+    ]),
+    rotation: PropTypes.instanceOf(Animated.Value),
     size: PropTypes.number,
+    style: View.propTypes.style,
     unfilledColor: PropTypes.string,
   };
 
@@ -30,46 +52,69 @@ export default class ProgressPie extends Component {
 
   render() {
     const {
-      progress,
-      size,
-      borderWidth,
-      color,
+      animated,
       borderColor,
-      unfilledColor,
-      indeterminate,
+      borderWidth,
       children,
-      ...restProps,
+      color,
+      progress,
+      rotation,
+      size,
+      style,
+      unfilledColor,
+      ...restProps
     } = this.props;
 
-    const angle = progress * Math.PI * 2;
-    const radius = size / 2 - borderWidth;
+
+    const Surface = rotation ? AnimatedSurface : ART.Surface;
+    const Shape = animated ? AnimatedSector : Sector;
+
+    const angle = animated ? Animated.multiply(progress, CIRCLE) : progress * CIRCLE;
+    const radius = (size / 2) - borderWidth;
     const offset = {
       top: borderWidth,
       left: borderWidth,
     };
 
     return (
-      <View {...restProps}>
-        <ART.Surface
+      <View style={[styles.container, style]} {...restProps}>
+        <Surface
           width={size}
-          height={size}>
-          {unfilledColor ? (<Circle
-            radius={radius}
-            offset={offset}
-            fill={unfilledColor} />) : false}
-          {angle ? (<Sector
+          height={size}
+          style={rotation ? {
+            transform: [{
+              rotate: rotation.interpolate({
+                inputRange: [0, 1],
+                outputRange: ['0deg', '360deg'],
+              }),
+            }],
+          } : undefined}
+        >
+          {unfilledColor ? (
+            <Circle
+              radius={radius}
+              offset={offset}
+              fill={unfilledColor}
+            />
+          ) : false}
+          <Shape
             radius={radius}
             angle={angle}
             offset={offset}
-            fill={color} />) : false}
-          {borderWidth ?
-            (<Circle
+            fill={color}
+          />
+          {borderWidth ? (
+            <Circle
               radius={size / 2}
               stroke={borderColor || color}
-              strokeWidth={borderWidth} />) : false}
-        </ART.Surface>
+              strokeWidth={borderWidth}
+            />
+          ) : false}
+        </Surface>
         {children}
       </View>
     );
   }
 }
+
+export default withAnimation(ProgressPie, 0.2);
