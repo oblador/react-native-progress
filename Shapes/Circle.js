@@ -1,4 +1,5 @@
 /* eslint new-cap: ["error", { "capIsNew": false }] */
+/* eslint no-unexpected-multiline: 0 */
 
 import React, {
   Component,
@@ -38,9 +39,9 @@ export default class Circle extends Component {
   render() {
     const { radius, offset, strokeWidth, direction, ...restProps } = this.props;
     const path = makeCirclePath(
-      (offset.left || 0) + strokeWidth / 2,
-      (offset.top || 0) + strokeWidth / 2,
-      radius - strokeWidth / 2,
+      (offset.left || 0) + (strokeWidth / 2),
+      (offset.top || 0) + (strokeWidth / 2),
+      radius - (strokeWidth / 2),
       direction
     );
     return (

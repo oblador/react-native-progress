@@ -19,15 +19,15 @@ function makeSectorPath(x, y, angle, radius) {
       .close();
   }
 
-  const startAngle = Math.PI / 2 - angle;
+  const startAngle = (Math.PI / 2) - angle;
   const endAngle = Math.PI / 2;
   const arcFlag = angle > Math.PI ? 1 : 0;
   const centerX = x + radius;
   const centerY = y + radius;
 
   return `M${centerX} ${centerY}
-          L${centerX + Math.cos(startAngle) * radius} ${centerY - Math.sin(startAngle) * radius}
-          A${radius} ${radius} 0 ${arcFlag} 0 ${centerX + Math.cos(endAngle) * radius} ${centerY - Math.sin(endAngle) * radius}
+          L${centerX + (Math.cos(startAngle) * radius)} ${centerY - (Math.sin(startAngle) * radius)}
+          A${radius} ${radius} 0 ${arcFlag} 0 ${centerX + (Math.cos(endAngle) * radius)} ${centerY - (Math.sin(endAngle) * radius)}
           L${centerX} ${centerY}`;
 }
 

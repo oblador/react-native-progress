@@ -18,10 +18,12 @@ export default class ProgressBar extends Component {
     borderColor: PropTypes.string,
     borderRadius: PropTypes.number,
     borderWidth: PropTypes.number,
+    children: PropTypes.node,
     color: PropTypes.string,
     height: PropTypes.number,
     indeterminate: PropTypes.bool,
     progress: PropTypes.number,
+    style: View.propTypes.style,
     unfilledColor: PropTypes.string,
     width: PropTypes.number,
   };
@@ -62,8 +64,14 @@ export default class ProgressBar extends Component {
         }).start();
       }
     }
-    if (props.indeterminate !== this.props.indeterminate || props.progress !== this.props.progress) {
-      const progress = (props.indeterminate ? INDETERMINATE_WIDTH_FACTOR : Math.min(Math.max(props.progress, 0), 1));
+    if (
+      props.indeterminate !== this.props.indeterminate ||
+      props.progress !== this.props.progress
+    ) {
+      const progress = (props.indeterminate
+        ? INDETERMINATE_WIDTH_FACTOR
+        : Math.min(Math.max(props.progress, 0), 1)
+      );
 
       if (props.animated) {
         Animated.spring(this.state.progress, {
@@ -83,7 +91,7 @@ export default class ProgressBar extends Component {
       duration: 1000,
       easing: Easing.linear,
       isInteraction: false,
-    }).start(endState => {
+    }).start((endState) => {
       if (endState.finished) {
         this.animate();
       }
@@ -98,14 +106,13 @@ export default class ProgressBar extends Component {
       children,
       color,
       height,
-      indeterminate,
       style,
       unfilledColor,
       width,
       ...restProps
     } = this.props;
 
-    const innerWidth = width - borderWidth * 2;
+    const innerWidth = width - (borderWidth * 2);
     const containerStyle = {
       width,
       borderWidth,

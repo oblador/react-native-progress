@@ -35,14 +35,12 @@ function makeArcPath(x, y, startAngleArg, endAngleArg, radius, direction) {
   const startCosine = Math.cos(startAngle);
   const endSine = Math.sin(endAngle);
   const endCosine = Math.cos(endAngle);
-  const deltaSine = endSine - startSine;
-  const deltaCosine = endCosine - startCosine;
 
   const arcFlag = angle > Math.PI ? 1 : 0;
   const reverseFlag = direction === 'counter-clockwise' ? 0 : 1;
 
-  return `M${x + radius * (1 + startSine)} ${y + radius - radius * startCosine}
-          A${radius} ${radius} 0 ${arcFlag} ${reverseFlag} ${x + radius * (1 + endSine)} ${y + radius - radius * endCosine}`;
+  return `M${x + (radius * (1 + startSine))} ${y + radius - (radius * startCosine)}
+          A${radius} ${radius} 0 ${arcFlag} ${reverseFlag} ${x + (radius * (1 + endSine))} ${y + radius - (radius * endCosine)}`;
 }
 
 export default class Arc extends Component {
@@ -66,15 +64,25 @@ export default class Arc extends Component {
   };
 
   render() {
-    const { startAngle, endAngle, radius, offset, direction, strokeWidth, ...restProps } = this.props;
-    const path = makeArcPath(
-      (offset.left || 0) + strokeWidth / 2,
-      (offset.top || 0) + strokeWidth / 2,
+    const {
       startAngle,
       endAngle,
-      radius - strokeWidth / 2,
+      radius,
+      offset,
+      direction,
+      strokeWidth,
+      ...restProps
+    } = this.props;
+
+    const path = makeArcPath(
+      (offset.left || 0) + (strokeWidth / 2),
+      (offset.top || 0) + (strokeWidth / 2),
+      startAngle,
+      endAngle,
+      radius - (strokeWidth / 2),
       direction
     );
+
     return (
       <ART.Shape
         d={path}

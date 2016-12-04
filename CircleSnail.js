@@ -7,6 +7,7 @@ import {
   Animated,
   ART,
   Easing,
+  View,
 } from 'react-native';
 
 import Arc from './Shapes/Arc';
@@ -23,12 +24,14 @@ export default class CircleSnail extends Component {
       PropTypes.string,
       PropTypes.arrayOf(PropTypes.string),
     ]),
+    children: PropTypes.node,
     direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
+    duration: PropTypes.number,
     hidesWhenStopped: PropTypes.bool,
     size: PropTypes.number,
-    thickness: PropTypes.number,
-    duration: PropTypes.number,
     spinDuration: PropTypes.number,
+    style: View.propTypes.style,
+    thickness: PropTypes.number,
   };
 
   static defaultProps = {
@@ -72,7 +75,7 @@ export default class CircleSnail extends Component {
   animate(iteration = 1) {
     Animated.sequence([
       Animated.timing(this.state.startAngle, {
-        toValue: -MAX_ARC_ANGLE * iteration - MIN_ARC_ANGLE,
+        toValue: (-MAX_ARC_ANGLE * iteration) - MIN_ARC_ANGLE,
         duration: this.props.duration || 1000,
         isInteraction: false,
         easing: Easing.inOut(Easing.quad),
@@ -83,7 +86,7 @@ export default class CircleSnail extends Component {
         isInteraction: false,
         easing: Easing.inOut(Easing.quad),
       }),
-    ]).start(endState => {
+    ]).start((endState) => {
       if (endState.finished) {
         if (Array.isArray(this.props.color)) {
           this.setState({
@@ -101,7 +104,7 @@ export default class CircleSnail extends Component {
       duration: this.props.spinDuration || 5000,
       easing: Easing.linear,
       isInteraction: false,
-    }).start(endState => {
+    }).start((endState) => {
       if (endState.finished) {
         this.state.rotation.setValue(0);
         this.spin();
@@ -118,21 +121,21 @@ export default class CircleSnail extends Component {
   render() {
     const {
       animating,
+      children,
+      color,
+      direction,
       hidesWhenStopped,
       size,
-      thickness,
-      color,
       style,
-      children,
-      direction,
-      ...restProps,
+      thickness,
+      ...restProps
     } = this.props;
 
     if (!animating && hidesWhenStopped) {
       return null;
     }
 
-    const radius = size / 2 - thickness;
+    const radius = (size / 2) - thickness;
     const offset = {
       top: thickness,
       left: thickness,
@@ -141,22 +144,26 @@ export default class CircleSnail extends Component {
     const directionFactor = direction === 'counter-clockwise' ? -1 : 1;
 
     return (
-      <Animated.View {...restProps} style={[
-        style,
-        {
-          backgroundColor: 'transparent',
-          overflow: 'hidden',
-          transform: [{
-            rotate: this.state.rotation.interpolate({
-              inputRange: [0, 1],
-              outputRange: ['0deg', directionFactor * 360 + 'deg'],
-            }),
-          }],
-        },
-      ]}>
+      <Animated.View
+        {...restProps}
+        style={[
+          style,
+          {
+            backgroundColor: 'transparent',
+            overflow: 'hidden',
+            transform: [{
+              rotate: this.state.rotation.interpolate({
+                inputRange: [0, 1],
+                outputRange: ['0deg', `${directionFactor * 360}deg`],
+              }),
+            }],
+          },
+        ]}
+      >
         <ART.Surface
           width={size}
-          height={size}>
+          height={size}
+        >
           <AnimatedArc
             direction={direction === 'counter-clockwise' ? 'clockwise' : 'counter-clockwise'}
             radius={radius}
@@ -165,7 +172,8 @@ export default class CircleSnail extends Component {
             startAngle={this.state.startAngle}
             endAngle={this.state.endAngle}
             strokeCap="round"
-            strokeWidth={thickness} />
+            strokeWidth={thickness}
+          />
         </ART.Surface>
         {children}
       </Animated.View>

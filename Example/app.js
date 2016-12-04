@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -91,7 +90,7 @@ export default class Example extends Component {
           <Progress.CircleSnail
             style={styles.progress}
           />
-        <Progress.CircleSnail
+          <Progress.CircleSnail
             style={styles.progress}
             color={[
               '#F44336',
