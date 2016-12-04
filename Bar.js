@@ -102,7 +102,7 @@ export default class ProgressBar extends Component {
       style,
       unfilledColor,
       width,
-      ...restProps,
+      ...restProps
     } = this.props;
 
     const innerWidth = width - borderWidth * 2;
