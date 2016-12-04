@@ -1,3 +1,7 @@
 *.log
 node_modules
 Example
+.DS_Store
+.editorconfig
+.eslintrc
+.travis.yml
