@@ -26,6 +26,7 @@ export default class ProgressBar extends Component {
     style: View.propTypes.style,
     unfilledColor: PropTypes.string,
     width: PropTypes.number,
+    applyInnerBorder: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -37,6 +38,7 @@ export default class ProgressBar extends Component {
     indeterminate: false,
     progress: 0,
     width: 150,
+    applyInnerBorder: false,
   };
 
   constructor(props) {
@@ -109,6 +111,7 @@ export default class ProgressBar extends Component {
       style,
       unfilledColor,
       width,
+      applyInnerBorder,
       ...restProps
     } = this.props;
 
@@ -123,6 +126,7 @@ export default class ProgressBar extends Component {
     };
     const progressStyle = {
       backgroundColor: color,
+      borderRadius: applyInnerBorder ? borderRadius : 0,
       height,
       width: innerWidth,
       transform: [{
