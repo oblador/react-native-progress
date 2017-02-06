@@ -35,6 +35,7 @@ export class ProgressCircle extends Component {
     children: React.PropTypes.node,
     direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
     formatText: PropTypes.func,
+    innerNode: PropTypes.func,
     indeterminate: PropTypes.bool,
     progress: PropTypes.oneOfType([
       PropTypes.number,
@@ -86,6 +87,7 @@ export class ProgressCircle extends Component {
       children,
       direction,
       formatText,
+      innerNode,
       indeterminate,
       progress,
       rotation,
@@ -174,15 +176,18 @@ export class ProgressCircle extends Component {
               justifyContent: 'center',
             }}
           >
-            <Text
-              style={[{
-                color,
-                fontSize: textSize / 4.5,
-                fontWeight: '300',
-              }, textStyle]}
-            >
-              {formatText(progressValue)}
-            </Text>
+            {innerNode ? innerNode(progressValue) : (
+              <Text
+                style={
+                  [{
+                    color,
+                    fontSize: textSize / 4.5,
+                    fontWeight: '300',
+                  }, textStyle]}
+              >
+                {formatText(progressValue)}
+              </Text>
+            )}
           </View>
         ) : false}
         {children}
