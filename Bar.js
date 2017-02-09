@@ -15,6 +15,7 @@ const BAR_WIDTH_ZERO_POSITION = INDETERMINATE_WIDTH_FACTOR / (1 + INDETERMINATE_
 export default class ProgressBar extends Component {
   static propTypes = {
     animated: PropTypes.bool,
+    animateIncreaseOnly: PropTypes.bool,
     borderColor: PropTypes.string,
     borderRadius: PropTypes.number,
     borderWidth: PropTypes.number,
@@ -30,6 +31,7 @@ export default class ProgressBar extends Component {
 
   static defaultProps = {
     animated: true,
+    animateIncreaseOnly: false,
     borderRadius: 4,
     borderWidth: 1,
     color: 'rgba(0, 122, 255, 1)',
@@ -73,7 +75,14 @@ export default class ProgressBar extends Component {
         : Math.min(Math.max(props.progress, 0), 1)
       );
 
-      if (props.animated) {
+      if (
+        props.animated &&
+        (
+          !props.animateIncreaseOnly || (
+            props.animateIncreaseOnly && (progress > this.props.progress)
+          )
+        )
+      ) {
         Animated.spring(this.state.progress, {
           toValue: progress,
           bounciness: 0,
