@@ -1,5 +1,5 @@
 {
-  "name": "AIS/react-native-progress",
+  "name": "@ais/react-native-progress",
   "version": "3.4.0",
   "description":
     "Progress indicators and spinners for React Native using ReactART",
