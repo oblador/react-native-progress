@@ -1,7 +1,8 @@
 {
-  "name": "react-native-progress",
+  "name": "AIS/react-native-progress",
   "version": "3.4.0",
-  "description": "Progress indicators and spinners for React Native using ReactART",
+  "description":
+    "Progress indicators and spinners for React Native using ReactART",
   "main": "index.js",
   "scripts": {
     "test": "eslint *.js Shapes"
@@ -34,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/oblador/react-native-progress.git"
+    "url": "git://github.com/AirIntServices/react-native-progress.git"
   },
   "license": "MIT",
   "devDependencies": {
