@@ -92,6 +92,7 @@ export class ProgressCircle extends Component {
       showsText,
       size,
       style,
+      strokeCap,
       textStyle,
       thickness,
       unfilledColor,
@@ -157,6 +158,7 @@ export class ProgressCircle extends Component {
               startAngle={0}
               endAngle={(indeterminate ? 1.8 : 2) * Math.PI}
               stroke={borderColor || color}
+              strokeCap={strokeCap}
               strokeWidth={border}
             />
           ) : false}
