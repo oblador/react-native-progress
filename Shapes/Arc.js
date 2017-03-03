@@ -52,6 +52,7 @@ export default class Arc extends Component {
       top: PropTypes.number,
       left: PropTypes.number,
     }),
+    strokeCap: PropTypes.string,
     strokeWidth: PropTypes.number,
     direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
   };
@@ -59,6 +60,7 @@ export default class Arc extends Component {
   static defaultProps = {
     startAngle: 0,
     offset: { top: 0, left: 0 },
+    strokeCap: 'butt',
     strokeWidth: 0,
     direction: 'clockwise',
   };
@@ -70,6 +72,7 @@ export default class Arc extends Component {
       radius,
       offset,
       direction,
+      strokeCap,
       strokeWidth,
       ...restProps
     } = this.props;
@@ -86,7 +89,7 @@ export default class Arc extends Component {
     return (
       <ART.Shape
         d={path}
-        strokeCap="butt"
+        strokeCap={strokeCap}
         strokeWidth={strokeWidth}
         {...restProps}
       />
