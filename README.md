@@ -1,6 +1,6 @@
 # react-native-progress
 
-Progress indicators and spinners for React Native using ReactART. 
+Progress indicators and spinners for React Native using ReactART.
 
 ![progress-demo](https://cloud.githubusercontent.com/assets/378279/11212043/64fb1420-8d01-11e5-9ec0-5e175a837c62.gif)
 
@@ -10,7 +10,7 @@ Progress indicators and spinners for React Native using ReactART.
 
 ### ReactART based components
 
-To use the `Pie` or `Circle` components, you need to include the ART library in your project on iOS, for android it's already included. 
+To use the `Pie` or `Circle` components, you need to include the ART library in your project on iOS, for android it's already included.
 
 #### For CocoaPod users:
 
@@ -72,6 +72,7 @@ All of the props under *Properties* in addition to the following:
 |**`formatText(progress)`**|A function returning a string to be displayed for the textual representation. |*See source*|
 |**`textStyle`**|Styles for progress text, defaults to a same `color` as circle and `fontSize` proportional to `size` prop. |*None*|
 |**`direction`**|Direction of the circle `clockwise` or `counter-clockwise` |`clockwise`|
+|**`strokeCap`**|Stroke Cap style for the circle `butt`, `square` or `round` |`butt`|
 
 ### `Progress.Pie`
 
@@ -95,14 +96,14 @@ All of the props under *Properties* in addition to the following:
 
 ## Examples
 
-* [`Example` project bundled with this module](https://github.com/oblador/react-native-progress/tree/master/Example) 
+* [`Example` project bundled with this module](https://github.com/oblador/react-native-progress/tree/master/Example)
 * [react-native-image-progress](https://github.com/oblador/react-native-image-progress)
 
 ## [Changelog](https://github.com/oblador/react-native-progress/releases)
 
 ## Thanks
 
-To [Mandarin Drummond](https://github.com/MandarinConLaBarba) for giving me the NPM name. 
+To [Mandarin Drummond](https://github.com/MandarinConLaBarba) for giving me the NPM name.
 
 ## License
 
