@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
 export class ProgressCircle extends Component {
   static propTypes = {
     animated: PropTypes.bool,
-    borderColor: PropTypes.string,
-    borderWidth: PropTypes.number,
+    outerBorderColor: PropTypes.string,
+    outerBorderWidth: PropTypes.number,
     color: PropTypes.string,
     children: React.PropTypes.node,
     direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
@@ -50,7 +50,7 @@ export class ProgressCircle extends Component {
   };
 
   static defaultProps = {
-    borderWidth: 1,
+    outerBorderWidth: 1,
     color: 'rgba(0, 122, 255, 1)',
     direction: 'clockwise',
     formatText: progress => `${Math.round(progress * 100)}%`,
@@ -80,8 +80,8 @@ export class ProgressCircle extends Component {
   render() {
     const {
       animated,
-      borderColor,
-      borderWidth,
+      outerBorderColor,
+      outerBorderWidth,
       color,
       children,
       direction,
@@ -98,7 +98,7 @@ export class ProgressCircle extends Component {
       ...restProps
     } = this.props;
 
-    const border = borderWidth || (indeterminate ? 1 : 0);
+    const border = outerBorderWidth || (indeterminate ? 1 : 0);
 
     const radius = (size / 2) - border;
     const offset = {
@@ -156,7 +156,7 @@ export class ProgressCircle extends Component {
               radius={size / 2}
               startAngle={0}
               endAngle={(indeterminate ? 1.8 : 2) * Math.PI}
-              stroke={borderColor || color}
+              stroke={outerBorderColor || color}
               strokeWidth={border}
             />
           ) : false}
