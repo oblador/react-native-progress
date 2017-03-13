@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
 export class ProgressPie extends Component {
   static propTypes = {
     animated: PropTypes.bool,
-    borderColor: PropTypes.string,
-    borderWidth: PropTypes.number,
+    outerBorderColor: PropTypes.string,
+    outerBorderWidth: PropTypes.number,
     color: PropTypes.string,
     children: PropTypes.node,
     progress: PropTypes.oneOfType([
@@ -44,7 +44,7 @@ export class ProgressPie extends Component {
   };
 
   static defaultProps = {
-    borderWidth: 1,
+    outerBorderWidth: 1,
     color: 'rgba(0, 122, 255, 1)',
     progress: 0,
     size: 40,
@@ -53,8 +53,8 @@ export class ProgressPie extends Component {
   render() {
     const {
       animated,
-      borderColor,
-      borderWidth,
+      outerBorderColor,
+      outerBorderWidth,
       children,
       color,
       progress,
@@ -70,10 +70,10 @@ export class ProgressPie extends Component {
     const Shape = animated ? AnimatedSector : Sector;
 
     const angle = animated ? Animated.multiply(progress, CIRCLE) : progress * CIRCLE;
-    const radius = (size / 2) - borderWidth;
+    const radius = (size / 2) - outerBorderWidth;
     const offset = {
-      top: borderWidth,
-      left: borderWidth,
+      top: outerBorderWidth,
+      left: outerBorderWidth,
     };
 
     return (
@@ -103,11 +103,11 @@ export class ProgressPie extends Component {
             offset={offset}
             fill={color}
           />
-          {borderWidth ? (
+          {outerBorderWidth ? (
             <Circle
               radius={size / 2}
-              stroke={borderColor || color}
-              strokeWidth={borderWidth}
+              stroke={outerBorderColor || color}
+              strokeWidth={outerBorderWidth}
             />
           ) : false}
         </Surface>

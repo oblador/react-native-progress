@@ -1,6 +1,6 @@
 # react-native-progress
 
-Progress indicators and spinners for React Native using ReactART. 
+Progress indicators and spinners for React Native using ReactART.
 
 ![progress-demo](https://cloud.githubusercontent.com/assets/378279/11212043/64fb1420-8d01-11e5-9ec0-5e175a837c62.gif)
 
@@ -10,7 +10,7 @@ Progress indicators and spinners for React Native using ReactART.
 
 ### ReactART based components
 
-To use the `Pie` or `Circle` components, you need to include the ART library in your project on iOS, for android it's already included. 
+To use the `Pie` or `Circle` components, you need to include the ART library in your project on iOS, for android it's already included.
 
 #### For CocoaPod users:
 
@@ -47,8 +47,8 @@ import * as Progress from 'react-native-progress';
 |**`progress`**|Progress of whatever the indicator is indicating. A number between 0 and 1. |`0`|
 |**`color`**|Fill color of the indicator. |`rgba(0, 122, 255, 1)`|
 |**`unfilledColor`**|Color of the remaining progress. |*None*|
-|**`borderWidth`**|Width of outer border, set to `0` to remove. |`1`|
-|**`borderColor`**|Color of outer border. |`color`|
+|**`outerBorderWidth`**|Width of outer border, set to `0` to remove. |`1`|
+|**`outerBorderColor`**|Color of outer border. |`color`|
 
 ### `Progress.Bar`
 
@@ -95,14 +95,14 @@ All of the props under *Properties* in addition to the following:
 
 ## Examples
 
-* [`Example` project bundled with this module](https://github.com/oblador/react-native-progress/tree/master/Example) 
+* [`Example` project bundled with this module](https://github.com/oblador/react-native-progress/tree/master/Example)
 * [react-native-image-progress](https://github.com/oblador/react-native-image-progress)
 
 ## [Changelog](https://github.com/oblador/react-native-progress/releases)
 
 ## Thanks
 
-To [Mandarin Drummond](https://github.com/MandarinConLaBarba) for giving me the NPM name. 
+To [Mandarin Drummond](https://github.com/MandarinConLaBarba) for giving me the NPM name.
 
 ## License
 
