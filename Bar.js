@@ -115,8 +115,8 @@ export default class ProgressBar extends Component {
     const innerWidth = width - (outerBorderWidth * 2);
     const containerStyle = {
       width,
-      outerBorderWidth,
-      outerBorderColor: outerBorderColor || color,
+      borderWidth: outerBorderWidth,
+      borderColor: outerBorderColor || color,
       borderRadius,
       overflow: 'hidden',
       backgroundColor: unfilledColor,
