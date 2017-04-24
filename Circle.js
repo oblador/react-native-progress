@@ -33,7 +33,7 @@ export class ProgressCircle extends Component {
     borderWidth: PropTypes.number,
     color: PropTypes.string,
     children: React.PropTypes.node,
-    direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
+    direction: PropTypes.oneOf(['ltr', 'rtl']),
     formatText: PropTypes.func,
     indeterminate: PropTypes.bool,
     progress: PropTypes.oneOfType([
@@ -52,7 +52,7 @@ export class ProgressCircle extends Component {
   static defaultProps = {
     borderWidth: 1,
     color: 'rgba(0, 122, 255, 1)',
-    direction: 'clockwise',
+    direction: 'ltr',
     formatText: progress => `${Math.round(progress * 100)}%`,
     progress: 0,
     showsText: false,

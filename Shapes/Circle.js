@@ -9,7 +9,7 @@ import React, {
 import { ART } from 'react-native';
 
 function makeCirclePath(x, y, radius, direction) {
-  const arcMethod = direction === 'counter-clockwise' ? 'counterArc' : 'arc';
+  const arcMethod = direction === 'rtl' ? 'counterArc' : 'arc';
 
   return ART.Path()
     .moveTo(x, y)
@@ -27,13 +27,13 @@ export default class Circle extends Component {
       left: PropTypes.number,
     }),
     strokeWidth: PropTypes.number,
-    direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
+    direction: PropTypes.oneOf(['ltr', 'rtl']),
   };
 
   static defaultProps = {
     offset: { top: 0, left: 0 },
     strokeWidth: 0,
-    direction: 'clockwise',
+    direction: 'ltr',
   };
 
   render() {
