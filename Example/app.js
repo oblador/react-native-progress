@@ -83,7 +83,7 @@ export default class Example extends Component {
             style={styles.progress}
             progress={this.state.progress}
             indeterminate={this.state.indeterminate}
-            direction="counter-clockwise"
+            direction="rtl"
           />
         </View>
         <View style={styles.circles}>

@@ -17,14 +17,14 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
     static displayName = `withAnimation(${wrappedComponentName})`;
     static propTypes = {
       animated: PropTypes.bool,
-      direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
+      direction: PropTypes.oneOf(['ltr', 'rtl']),
       indeterminate: PropTypes.bool,
       progress: PropTypes.number.isRequired,
     };
 
     static defaultProps = {
       animated: true,
-      direction: 'clockwise',
+      direction: 'ltr',
       indeterminate: false,
       progress: 0,
     };
@@ -91,7 +91,7 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
     spin() {
       this.state.rotation.setValue(0);
       Animated.timing(this.state.rotation, {
-        toValue: this.props.direction === 'counter-clockwise' ? -1 : 1,
+        toValue: this.props.direction === 'rtl' ? -1 : 1,
         duration: 1000,
         easing: Easing.linear,
         isInteraction: false,

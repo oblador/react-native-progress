@@ -25,7 +25,7 @@ export default class CircleSnail extends Component {
       PropTypes.arrayOf(PropTypes.string),
     ]),
     children: PropTypes.node,
-    direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
+    direction: PropTypes.oneOf(['ltr', 'rtl']),
     duration: PropTypes.number,
     hidesWhenStopped: PropTypes.bool,
     size: PropTypes.number,
@@ -37,7 +37,7 @@ export default class CircleSnail extends Component {
   static defaultProps = {
     animating: true,
     color: 'rgba(0, 122, 255, 1)',
-    direction: 'counter-clockwise',
+    direction: 'rtl',
     hidesWhenStopped: false,
     size: 40,
     thickness: 3,
@@ -141,7 +141,7 @@ export default class CircleSnail extends Component {
       left: thickness,
     };
 
-    const directionFactor = direction === 'counter-clockwise' ? -1 : 1;
+    const directionFactor = direction === 'rtl' ? -1 : 1;
 
     return (
       <Animated.View
@@ -165,7 +165,7 @@ export default class CircleSnail extends Component {
           height={size}
         >
           <AnimatedArc
-            direction={direction === 'counter-clockwise' ? 'clockwise' : 'counter-clockwise'}
+            direction={direction === 'rtl' ? 'ltr' : 'rtl'}
             radius={radius}
             stroke={Array.isArray(color) ? color[this.state.colorIndex] : color}
             offset={offset}

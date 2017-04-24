@@ -28,7 +28,7 @@ function makeArcPath(x, y, startAngleArg, endAngleArg, radius, direction) {
       .close();
   }
 
-  const directionFactor = direction === 'counter-clockwise' ? -1 : 1;
+  const directionFactor = direction === 'rtl' ? -1 : 1;
   endAngle *= directionFactor;
   startAngle *= directionFactor;
   const startSine = Math.sin(startAngle);
@@ -37,7 +37,7 @@ function makeArcPath(x, y, startAngleArg, endAngleArg, radius, direction) {
   const endCosine = Math.cos(endAngle);
 
   const arcFlag = angle > Math.PI ? 1 : 0;
-  const reverseFlag = direction === 'counter-clockwise' ? 0 : 1;
+  const reverseFlag = direction === 'rtl' ? 0 : 1;
 
   return `M${x + (radius * (1 + startSine))} ${y + radius - (radius * startCosine)}
           A${radius} ${radius} 0 ${arcFlag} ${reverseFlag} ${x + (radius * (1 + endSine))} ${y + radius - (radius * endCosine)}`;
@@ -53,14 +53,14 @@ export default class Arc extends Component {
       left: PropTypes.number,
     }),
     strokeWidth: PropTypes.number,
-    direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
+    direction: PropTypes.oneOf(['ltr', 'rtl']),
   };
 
   static defaultProps = {
     startAngle: 0,
     offset: { top: 0, left: 0 },
     strokeWidth: 0,
-    direction: 'clockwise',
+    direction: 'ltr',
   };
 
   render() {
