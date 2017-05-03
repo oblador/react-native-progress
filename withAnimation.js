@@ -24,7 +24,6 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
 
     static defaultProps = {
       animated: true,
-      direction: 'clockwise',
       indeterminate: false,
       progress: 0,
     };
