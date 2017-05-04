@@ -12,9 +12,9 @@ const BAR_WIDTH_ZERO_POSITION = INDETERMINATE_WIDTH_FACTOR / (1 + INDETERMINATE_
 export default class ProgressBar extends Component {
   static propTypes = {
     animated: PropTypes.bool,
-    borderColor: PropTypes.string,
+    outerBorderColor: PropTypes.string,
     borderRadius: PropTypes.number,
-    borderWidth: PropTypes.number,
+    outerBorderWidth: PropTypes.number,
     children: PropTypes.node,
     color: PropTypes.string,
     height: PropTypes.number,
@@ -28,7 +28,7 @@ export default class ProgressBar extends Component {
   static defaultProps = {
     animated: true,
     borderRadius: 4,
-    borderWidth: 1,
+    outerBorderWidth: 1,
     color: 'rgba(0, 122, 255, 1)',
     height: 6,
     indeterminate: false,
@@ -97,9 +97,9 @@ export default class ProgressBar extends Component {
 
   render() {
     const {
-      borderColor,
+      outerBorderColor,
       borderRadius,
-      borderWidth,
+      outerBorderWidth,
       children,
       color,
       height,
@@ -109,11 +109,11 @@ export default class ProgressBar extends Component {
       ...restProps
     } = this.props;
 
-    const innerWidth = width - (borderWidth * 2);
+    const innerWidth = width - (outerBorderWidth * 2);
     const containerStyle = {
       width,
-      borderWidth,
-      borderColor: borderColor || color,
+      borderWidth: outerBorderWidth,
+      borderColor: outerBorderColor || color,
       borderRadius,
       overflow: 'hidden',
       backgroundColor: unfilledColor,
