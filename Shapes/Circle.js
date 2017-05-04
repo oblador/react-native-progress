@@ -1,11 +1,8 @@
 /* eslint new-cap: ["error", { "capIsNew": false }] */
 /* eslint no-unexpected-multiline: 0 */
 
-import React, {
-  Component,
-  PropTypes,
-} from 'react';
-
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { ART } from 'react-native';
 
 function makeCirclePath(x, y, radius, direction) {

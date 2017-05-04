@@ -1,10 +1,7 @@
 /* eslint new-cap: ["error", { "capIsNew": false }] */
 
-import React, {
-  Component,
-  PropTypes,
-} from 'react';
-
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { ART } from 'react-native';
 
 const CIRCLE = Math.PI * 2;

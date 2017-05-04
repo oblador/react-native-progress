@@ -45,5 +45,8 @@
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.8"
   }
 }
