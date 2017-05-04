@@ -120,6 +120,7 @@ export default class ProgressBar extends Component {
     };
     const progressStyle = {
       backgroundColor: color,
+      borderRadius,
       height,
       width: innerWidth,
       transform: [{
