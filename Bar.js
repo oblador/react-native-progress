@@ -6,6 +6,8 @@ import {
   View,
 } from 'react-native';
 
+import { USE_NATIVE_DRIVER } from './defaults';
+
 const INDETERMINATE_WIDTH_FACTOR = 0.3;
 const BAR_WIDTH_ZERO_POSITION = INDETERMINATE_WIDTH_FACTOR / (1 + INDETERMINATE_WIDTH_FACTOR);
 
@@ -24,6 +26,7 @@ export default class ProgressBar extends Component {
     style: View.propTypes.style,
     unfilledColor: PropTypes.string,
     width: PropTypes.number,
+    useNativeDriver: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -35,6 +38,7 @@ export default class ProgressBar extends Component {
     indeterminate: false,
     progress: 0,
     width: 150,
+    useNativeDriver: USE_NATIVE_DRIVER,
   };
 
   constructor(props) {
@@ -60,6 +64,7 @@ export default class ProgressBar extends Component {
       } else {
         Animated.spring(this.state.animationValue, {
           toValue: BAR_WIDTH_ZERO_POSITION,
+          useNativeDriver: props.useNativeDriver,
         }).start();
       }
     }
@@ -73,9 +78,10 @@ export default class ProgressBar extends Component {
       );
 
       if (props.animated) {
-        Animated.spring(this.state.progress, {
+        Animated.timing(this.state.progress, {
           toValue: progress,
-          bounciness: 0,
+          easing: Easing.linear,
+          useNativeDriver: props.useNativeDriver,
         }).start();
       } else {
         this.state.progress.setValue(progress);
@@ -90,6 +96,7 @@ export default class ProgressBar extends Component {
       duration: 1000,
       easing: Easing.linear,
       isInteraction: false,
+      useNativeDriver: this.props.useNativeDriver,
     }).start((endState) => {
       if (endState.finished) {
         this.animate();

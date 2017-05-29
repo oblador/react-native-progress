@@ -10,6 +10,7 @@ import {
 
 import Arc from './Shapes/Arc';
 import withAnimation from './withAnimation';
+import { USE_NATIVE_DRIVER } from './defaults';
 
 const CIRCLE = Math.PI * 2;
 
@@ -44,6 +45,7 @@ export class ProgressCircle extends Component {
     textStyle: Text.propTypes.style,
     thickness: PropTypes.number,
     unfilledColor: PropTypes.string,
+    useNativeDriver: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -55,6 +57,7 @@ export class ProgressCircle extends Component {
     showsText: false,
     size: 40,
     thickness: 3,
+    useNativeDriver: USE_NATIVE_DRIVER,
   };
 
   constructor(props, context) {

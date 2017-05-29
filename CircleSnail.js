@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import Arc from './Shapes/Arc';
+import { USE_NATIVE_DRIVER } from './defaults';
 
 const AnimatedArc = Animated.createAnimatedComponent(Arc);
 
@@ -29,6 +30,7 @@ export default class CircleSnail extends Component {
     spinDuration: PropTypes.number,
     style: View.propTypes.style,
     thickness: PropTypes.number,
+    useNativeDriver: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -38,6 +40,7 @@ export default class CircleSnail extends Component {
     hidesWhenStopped: false,
     size: 40,
     thickness: 3,
+    useNativeDriver: USE_NATIVE_DRIVER,
   };
 
   constructor(props) {
@@ -76,12 +79,14 @@ export default class CircleSnail extends Component {
         duration: this.props.duration || 1000,
         isInteraction: false,
         easing: Easing.inOut(Easing.quad),
+        useNativeDriver: this.props.useNativeDriver,
       }),
       Animated.timing(this.state.endAngle, {
         toValue: -MAX_ARC_ANGLE * iteration,
         duration: this.props.duration || 1000,
         isInteraction: false,
         easing: Easing.inOut(Easing.quad),
+        useNativeDriver: this.props.useNativeDriver,
       }),
     ]).start((endState) => {
       if (endState.finished) {
@@ -101,6 +106,7 @@ export default class CircleSnail extends Component {
       duration: this.props.spinDuration || 5000,
       easing: Easing.linear,
       isInteraction: false,
+      useNativeDriver: this.props.useNativeDriver,
     }).start((endState) => {
       if (endState.finished) {
         this.state.rotation.setValue(0);
