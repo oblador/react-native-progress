@@ -6,8 +6,6 @@ import {
   View,
 } from 'react-native';
 
-import { USE_NATIVE_DRIVER } from './defaults';
-
 const INDETERMINATE_WIDTH_FACTOR = 0.3;
 const BAR_WIDTH_ZERO_POSITION = INDETERMINATE_WIDTH_FACTOR / (1 + INDETERMINATE_WIDTH_FACTOR);
 
@@ -38,7 +36,7 @@ export default class ProgressBar extends Component {
     indeterminate: false,
     progress: 0,
     width: 150,
-    useNativeDriver: USE_NATIVE_DRIVER,
+    useNativeDriver: false,
   };
 
   constructor(props) {

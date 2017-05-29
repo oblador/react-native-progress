@@ -49,7 +49,6 @@ import * as Progress from 'react-native-progress';
 |**`unfilledColor`**|Color of the remaining progress. |*None*|
 |**`borderWidth`**|Width of outer border, set to `0` to remove. |`1`|
 |**`borderColor`**|Color of outer border. |`color`|
-|**`useNativeDriver`**|Use native driver for all animations. |`false`|
 
 ### `Progress.Bar`
 
@@ -60,6 +59,7 @@ All of the props under *Properties* in addition to the following:
 |**`width`**|Full width of the progress bar, set to `null` to use automatic flexbox sizing. |`150`|
 |**`height`**|Height of the progress bar. |`6`|
 |**`borderRadius`**|Rounding of corners, set to `0` to disable. |`4`|
+|**`useNativeDriver`**|Use native driver for the animations. |`false`|
 
 ### `Progress.Circle`
 

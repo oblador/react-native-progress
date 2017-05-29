@@ -10,7 +10,6 @@ import {
 import Circle from './Shapes/Circle';
 import Sector from './Shapes/Sector';
 import withAnimation from './withAnimation';
-import { USE_NATIVE_DRIVER } from './defaults';
 
 const CIRCLE = Math.PI * 2;
 
@@ -39,7 +38,6 @@ export class ProgressPie extends Component {
     size: PropTypes.number,
     style: View.propTypes.style,
     unfilledColor: PropTypes.string,
-    useNativeDriver: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -47,7 +45,6 @@ export class ProgressPie extends Component {
     color: 'rgba(0, 122, 255, 1)',
     progress: 0,
     size: 40,
-    useNativeDriver: USE_NATIVE_DRIVER,
   };
 
   render() {

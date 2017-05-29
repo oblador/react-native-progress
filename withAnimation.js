@@ -5,8 +5,6 @@ import {
   Easing,
 } from 'react-native';
 
-import { USE_NATIVE_DRIVER } from './defaults';
-
 export default function withAnimation(WrappedComponent, indeterminateProgress) {
   const wrappedComponentName = WrappedComponent.displayName
     || WrappedComponent.name
@@ -19,14 +17,12 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
       direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
       indeterminate: PropTypes.bool,
       progress: PropTypes.number.isRequired,
-      useNativeDriver: PropTypes.bool,
     };
 
     static defaultProps = {
       animated: true,
       indeterminate: false,
       progress: 0,
-      useNativeDriver: USE_NATIVE_DRIVER
     };
 
     constructor(props) {
@@ -48,7 +44,6 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
         if (indeterminateProgress) {
           Animated.spring(this.state.progress, {
             toValue: indeterminateProgress,
-            useNativeDriver: this.props.useNativeDriver,
           }).start();
         }
       }
@@ -66,7 +61,6 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
         } else {
           Animated.spring(this.state.rotation, {
             toValue: (this.rotationValue > 0.5 ? 1 : 0),
-            useNativeDriver: props.useNativeDriver,
           }).start((endState) => {
             if (endState.finished) {
               this.state.rotation.setValue(0);
@@ -83,7 +77,6 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
           Animated.spring(this.state.progress, {
             toValue: progress,
             bounciness: 0,
-            useNativeDriver: props.useNativeDriver,
           }).start();
         } else {
           this.state.progress.setValue(progress);
@@ -98,7 +91,6 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
         duration: 1000,
         easing: Easing.linear,
         isInteraction: false,
-        useNativeDriver: this.props.useNativeDriver,
       }).start((endState) => {
         if (endState.finished) {
           this.spin();
