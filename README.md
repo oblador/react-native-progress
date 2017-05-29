@@ -49,6 +49,7 @@ import * as Progress from 'react-native-progress';
 |**`unfilledColor`**|Color of the remaining progress. |*None*|
 |**`borderWidth`**|Width of outer border, set to `0` to remove. |`1`|
 |**`borderColor`**|Color of outer border. |`color`|
+|**`useNativeDriver`**|Use native driver for all animations. |`false`|
 
 ### `Progress.Bar`
 
