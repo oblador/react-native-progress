@@ -19,6 +19,7 @@ export default class ProgressBar extends Component {
     color: PropTypes.string,
     height: PropTypes.number,
     indeterminate: PropTypes.bool,
+    onLayout: PropTypes.func,
     progress: PropTypes.number,
     style: View.propTypes.style,
     unfilledColor: PropTypes.string,
@@ -40,6 +41,7 @@ export default class ProgressBar extends Component {
     super(props);
     const progress = Math.min(Math.max(props.progress, 0), 1);
     this.state = {
+      width: 0,
       progress: new Animated.Value(props.indeterminate ? INDETERMINATE_WIDTH_FACTOR : progress),
       animationValue: new Animated.Value(BAR_WIDTH_ZERO_POSITION),
     };
@@ -95,6 +97,15 @@ export default class ProgressBar extends Component {
     });
   }
 
+  handleLayout = (event) => {
+    if (!this.props.width) {
+      this.setState({ width: event.nativeEvent.layout.width });
+    }
+    if (this.props.onLayout) {
+      this.props.onLayout(event);
+    }
+  };
+
   render() {
     const {
       borderColor,
@@ -109,7 +120,7 @@ export default class ProgressBar extends Component {
       ...restProps
     } = this.props;
 
-    const innerWidth = width - (borderWidth * 2);
+    const innerWidth = Math.max(0, width || this.state.width) - (borderWidth * 2);
     const containerStyle = {
       width,
       borderWidth,
@@ -121,7 +132,6 @@ export default class ProgressBar extends Component {
     const progressStyle = {
       backgroundColor: color,
       height,
-      width: innerWidth,
       transform: [{
         translateX: this.state.animationValue.interpolate({
           inputRange: [0, 1],
@@ -138,7 +148,7 @@ export default class ProgressBar extends Component {
     };
 
     return (
-      <View style={[containerStyle, style]} {...restProps}>
+      <View style={[containerStyle, style]} onLayout={this.handleLayout} {...restProps}>
         <Animated.View style={progressStyle} />
         {children}
       </View>

@@ -56,7 +56,7 @@ All of the props under *Properties* in addition to the following:
 
 | Prop | Description | Default |
 |---|---|---|
-|**`width`**|Full width of the progress bar. |`150`|
+|**`width`**|Full width of the progress bar, set to `null` to use automatic flexbox sizing. |`150`|
 |**`height`**|Height of the progress bar. |`6`|
 |**`borderRadius`**|Rounding of corners, set to `0` to disable. |`4`|
 
