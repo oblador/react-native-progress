@@ -36,12 +36,26 @@ export default class ProgressBar extends Component {
     width: 150,
   };
 
+  // Get measured size in order to work nicely with flex sizing
+  measureView (event) {
+    this.setState({
+      measuredLayout: {
+        width: event.nativeEvent.layout.width,
+        height: event.nativeEvent.layout.height,
+      }
+    });
+  };
+
   constructor(props) {
     super(props);
     const progress = Math.min(Math.max(props.progress, 0), 1);
     this.state = {
       progress: new Animated.Value(props.indeterminate ? INDETERMINATE_WIDTH_FACTOR : progress),
       animationValue: new Animated.Value(BAR_WIDTH_ZERO_POSITION),
+      measuredLayout: {
+        width: props.width,
+        height: props.height,
+      },
     };
   }
 
@@ -109,9 +123,12 @@ export default class ProgressBar extends Component {
       ...restProps
     } = this.props;
 
-    const innerWidth = width - (borderWidth * 2);
+    const viewWidth = this.state.measuredLayout.width;
+    const viewHeight = this.state.measuredLayout.height;
+    const innerWidth = viewWidth - (borderWidth * 2);
+    const innerHeight = viewHeight - (borderWidth * 2);
     const containerStyle = {
-      width,
+      height: React.Children.count(children) > 0 ? null : viewHeight, // Uses specified height or wraps the children content
       borderWidth,
       borderColor: borderColor || color,
       borderRadius,
@@ -119,8 +136,9 @@ export default class ProgressBar extends Component {
       backgroundColor: unfilledColor,
     };
     const progressStyle = {
+      position:'absolute',  // Overlay children on top of progress
       backgroundColor: color,
-      height,
+      height: innerHeight,
       width: innerWidth,
       transform: [{
         translateX: this.state.animationValue.interpolate({
@@ -138,9 +156,13 @@ export default class ProgressBar extends Component {
     };
 
     return (
-      <View style={[containerStyle, style]} {...restProps}>
-        <Animated.View style={progressStyle} />
-        {children}
+      <View style={[containerStyle, style]}
+        onLayout={(event) => this.measureView(event)}
+        {...restProps}>
+        <Animated.View style={[progressStyle]} />
+        <View>
+          {children}
+        </View>
       </View>
     );
   }
