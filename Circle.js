@@ -146,6 +146,7 @@ export class ProgressCircle extends Component {
               endAngle={angle}
               direction={direction}
               stroke={color}
+              strokeCap={strokeCap}
               strokeWidth={thickness}
             />
           ) : false}
