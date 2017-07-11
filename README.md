@@ -62,7 +62,7 @@ All of the props under *Properties* in addition to the following:
 |**`useNativeDriver`**|Use native driver for the animations. |`false`|
 |**`animationOptions`**|Object with the following options||
 |**`animationOptions.animationFunction`**|Sets the animation function to animate the progress. Can be one of: Animated.decay, Animated.timing, Animated.spring|`Animated.spring`|
-|**`animationOptions.config`**|Sets config that is passed into the `animationFunctio`|`{ bounciness: 0 }`|
+|**`animationOptions.config`**|Sets the config that is passed into the `animationFunction`|`{ bounciness: 0 }`|
 
 ### `Progress.Circle`
 
