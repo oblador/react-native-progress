@@ -81,7 +81,7 @@ export default class ProgressBar extends Component {
       const progress = (props.indeterminate
         ? INDETERMINATE_WIDTH_FACTOR
         : Math.min(Math.max(props.progress, 0), 1)
-      );    
+      );
 
       if (props.animated) {
         const { animationFunction, config } = this.props.animationOptions;
