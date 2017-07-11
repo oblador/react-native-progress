@@ -25,6 +25,10 @@ export default class ProgressBar extends Component {
     unfilledColor: PropTypes.string,
     width: PropTypes.number,
     useNativeDriver: PropTypes.bool,
+    animationOptions: PropTypes.shape({
+      animationFunction: PropTypes.oneOf([Animated.decay, Animated.timing, Animated.spring]),
+      config: PropTypes.object.isRequired
+    })
   };
 
   static defaultProps = {
@@ -37,6 +41,10 @@ export default class ProgressBar extends Component {
     progress: 0,
     width: 150,
     useNativeDriver: false,
+    animationOptions: {
+      animationFunction: Animated.spring,
+      config: { bounciness: 0 }
+    }
   };
 
   constructor(props) {
@@ -73,14 +81,15 @@ export default class ProgressBar extends Component {
       const progress = (props.indeterminate
         ? INDETERMINATE_WIDTH_FACTOR
         : Math.min(Math.max(props.progress, 0), 1)
-      );
+      );    
 
       if (props.animated) {
-        Animated.timing(this.state.progress, {
-          toValue: progress,
-          easing: Easing.linear,
-          useNativeDriver: props.useNativeDriver,
-        }).start();
+        const { animationFunction, config } = this.props.animationOptions;
+        animationFunction(this.state.progress, {
+          ...config,
+          toValue: progress, 
+          useNativeDriver: props.useNativeDriver
+        }).start()          
       } else {
         this.state.progress.setValue(progress);
       }
