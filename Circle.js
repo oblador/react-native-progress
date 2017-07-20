@@ -29,7 +29,7 @@ export class ProgressCircle extends Component {
     borderColor: PropTypes.string,
     borderWidth: PropTypes.number,
     color: PropTypes.string,
-    children: React.PropTypes.node,
+    children: PropTypes.node,
     direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
     formatText: PropTypes.func,
     indeterminate: PropTypes.bool,
