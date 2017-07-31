@@ -93,6 +93,7 @@ All of the props under *Properties* in addition to the following:
 |**`thickness`**|Thickness of the circle. |`3`|
 |**`duration`**|Duration of animation. |`1000`|
 |**`spinDuration`**|Duration of spin (orbit) animation. |`5000`|
+|**`strokeCap`**|Stroke Cap style for the circle `butt`, `square` or `round` |`round`|
 
 ## Examples
 
