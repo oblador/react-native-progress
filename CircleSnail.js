@@ -29,6 +29,7 @@ export default class CircleSnail extends Component {
     spinDuration: PropTypes.number,
     style: View.propTypes.style,
     thickness: PropTypes.number,
+    strokeCap: PropTypes.string
   };
 
   static defaultProps = {
@@ -38,6 +39,7 @@ export default class CircleSnail extends Component {
     hidesWhenStopped: false,
     size: 40,
     thickness: 3,
+    strokeCap: 'round'
   };
 
   constructor(props) {
@@ -125,6 +127,7 @@ export default class CircleSnail extends Component {
       size,
       style,
       thickness,
+      strokeCap,
       ...restProps
     } = this.props;
 
@@ -168,7 +171,7 @@ export default class CircleSnail extends Component {
             offset={offset}
             startAngle={this.state.startAngle}
             endAngle={this.state.endAngle}
-            strokeCap="round"
+            strokeCap={strokeCap}
             strokeWidth={thickness}
           />
         </ART.Surface>
