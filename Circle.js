@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   View,
+  ViewPropTypes,
 } from 'react-native';
 
 import Arc from './Shapes/Arc';
@@ -15,6 +16,8 @@ const CIRCLE = Math.PI * 2;
 
 const AnimatedSurface = Animated.createAnimatedComponent(ART.Surface);
 const AnimatedArc = Animated.createAnimatedComponent(Arc);
+
+const RNViewPropTypes = ViewPropTypes || View.propTypes;
 
 const styles = StyleSheet.create({
   container: {
@@ -40,7 +43,7 @@ export class ProgressCircle extends Component {
     rotation: PropTypes.instanceOf(Animated.Value),
     showsText: PropTypes.bool,
     size: PropTypes.number,
-    style: View.propTypes.style,
+    style: RNViewPropTypes.style,
     textStyle: Text.propTypes.style,
     thickness: PropTypes.number,
     unfilledColor: PropTypes.string,
