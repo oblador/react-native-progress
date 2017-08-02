@@ -11,7 +11,7 @@ import {
 import Arc from './Shapes/Arc';
 import withAnimation from './withAnimation';
 
-const FULL_CIRCLE = Math.PI * 2
+const CIRCLE = Math.PI * 2;
 
 const AnimatedSurface = Animated.createAnimatedComponent(ART.Surface);
 const AnimatedArc = Animated.createAnimatedComponent(Arc);
@@ -49,11 +49,9 @@ export class ProgressCircle extends Component {
   static defaultProps = {
     borderWidth: 1,
     color: 'rgba(0, 122, 255, 1)',
-    circlePercent: 1,
     direction: 'clockwise',
     formatText: progress => `${Math.round(progress * 100)}%`,
     progress: 0,
-    rotationOffset : 0,
     showsText: false,
     size: 40,
     thickness: 3,
@@ -82,14 +80,12 @@ export class ProgressCircle extends Component {
       borderColor,
       borderWidth,
       color,
-      circlePercent,
       children,
       direction,
       formatText,
       indeterminate,
       progress,
       rotation,
-      rotationOffset,
       showsText,
       size,
       style,
@@ -102,8 +98,6 @@ export class ProgressCircle extends Component {
 
     const border = borderWidth || (indeterminate ? 1 : 0);
 
-    const circle = FULL_CIRCLE * circlePercent;
-
     const radius = (size / 2) - border;
     const offset = {
       top: border,
@@ -115,8 +109,7 @@ export class ProgressCircle extends Component {
     const Surface = rotation ? AnimatedSurface : ART.Surface;
     const Shape = animated ? AnimatedArc : Arc;
     const progressValue = animated ? this.progressValue : progress;
-    const angle = animated ? Animated.multiply(progress, circle) : progress * circle;
-    const rotOff = rotationOffset * FULL_CIRCLE
+    const angle = animated ? Animated.multiply(progress, CIRCLE) : progress * CIRCLE;
 
     return (
       <View style={[styles.container, style]} {...restProps}>
@@ -138,11 +131,10 @@ export class ProgressCircle extends Component {
             <Shape
               radius={radius}
               offset={offset}
-              startAngle={angle + rotOff}
-              endAngle={circle + rotOff}
+              startAngle={angle}
+              endAngle={CIRCLE}
               direction={direction}
               stroke={unfilledColor}
-              strokeCap={strokeCap}
               strokeWidth={thickness}
             />
           ) : false}
@@ -150,8 +142,8 @@ export class ProgressCircle extends Component {
             <Shape
               radius={radius}
               offset={offset}
-              startAngle={rotOff}
-              endAngle={angle + rotOff}
+              startAngle={0}
+              endAngle={angle}
               direction={direction}
               stroke={color}
               strokeCap={strokeCap}
@@ -161,8 +153,8 @@ export class ProgressCircle extends Component {
           {border ? (
             <Arc
               radius={size / 2}
-              startAngle={rotOff}
-              endAngle={(indeterminate ? 1.8 : 2) * Math.PI - rotOff}
+              startAngle={0}
+              endAngle={(indeterminate ? 1.8 : 2) * Math.PI}
               stroke={borderColor || color}
               strokeCap={strokeCap}
               strokeWidth={border}
