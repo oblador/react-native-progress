@@ -59,6 +59,7 @@ All of the props under *Properties* in addition to the following:
 |**`width`**|Full width of the progress bar, set to `null` to use automatic flexbox sizing. |`150`|
 |**`height`**|Height of the progress bar. |`6`|
 |**`borderRadius`**|Rounding of corners, set to `0` to disable. |`4`|
+|**`applyInnerBorder`**|Applies the border radius to the inner filled bar. |`false`|
 
 ### `Progress.Circle`
 
