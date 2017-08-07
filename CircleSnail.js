@@ -25,7 +25,7 @@ export default class CircleSnail extends Component {
       PropTypes.arrayOf(PropTypes.string),
     ]),
     children: PropTypes.node,
-    direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
+    direction: PropTypes.oneOf(['clockwise', 'counter-clockwise', 'ltr', 'rtl']),
     duration: PropTypes.number,
     hidesWhenStopped: PropTypes.bool,
     size: PropTypes.number,
