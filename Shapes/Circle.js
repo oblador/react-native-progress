@@ -2,7 +2,7 @@
 /* eslint no-unexpected-multiline: 0 */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import _PropTypes from 'prop-types';
 import { ART } from 'react-native';
 
 function makeCirclePath(x, y, radius, direction) {
@@ -18,13 +18,13 @@ function makeCirclePath(x, y, radius, direction) {
 
 export default class Circle extends Component {
   static propTypes = {
-    radius: PropTypes.number.isRequired,
-    offset: PropTypes.shape({
-      top: PropTypes.number,
-      left: PropTypes.number,
+    radius: _PropTypes.number.isRequired,
+    offset: _PropTypes.shape({
+      top: _PropTypes.number,
+      left: _PropTypes.number,
     }),
-    strokeWidth: PropTypes.number,
-    direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
+    strokeWidth: _PropTypes.number,
+    direction: _PropTypes.oneOf(['clockwise', 'counter-clockwise']),
   };
 
   static defaultProps = {

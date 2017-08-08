@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import _PropTypes from 'prop-types';
 import {
   Animated,
   ART,
@@ -28,19 +28,19 @@ const styles = StyleSheet.create({
 
 export class ProgressPie extends Component {
   static propTypes = {
-    animated: PropTypes.bool,
-    borderColor: PropTypes.string,
-    borderWidth: PropTypes.number,
-    color: PropTypes.string,
-    children: PropTypes.node,
-    progress: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.instanceOf(Animated.Value),
+    animated: _PropTypes.bool,
+    borderColor: _PropTypes.string,
+    borderWidth: _PropTypes.number,
+    color: _PropTypes.string,
+    children: _PropTypes.node,
+    progress: _PropTypes.oneOfType([
+      _PropTypes.number,
+      _PropTypes.instanceOf(Animated.Value),
     ]),
-    rotation: PropTypes.instanceOf(Animated.Value),
-    size: PropTypes.number,
+    rotation: _PropTypes.instanceOf(Animated.Value),
+    size: _PropTypes.number,
     style: RNViewPropTypes.style,
-    unfilledColor: PropTypes.string,
+    unfilledColor: _PropTypes.string,
   };
 
   static defaultProps = {
