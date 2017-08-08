@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import _PropTypes from 'prop-types';
 import {
   Animated,
   ART,
@@ -28,25 +28,25 @@ const styles = StyleSheet.create({
 
 export class ProgressCircle extends Component {
   static propTypes = {
-    animated: PropTypes.bool,
-    borderColor: PropTypes.string,
-    borderWidth: PropTypes.number,
-    color: PropTypes.string,
-    children: PropTypes.node,
-    direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
-    formatText: PropTypes.func,
-    indeterminate: PropTypes.bool,
-    progress: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.instanceOf(Animated.Value),
+    animated: _PropTypes.bool,
+    borderColor: _PropTypes.string,
+    borderWidth: _PropTypes.number,
+    color: _PropTypes.string,
+    children: _PropTypes.node,
+    direction: _PropTypes.oneOf(['clockwise', 'counter-clockwise']),
+    formatText: _PropTypes.func,
+    indeterminate: _PropTypes.bool,
+    progress: _PropTypes.oneOfType([
+      _PropTypes.number,
+      _PropTypes.instanceOf(Animated.Value),
     ]),
-    rotation: PropTypes.instanceOf(Animated.Value),
-    showsText: PropTypes.bool,
-    size: PropTypes.number,
+    rotation: _PropTypes.instanceOf(Animated.Value),
+    showsText: _PropTypes.bool,
+    size: _PropTypes.number,
     style: RNViewPropTypes.style,
     textStyle: Text.propTypes.style,
-    thickness: PropTypes.number,
-    unfilledColor: PropTypes.string,
+    thickness: _PropTypes.number,
+    unfilledColor: _PropTypes.string,
   };
 
   static defaultProps = {

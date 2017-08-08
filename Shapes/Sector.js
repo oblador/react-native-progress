@@ -1,7 +1,7 @@
 /* eslint new-cap: ["error", { "capIsNew": false }] */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import _PropTypes from 'prop-types';
 import { ART } from 'react-native';
 
 const CIRCLE = Math.PI * 2;
@@ -30,11 +30,11 @@ function makeSectorPath(x, y, angle, radius) {
 
 export default class Sector extends Component {
   static propTypes = {
-    angle: PropTypes.number.isRequired, // in radians
-    radius: PropTypes.number.isRequired,
-    offset: PropTypes.shape({
-      top: PropTypes.number,
-      left: PropTypes.number,
+    angle: _PropTypes.number.isRequired, // in radians
+    radius: _PropTypes.number.isRequired,
+    offset: _PropTypes.shape({
+      top: _PropTypes.number,
+      left: _PropTypes.number,
     }),
   };
 

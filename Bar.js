@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import _PropTypes from 'prop-types';
 import {
   Animated,
   Easing,
@@ -14,19 +14,19 @@ const RNViewPropTypes = ViewPropTypes || View.propTypes;
 
 export default class ProgressBar extends Component {
   static propTypes = {
-    animated: PropTypes.bool,
-    borderColor: PropTypes.string,
-    borderRadius: PropTypes.number,
-    borderWidth: PropTypes.number,
-    children: PropTypes.node,
-    color: PropTypes.string,
-    height: PropTypes.number,
-    indeterminate: PropTypes.bool,
-    onLayout: PropTypes.func,
-    progress: PropTypes.number,
+    animated: _PropTypes.bool,
+    borderColor: _PropTypes.string,
+    borderRadius: _PropTypes.number,
+    borderWidth: _PropTypes.number,
+    children: _PropTypes.node,
+    color: _PropTypes.string,
+    height: _PropTypes.number,
+    indeterminate: _PropTypes.bool,
+    onLayout: _PropTypes.func,
+    progress: _PropTypes.number,
     style: RNViewPropTypes.style,
-    unfilledColor: PropTypes.string,
-    width: PropTypes.number,
+    unfilledColor: _PropTypes.string,
+    width: _PropTypes.number,
   };
 
   static defaultProps = {

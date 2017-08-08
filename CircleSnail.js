@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import _PropTypes from 'prop-types';
 import {
   Animated,
   ART,
@@ -19,20 +19,20 @@ const RNViewPropTypes = ViewPropTypes || View.propTypes;
 
 export default class CircleSnail extends Component {
   static propTypes = {
-    animating: PropTypes.bool,
-    color: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.arrayOf(PropTypes.string),
+    animating: _PropTypes.bool,
+    color: _PropTypes.oneOfType([
+      _PropTypes.string,
+      _PropTypes.arrayOf(_PropTypes.string),
     ]),
-    children: PropTypes.node,
-    direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
-    duration: PropTypes.number,
-    hidesWhenStopped: PropTypes.bool,
-    size: PropTypes.number,
-    spinDuration: PropTypes.number,
+    children: _PropTypes.node,
+    direction: _PropTypes.oneOf(['clockwise', 'counter-clockwise']),
+    duration: _PropTypes.number,
+    hidesWhenStopped: _PropTypes.bool,
+    size: _PropTypes.number,
+    spinDuration: _PropTypes.number,
     style: RNViewPropTypes.style,
-    thickness: PropTypes.number,
-    strokeCap: PropTypes.string
+    thickness: _PropTypes.number,
+    strokeCap: _PropTypes.string
   };
 
   static defaultProps = {
