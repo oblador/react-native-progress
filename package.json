@@ -47,6 +47,7 @@
     "eslint-plugin-react": "^6.4.1"
   },
   "dependencies": {
-    "prop-types": "^15.5.8"
+    "prop-types": "^15.5.8",
+    "react-native-linear-gradient": "^2.2.0"
   }
 }

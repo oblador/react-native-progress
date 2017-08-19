@@ -6,6 +6,7 @@ import {
   View,
   ViewPropTypes,
 } from 'react-native';
+import LinearGradient from "react-native-linear-gradient";
 
 const INDETERMINATE_WIDTH_FACTOR = 0.3;
 const BAR_WIDTH_ZERO_POSITION = INDETERMINATE_WIDTH_FACTOR / (1 + INDETERMINATE_WIDTH_FACTOR);
@@ -27,6 +28,12 @@ export default class ProgressBar extends Component {
     style: RNViewPropTypes.style,
     unfilledColor: PropTypes.string,
     width: PropTypes.number,
+    gradient: PropTypes.shape({
+      start: LinearGradient.propTypes.start,
+      end: LinearGradient.propTypes.end,
+      colors: LinearGradient.propTypes.colors,
+      locations: LinearGradient.propTypes.locatios,
+    }),
   };
 
   static defaultProps = {
@@ -38,6 +45,7 @@ export default class ProgressBar extends Component {
     indeterminate: false,
     progress: 0,
     width: 150,
+    gradient: null,
   };
 
   constructor(props) {
@@ -153,10 +161,24 @@ export default class ProgressBar extends Component {
         }),
       }],
     };
+    let gradientBackground = null;
+    if (this.props.gradient != null) {
+      progressStyle.backgroundColor = null;
+      gradientBackground = (
+        <LinearGradient
+          start={this.props.gradient.start}
+          end={this.props.gradient.end}
+          colors={this.props.gradient.colors}
+          style={{ width, height }}
+        />
+      );
+    }
 
     return (
       <View style={[containerStyle, style]} onLayout={this.handleLayout} {...restProps}>
-        <Animated.View style={progressStyle} />
+        <Animated.View style={progressStyle} >
+          {gradientBackground}
+        </Animated.View>
         {children}
       </View>
     );
