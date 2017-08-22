@@ -27,6 +27,11 @@ export default class ProgressBar extends Component {
     style: RNViewPropTypes.style,
     unfilledColor: PropTypes.string,
     width: PropTypes.number,
+    useNativeDriver: PropTypes.bool,
+    animationOptions: PropTypes.shape({
+      animationFunction: PropTypes.oneOf([Animated.decay, Animated.timing, Animated.spring]),
+      config: PropTypes.object.isRequired
+    })
   };
 
   static defaultProps = {
@@ -38,6 +43,11 @@ export default class ProgressBar extends Component {
     indeterminate: false,
     progress: 0,
     width: 150,
+    useNativeDriver: false,
+    animationOptions: {
+      animationFunction: Animated.spring,
+      config: { bounciness: 0 }
+    }
   };
 
   constructor(props) {
@@ -63,6 +73,7 @@ export default class ProgressBar extends Component {
       } else {
         Animated.spring(this.state.animationValue, {
           toValue: BAR_WIDTH_ZERO_POSITION,
+          useNativeDriver: props.useNativeDriver,
         }).start();
       }
     }
@@ -76,10 +87,12 @@ export default class ProgressBar extends Component {
       );
 
       if (props.animated) {
-        Animated.spring(this.state.progress, {
-          toValue: progress,
-          bounciness: 0,
-        }).start();
+        const { animationFunction, config } = this.props.animationOptions;
+        animationFunction(this.state.progress, {
+          ...config,
+          toValue: progress, 
+          useNativeDriver: props.useNativeDriver
+        }).start()          
       } else {
         this.state.progress.setValue(progress);
       }
@@ -93,6 +106,7 @@ export default class ProgressBar extends Component {
       duration: 1000,
       easing: Easing.linear,
       isInteraction: false,
+      useNativeDriver: this.props.useNativeDriver,
     }).start((endState) => {
       if (endState.finished) {
         this.animate();

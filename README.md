@@ -59,6 +59,10 @@ All of the props under *Properties* in addition to the following:
 |**`width`**|Full width of the progress bar, set to `null` to use automatic flexbox sizing. |`150`|
 |**`height`**|Height of the progress bar. |`6`|
 |**`borderRadius`**|Rounding of corners, set to `0` to disable. |`4`|
+|**`useNativeDriver`**|Use native driver for the animations. |`false`|
+|**`animationOptions`**|Object with the following options||
+|**`animationOptions.animationFunction`**|Sets the animation function to animate the progress. Can be one of: Animated.decay, Animated.timing, Animated.spring|`Animated.spring`|
+|**`animationOptions.config`**|Sets the config that is passed into the `animationFunction`|`{ bounciness: 0 }`|
 
 ### `Progress.Circle`
 
