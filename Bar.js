@@ -28,10 +28,9 @@ export default class ProgressBar extends Component {
     unfilledColor: PropTypes.string,
     width: PropTypes.number,
     useNativeDriver: PropTypes.bool,
-    animationOptions: PropTypes.shape({
-      animationFunction: PropTypes.oneOf([Animated.decay, Animated.timing, Animated.spring]),
-      config: PropTypes.object.isRequired
-    })
+    // eslint-disable-next-line react/forbid-prop-types
+    animationConfig: PropTypes.object.isRequired,
+    animationType: PropTypes.oneOf(['decay', 'timing', 'spring']),
   };
 
   static defaultProps = {
@@ -44,10 +43,8 @@ export default class ProgressBar extends Component {
     progress: 0,
     width: 150,
     useNativeDriver: false,
-    animationOptions: {
-      animationFunction: Animated.spring,
-      config: { bounciness: 0 }
-    }
+    animationConfig: { bounciness: 0 },
+    animationType: 'spring',
   };
 
   constructor(props) {
@@ -87,12 +84,12 @@ export default class ProgressBar extends Component {
       );
 
       if (props.animated) {
-        const { animationFunction, config } = this.props.animationOptions;
-        animationFunction(this.state.progress, {
-          ...config,
-          toValue: progress, 
-          useNativeDriver: props.useNativeDriver
-        }).start()          
+        const { animationType, animationConfig } = this.props;
+        Animated[animationType](this.state.progress, {
+          ...animationConfig,
+          toValue: progress,
+          useNativeDriver: props.useNativeDriver,
+        }).start();
       } else {
         this.state.progress.setValue(progress);
       }

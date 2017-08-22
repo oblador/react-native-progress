@@ -60,9 +60,8 @@ All of the props under *Properties* in addition to the following:
 |**`height`**|Height of the progress bar. |`6`|
 |**`borderRadius`**|Rounding of corners, set to `0` to disable. |`4`|
 |**`useNativeDriver`**|Use native driver for the animations. |`false`|
-|**`animationOptions`**|Object with the following options||
-|**`animationOptions.animationFunction`**|Sets the animation function to animate the progress. Can be one of: Animated.decay, Animated.timing, Animated.spring|`Animated.spring`|
-|**`animationOptions.config`**|Sets the config that is passed into the `animationFunction`|`{ bounciness: 0 }`|
+|**`animationConfig`**|Config that is passed into the `Animated` function|`{ bounciness: 0 }`|
+|**`animationType`**|Animation type to animate the progress, one of: `decay`, `timing`, `spring`|`spring`|
 
 ### `Progress.Circle`
 
