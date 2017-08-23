@@ -59,6 +59,9 @@ All of the props under *Properties* in addition to the following:
 |**`width`**|Full width of the progress bar, set to `null` to use automatic flexbox sizing. |`150`|
 |**`height`**|Height of the progress bar. |`6`|
 |**`borderRadius`**|Rounding of corners, set to `0` to disable. |`4`|
+|**`useNativeDriver`**|Use native driver for the animations. |`false`|
+|**`animationConfig`**|Config that is passed into the `Animated` function|`{ bounciness: 0 }`|
+|**`animationType`**|Animation type to animate the progress, one of: `decay`, `timing`, `spring`|`spring`|
 |**`gradient.start`**|Describe where gradient starts [read more](https://github.com/react-native-community/react-native-linear-gradient#start). |`null`|
 |**`gradient.end`**|Describe where gradient ends [read more](https://github.com/react-native-community/react-native-linear-gradient#end). |`null`|
 |**`gradient.colors`**|Array of at least to colors that represent gradient color [read more](https://github.com/react-native-community/react-native-linear-gradient#colors). Takes precedence over `color` property. |`null`|
