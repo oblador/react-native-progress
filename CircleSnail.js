@@ -32,7 +32,7 @@ export default class CircleSnail extends Component {
     spinDuration: PropTypes.number,
     style: RNViewPropTypes.style,
     thickness: PropTypes.number,
-    strokeCap: PropTypes.string
+    strokeCap: PropTypes.string,
   };
 
   static defaultProps = {
@@ -42,7 +42,7 @@ export default class CircleSnail extends Component {
     hidesWhenStopped: false,
     size: 40,
     thickness: 3,
-    strokeCap: 'round'
+    strokeCap: 'round',
   };
 
   constructor(props) {
