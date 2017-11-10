@@ -47,6 +47,8 @@ export class ProgressCircle extends Component {
     textStyle: Text.propTypes.style,
     thickness: PropTypes.number,
     unfilledColor: PropTypes.string,
+    strokeCap: PropTypes.string,
+    endAngle: PropTypes.number,
   };
 
   static defaultProps = {
@@ -58,6 +60,7 @@ export class ProgressCircle extends Component {
     showsText: false,
     size: 40,
     thickness: 3,
+    endAngle: 0.9,
   };
 
   constructor(props, context) {
@@ -96,6 +99,7 @@ export class ProgressCircle extends Component {
       textStyle,
       thickness,
       unfilledColor,
+      endAngle,
       ...restProps
     } = this.props;
 
@@ -157,7 +161,7 @@ export class ProgressCircle extends Component {
             <Arc
               radius={size / 2}
               startAngle={0}
-              endAngle={(indeterminate ? 1.8 : 2) * Math.PI}
+              endAngle={(indeterminate ? endAngle * 2 : 2) * Math.PI}
               stroke={borderColor || color}
               strokeCap={strokeCap}
               strokeWidth={border}
