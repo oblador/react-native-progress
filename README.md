@@ -60,8 +60,8 @@ All of the props under *Properties* in addition to the following:
 |**`height`**|Height of the progress bar. |`6`|
 |**`borderRadius`**|Rounding of corners, set to `0` to disable. |`4`|
 |**`useNativeDriver`**|Use native driver for the animations. |`false`|
-|**`animationConfig`**|Config that is passed into the `Animated` function|`{ bounciness: 0 }`|
-|**`animationType`**|Animation type to animate the progress, one of: `decay`, `timing`, `spring`|`spring`|
+|**`animationConfig`**|Config that is passed into the `Animated` function. |`{ bounciness: 0 }`|
+|**`animationType`**|Animation type to animate the progress, one of: `decay`, `timing`, `spring`. |`spring`|
 
 ### `Progress.Circle`
 
@@ -74,8 +74,8 @@ All of the props under *Properties* in addition to the following:
 |**`showsText`**|Whether or not to show a text representation of current progress. |`false`|
 |**`formatText(progress)`**|A function returning a string to be displayed for the textual representation. |*See source*|
 |**`textStyle`**|Styles for progress text, defaults to a same `color` as circle and `fontSize` proportional to `size` prop. |*None*|
-|**`direction`**|Direction of the circle `clockwise` or `counter-clockwise` |`clockwise`|
-|**`strokeCap`**|Stroke Cap style for the circle `butt`, `square` or `round` |`butt`|
+|**`direction`**|Direction of the circle `clockwise` or `counter-clockwise`. |`clockwise`|
+|**`strokeCap`**|Stroke Cap style for the circle `butt`, `square` or `round`. |`butt`|
 
 ### `Progress.Pie`
 
@@ -96,7 +96,7 @@ All of the props under *Properties* in addition to the following:
 |**`thickness`**|Thickness of the circle. |`3`|
 |**`duration`**|Duration of animation. |`1000`|
 |**`spinDuration`**|Duration of spin (orbit) animation. |`5000`|
-|**`strokeCap`**|Stroke Cap style for the circle `butt`, `square` or `round` |`round`|
+|**`strokeCap`**|Stroke Cap style for the circle `butt`, `square` or `round`. |`round`|
 
 ## Examples
 
