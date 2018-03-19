@@ -35,7 +35,7 @@ declare module 'react-native-progress' {
 		 * @memberof DetaultPropTypes
 		 * @default 0
 		 */
-		progress?: 0 | 1
+		progress?: number
 		
 		/**
 		 * Fill color of the indicator.
