@@ -45,7 +45,7 @@ export class ProgressCircle extends Component {
     size: PropTypes.number,
     style: RNViewPropTypes.style,
     strokeCap: PropTypes.oneOf(['butt', 'square', 'round']),
-    textStyle: Text.propTypes.style,
+    textStyle: PropTypes.object,
     thickness: PropTypes.number,
     unfilledColor: PropTypes.string,
   };
