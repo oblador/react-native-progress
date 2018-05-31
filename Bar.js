@@ -164,10 +164,21 @@ export default class ProgressBar extends Component {
         }),
       }],
     };
+    const fixCircleClipping = {
+       position: 'absolute',
+       top: -borderRadius,
+       bottom: -borderRadius,
+       right: -borderRadius,
+       left: -borderRadius,
+       borderRadius: height / 2 + borderRadius / 2,
+       borderWidth: borderRadius,
+       borderColor: 'white'
+    };
 
     return (
       <View style={[containerStyle, style]} onLayout={this.handleLayout} {...restProps}>
         <Animated.View style={progressStyle} />
+          <View style={fixCircleClipping}/>
         {children}
       </View>
     );
