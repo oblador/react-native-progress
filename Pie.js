@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Animated, ART, StyleSheet, View, ViewPropTypes } from 'react-native';
+import { Animated, ART, StyleSheet, View } from 'react-native';
 
 import Circle from './Shapes/Circle';
 import Sector from './Shapes/Sector';
@@ -10,8 +10,6 @@ const CIRCLE = Math.PI * 2;
 
 const AnimatedSurface = Animated.createAnimatedComponent(ART.Surface);
 const AnimatedSector = Animated.createAnimatedComponent(Sector);
-
-const RNViewPropTypes = ViewPropTypes || View.propTypes;
 
 const styles = StyleSheet.create({
   container: {
@@ -33,7 +31,7 @@ export class ProgressPie extends Component {
     ]),
     rotation: PropTypes.instanceOf(Animated.Value),
     size: PropTypes.number,
-    style: RNViewPropTypes.style,
+    style: PropTypes.any,
     unfilledColor: PropTypes.string,
   };
 

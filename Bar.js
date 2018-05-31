@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Animated, Easing, View, ViewPropTypes } from 'react-native';
+import { Animated, Easing, View } from 'react-native';
 
 const INDETERMINATE_WIDTH_FACTOR = 0.3;
 const BAR_WIDTH_ZERO_POSITION =
   INDETERMINATE_WIDTH_FACTOR / (1 + INDETERMINATE_WIDTH_FACTOR);
-
-const RNViewPropTypes = ViewPropTypes || View.propTypes;
 
 export default class ProgressBar extends Component {
   static propTypes = {
@@ -20,7 +18,7 @@ export default class ProgressBar extends Component {
     indeterminate: PropTypes.bool,
     onLayout: PropTypes.func,
     progress: PropTypes.number,
-    style: RNViewPropTypes.style,
+    style: PropTypes.any,
     unfilledColor: PropTypes.string,
     width: PropTypes.number,
     useNativeDriver: PropTypes.bool,
