@@ -70,6 +70,7 @@ All of the props under *Properties* in addition to the following:
 | Prop | Description | Default |
 |---|---|---|
 |**`size`**|Diameter of the circle. |`40`|
+|**`endAngle`**|Determines the endAngle of the circle. A number between `0` and `1`. The final endAngle would be the number multiplied by 2π   |`0.9`|
 |**`thickness`**|Thickness of the inner circle. |`3`|
 |**`showsText`**|Whether or not to show a text representation of current progress. |`false`|
 |**`formatText(progress)`**|A function returning a string to be displayed for the textual representation. |*See source*|
