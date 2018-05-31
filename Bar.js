@@ -163,6 +163,7 @@ export default class ProgressBar extends Component {
           outputRange: [0.0001, 1],
         }),
       }],
+      borderRadius,
     };
 
     return (
