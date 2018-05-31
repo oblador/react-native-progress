@@ -16,15 +16,17 @@ function makeSectorPath(x, y, angle, radius) {
       .close();
   }
 
-  const startAngle = (Math.PI / 2) - angle;
+  const startAngle = Math.PI / 2 - angle;
   const endAngle = Math.PI / 2;
   const arcFlag = angle > Math.PI ? 1 : 0;
   const centerX = x + radius;
   const centerY = y + radius;
 
   return `M${centerX} ${centerY}
-          L${centerX + (Math.cos(startAngle) * radius)} ${centerY - (Math.sin(startAngle) * radius)}
-          A${radius} ${radius} 0 ${arcFlag} 0 ${centerX + (Math.cos(endAngle) * radius)} ${centerY - (Math.sin(endAngle) * radius)}
+          L${centerX + Math.cos(startAngle) * radius} ${centerY -
+    Math.sin(startAngle) * radius}
+          A${radius} ${radius} 0 ${arcFlag} 0 ${centerX +
+    Math.cos(endAngle) * radius} ${centerY - Math.sin(endAngle) * radius}
           L${centerX} ${centerY}`;
 }
 
@@ -45,13 +47,11 @@ export default class Sector extends Component {
   render() {
     const { angle, radius, offset, ...restProps } = this.props;
     const path = makeSectorPath(
-      (offset.left || 0),
-      (offset.top || 0),
+      offset.left || 0,
+      offset.top || 0,
       angle,
       radius
     );
-    return (
-      <ART.Shape d={path} {...restProps} />
-    );
+    return <ART.Shape d={path} {...restProps} />;
   }
 }

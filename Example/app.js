@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import * as Progress from 'react-native-progress';
 
@@ -87,16 +83,10 @@ export default class Example extends Component {
           />
         </View>
         <View style={styles.circles}>
+          <Progress.CircleSnail style={styles.progress} />
           <Progress.CircleSnail
             style={styles.progress}
-          />
-          <Progress.CircleSnail
-            style={styles.progress}
-            color={[
-              '#F44336',
-              '#2196F3',
-              '#009688',
-            ]}
+            color={['#F44336', '#2196F3', '#009688']}
           />
         </View>
       </View>

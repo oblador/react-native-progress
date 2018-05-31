@@ -5,3 +5,4 @@ Example
 .editorconfig
 .eslintrc
 .travis.yml
+yarn.lock

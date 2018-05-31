@@ -48,7 +48,6 @@ export class ProgressCircle extends Component {
     textStyle: Text.propTypes.style,
     thickness: PropTypes.number,
     unfilledColor: PropTypes.string,
-    strokeCap: PropTypes.string,
     endAngle: PropTypes.number,
   };
 
@@ -72,7 +71,7 @@ export class ProgressCircle extends Component {
 
   componentWillMount() {
     if (this.props.animated) {
-      this.props.progress.addListener((event) => {
+      this.props.progress.addListener(event => {
         this.progressValue = event.value;
         if (this.props.showsText || this.progressValue === 1) {
           this.forceUpdate();
@@ -106,18 +105,20 @@ export class ProgressCircle extends Component {
 
     const border = borderWidth || (indeterminate ? 1 : 0);
 
-    const radius = (size / 2) - border;
+    const radius = size / 2 - border;
     const offset = {
       top: border,
       left: border,
     };
     const textOffset = border + thickness;
-    const textSize = size - (textOffset * 2);
+    const textSize = size - textOffset * 2;
 
     const Surface = rotation ? AnimatedSurface : ART.Surface;
     const Shape = animated ? AnimatedArc : Arc;
     const progressValue = animated ? this.progressValue : progress;
-    const angle = animated ? Animated.multiply(progress, CIRCLE) : progress * CIRCLE;
+    const angle = animated
+      ? Animated.multiply(progress, CIRCLE)
+      : progress * CIRCLE;
 
     return (
       <View style={[styles.container, style]} {...restProps}>
@@ -125,14 +126,17 @@ export class ProgressCircle extends Component {
           width={size}
           height={size}
           style={{
-            transform: [{
-              rotate: indeterminate && rotation
-                ? rotation.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: ['0deg', '360deg'],
-                })
-                : '0deg',
-            }],
+            transform: [
+              {
+                rotate:
+                  indeterminate && rotation
+                    ? rotation.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: ['0deg', '360deg'],
+                      })
+                    : '0deg',
+              },
+            ],
           }}
         >
           {unfilledColor && progressValue !== 1 ? (
@@ -145,7 +149,9 @@ export class ProgressCircle extends Component {
               stroke={unfilledColor}
               strokeWidth={thickness}
             />
-          ) : false}
+          ) : (
+            false
+          )}
           {!indeterminate ? (
             <Shape
               radius={radius}
@@ -157,7 +163,9 @@ export class ProgressCircle extends Component {
               strokeCap={strokeCap}
               strokeWidth={thickness}
             />
-          ) : false}
+          ) : (
+            false
+          )}
           {border ? (
             <Arc
               radius={size / 2}
@@ -167,7 +175,9 @@ export class ProgressCircle extends Component {
               strokeCap={strokeCap}
               strokeWidth={border}
             />
-          ) : false}
+          ) : (
+            false
+          )}
         </Surface>
         {!indeterminate && showsText ? (
           <View
@@ -183,16 +193,21 @@ export class ProgressCircle extends Component {
             }}
           >
             <Text
-              style={[{
-                color,
-                fontSize: textSize / 4.5,
-                fontWeight: '300',
-              }, textStyle]}
+              style={[
+                {
+                  color,
+                  fontSize: textSize / 4.5,
+                  fontWeight: '300',
+                },
+                textStyle,
+              ]}
             >
               {formatText(progressValue)}
             </Text>
           </View>
-        ) : false}
+        ) : (
+          false
+        )}
         {children}
       </View>
     );

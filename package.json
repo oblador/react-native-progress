@@ -4,7 +4,8 @@
   "description": "Progress indicators and spinners for React Native using ReactART",
   "main": "index.js",
   "scripts": {
-    "test": "eslint *.js Shapes"
+    "test": "eslint *.js Shapes",
+    "format": "./node_modules/.bin/prettier --write {,Shapes/,Example/}*.js"
   },
   "keywords": [
     "react-native",
@@ -42,9 +43,12 @@
     "babel-eslint": "^7.0.0",
     "eslint": "^3.7.1",
     "eslint-config-airbnb": "^12.0.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.4.1"
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^6.4.1",
+    "prettier": "^1.13.3"
   },
   "dependencies": {
     "prop-types": "^15.5.8"

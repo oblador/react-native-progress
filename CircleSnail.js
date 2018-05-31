@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Animated,
-  ART,
-  Easing,
-  View,
-  ViewPropTypes,
-} from 'react-native';
+import { Animated, ART, Easing, View, ViewPropTypes } from 'react-native';
 
 import Arc from './Shapes/Arc';
 
@@ -77,7 +71,7 @@ export default class CircleSnail extends Component {
   animate(iteration = 1) {
     Animated.sequence([
       Animated.timing(this.state.startAngle, {
-        toValue: (-MAX_ARC_ANGLE * iteration) - MIN_ARC_ANGLE,
+        toValue: -MAX_ARC_ANGLE * iteration - MIN_ARC_ANGLE,
         duration: this.props.duration || 1000,
         isInteraction: false,
         easing: Easing.inOut(Easing.quad),
@@ -88,7 +82,7 @@ export default class CircleSnail extends Component {
         isInteraction: false,
         easing: Easing.inOut(Easing.quad),
       }),
-    ]).start((endState) => {
+    ]).start(endState => {
       if (endState.finished) {
         if (Array.isArray(this.props.color)) {
           this.setState({
@@ -106,7 +100,7 @@ export default class CircleSnail extends Component {
       duration: this.props.spinDuration || 5000,
       easing: Easing.linear,
       isInteraction: false,
-    }).start((endState) => {
+    }).start(endState => {
       if (endState.finished) {
         this.state.rotation.setValue(0);
         this.spin();
@@ -138,7 +132,7 @@ export default class CircleSnail extends Component {
       return null;
     }
 
-    const radius = (size / 2) - thickness;
+    const radius = size / 2 - thickness;
     const offset = {
       top: thickness,
       left: thickness,
@@ -154,21 +148,24 @@ export default class CircleSnail extends Component {
           {
             backgroundColor: 'transparent',
             overflow: 'hidden',
-            transform: [{
-              rotate: this.state.rotation.interpolate({
-                inputRange: [0, 1],
-                outputRange: ['0deg', `${directionFactor * 360}deg`],
-              }),
-            }],
+            transform: [
+              {
+                rotate: this.state.rotation.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: ['0deg', `${directionFactor * 360}deg`],
+                }),
+              },
+            ],
           },
         ]}
       >
-        <ART.Surface
-          width={size}
-          height={size}
-        >
+        <ART.Surface width={size} height={size}>
           <AnimatedArc
-            direction={direction === 'counter-clockwise' ? 'clockwise' : 'counter-clockwise'}
+            direction={
+              direction === 'counter-clockwise'
+                ? 'clockwise'
+                : 'counter-clockwise'
+            }
             radius={radius}
             stroke={Array.isArray(color) ? color[this.state.colorIndex] : color}
             offset={offset}

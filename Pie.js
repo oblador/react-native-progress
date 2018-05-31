@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Animated,
-  ART,
-  StyleSheet,
-  View,
-  ViewPropTypes,
-} from 'react-native';
+import { Animated, ART, StyleSheet, View, ViewPropTypes } from 'react-native';
 
 import Circle from './Shapes/Circle';
 import Sector from './Shapes/Sector';
@@ -65,12 +59,13 @@ export class ProgressPie extends Component {
       ...restProps
     } = this.props;
 
-
     const Surface = rotation ? AnimatedSurface : ART.Surface;
     const Shape = animated ? AnimatedSector : Sector;
 
-    const angle = animated ? Animated.multiply(progress, CIRCLE) : progress * CIRCLE;
-    const radius = (size / 2) - borderWidth;
+    const angle = animated
+      ? Animated.multiply(progress, CIRCLE)
+      : progress * CIRCLE;
+    const radius = size / 2 - borderWidth;
     const offset = {
       top: borderWidth,
       left: borderWidth,
@@ -81,35 +76,36 @@ export class ProgressPie extends Component {
         <Surface
           width={size}
           height={size}
-          style={rotation ? {
-            transform: [{
-              rotate: rotation.interpolate({
-                inputRange: [0, 1],
-                outputRange: ['0deg', '360deg'],
-              }),
-            }],
-          } : undefined}
+          style={
+            rotation
+              ? {
+                  transform: [
+                    {
+                      rotate: rotation.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: ['0deg', '360deg'],
+                      }),
+                    },
+                  ],
+                }
+              : undefined
+          }
         >
           {unfilledColor ? (
-            <Circle
-              radius={radius}
-              offset={offset}
-              fill={unfilledColor}
-            />
-          ) : false}
-          <Shape
-            radius={radius}
-            angle={angle}
-            offset={offset}
-            fill={color}
-          />
+            <Circle radius={radius} offset={offset} fill={unfilledColor} />
+          ) : (
+            false
+          )}
+          <Shape radius={radius} angle={angle} offset={offset} fill={color} />
           {borderWidth ? (
             <Circle
               radius={size / 2}
               stroke={borderColor || color}
               strokeWidth={borderWidth}
             />
-          ) : false}
+          ) : (
+            false
+          )}
         </Surface>
         {children}
       </View>
