@@ -36,6 +36,7 @@ export class ProgressCircle extends Component {
     direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
     formatText: PropTypes.func,
     indeterminate: PropTypes.bool,
+    ownElement: PropTypes.element,
     progress: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.instanceOf(Animated.Value),
@@ -58,6 +59,7 @@ export class ProgressCircle extends Component {
     direction: 'clockwise',
     formatText: progress => `${Math.round(progress * 100)}%`,
     progress: 0,
+    ownElement: null,
     showsText: false,
     size: 40,
     thickness: 3,
@@ -95,6 +97,7 @@ export class ProgressCircle extends Component {
       rotation,
       showsText,
       size,
+      ownElement,
       style,
       strokeCap,
       textStyle,
@@ -182,15 +185,16 @@ export class ProgressCircle extends Component {
               justifyContent: 'center',
             }}
           >
-            <Text
-              style={[{
-                color,
-                fontSize: textSize / 4.5,
-                fontWeight: '300',
-              }, textStyle]}
-            >
-              {formatText(progressValue)}
-            </Text>
+            {ownElement ?
+          ownElement :
+      <Text style={[{
+              color,
+              fontSize: textSize / 4.5,
+              fontWeight: '300',
+          }, textStyle]}>
+          {formatText(progressValue)}
+      </Text>
+      }
           </View>
         ) : false}
         {children}
