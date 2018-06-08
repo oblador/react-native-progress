@@ -89,7 +89,7 @@ declare module 'react-native-progress' {
 		 * @memberof BarPropTypes
 		 * @default 150
 		 */
-		width?: number
+		width?: number | null
 
 		/**
 		 * Height of the progress bar.
