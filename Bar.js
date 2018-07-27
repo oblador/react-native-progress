@@ -81,7 +81,7 @@ export default class ProgressBar extends Component {
         : Math.min(Math.max(props.progress, 0), 1);
 
       if (props.animated) {
-        if (!props.animateReset && progress == 0) {
+        if (!props.animateReset && progress === 0) {
           this.state.progress.setValue(progress);
         } else {
           const { animationType, animationConfig } = this.props;
