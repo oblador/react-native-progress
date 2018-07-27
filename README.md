@@ -61,6 +61,7 @@ All of the props under *Properties* in addition to the following:
 |**`borderRadius`**|Rounding of corners, set to `0` to disable. |`4`|
 |**`useNativeDriver`**|Use native driver for the animations. |`false`|
 |**`animationConfig`**|Config that is passed into the `Animated` function. |`{ bounciness: 0 }`|
+|**`animateReset`**|Whether or not to animate bar when progress is set to 0. |`true`|
 |**`animationType`**|Animation type to animate the progress, one of: `decay`, `timing`, `spring`. |`spring`|
 
 ### `Progress.Circle`
