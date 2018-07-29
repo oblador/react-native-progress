@@ -77,6 +77,7 @@ All of the props under *Properties* in addition to the following:
 |**`textStyle`**|Styles for progress text, defaults to a same `color` as circle and `fontSize` proportional to `size` prop. |*None*|
 |**`direction`**|Direction of the circle `clockwise` or `counter-clockwise`. |`clockwise`|
 |**`strokeCap`**|Stroke Cap style for the circle `butt`, `square` or `round`. |`butt`|
+|**`fill`**|Fill color of the inner circle. |None (transparent)|
 
 ### `Progress.Pie`
 
