@@ -1,5 +1,5 @@
 declare module 'react-native-progress' {
-  import React from 'react'
+  import * as React from 'react'
   import { ViewProperties } from 'react-native'
 
 	/**
