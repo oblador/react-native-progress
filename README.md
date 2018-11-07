@@ -62,6 +62,7 @@ All of the props under *Properties* in addition to the following:
 |**`useNativeDriver`**|Use native driver for the animations. |`false`|
 |**`animationConfig`**|Config that is passed into the `Animated` function. |`{ bounciness: 0 }`|
 |**`animationType`**|Animation type to animate the progress, one of: `decay`, `timing`, `spring`. |`spring`|
+|**`children`**|You can specify your own element(s) to be scaled as Bar, for example, [`<LinearGradient />`](https://github.com/react-native-community/react-native-linear-gradient) |`null`|
 
 ### `Progress.Circle`
 

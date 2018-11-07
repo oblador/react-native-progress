@@ -170,8 +170,9 @@ export default class ProgressBar extends Component {
         onLayout={this.handleLayout}
         {...restProps}
       >
-        <Animated.View style={progressStyle} />
-        {children}
+        <Animated.View style={progressStyle}>
+          {children}
+        </Animated.View>
       </View>
     );
   }
