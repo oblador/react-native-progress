@@ -32,6 +32,7 @@ export class ProgressCircle extends Component {
       PropTypes.number,
       PropTypes.instanceOf(Animated.Value),
     ]),
+    originProgress: PropTypes.number,
     rotation: PropTypes.instanceOf(Animated.Value),
     showsText: PropTypes.bool,
     size: PropTypes.number,
@@ -49,6 +50,7 @@ export class ProgressCircle extends Component {
     direction: 'clockwise',
     formatText: progress => `${Math.round(progress * 100)}%`,
     progress: 0,
+    originProgress: 0,
     showsText: false,
     size: 40,
     thickness: 3,
@@ -84,6 +86,7 @@ export class ProgressCircle extends Component {
       formatText,
       indeterminate,
       progress,
+      originProgress,
       rotation,
       showsText,
       size,
@@ -146,7 +149,7 @@ export class ProgressCircle extends Component {
           ) : (
             false
           )}
-          {!indeterminate ? (
+          {!indeterminate && originProgress > 0 ? (
             <Shape
               fill={fill}
               radius={radius}

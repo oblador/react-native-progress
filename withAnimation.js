@@ -104,6 +104,7 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
           progress={
             this.props.animated ? this.state.progress : this.props.progress
           }
+          originProgress={this.props.progress}
           rotation={this.state.rotation}
         />
       );
