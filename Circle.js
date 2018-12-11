@@ -59,6 +59,9 @@ export class ProgressCircle extends Component {
     super(props, context);
 
     this.progressValue = 0;
+    if (props.animated) {
+      this.progressValue = props.progress._value;
+    }
   }
 
   componentWillMount() {
