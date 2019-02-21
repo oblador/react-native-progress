@@ -19,6 +19,7 @@ export default class ProgressBar extends Component {
     onLayout: PropTypes.func,
     progress: PropTypes.number,
     style: PropTypes.any,
+    barStyle: PropTypes.any,
     unfilledColor: PropTypes.string,
     width: PropTypes.number,
     useNativeDriver: PropTypes.bool,
@@ -124,6 +125,7 @@ export default class ProgressBar extends Component {
       color,
       height,
       style,
+      barStyle,
       unfilledColor,
       width,
       ...restProps
@@ -170,7 +172,7 @@ export default class ProgressBar extends Component {
         onLayout={this.handleLayout}
         {...restProps}
       >
-        <Animated.View style={progressStyle} />
+        <Animated.View style={[progressStyle, barStyle]} />
         {children}
       </View>
     );
