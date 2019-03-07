@@ -1,6 +1,6 @@
 declare module 'react-native-progress' {
   import React from 'react'
-  import { ViewProperties } from 'react-native'
+  import { TextStyle, ViewProperties } from 'react-native'
 
 	/**
 	 * Properties for all `Progress` components.
@@ -184,11 +184,11 @@ declare module 'react-native-progress' {
 		/**
 		 * Styles for progress text, defaults to a same `color` as circle and `fontSize` proportional to `size` prop.
 		 *
-		 * @type {string}
+		 * @type {TextStyle}
 		 * @memberof CirclePropTypes
 		 * @default None
 		 */
-		textStyle?: string
+		textStyle?: TextStyle
 
 		/**
 		 * Direction of the circle `clockwise` or `counter-clockwise`.
