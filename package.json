@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "eslint *.js Shapes",
-    "format": "./node_modules/.bin/prettier --write {,Shapes/,Example/}*.js"
+    "format": "./node_modules/.bin/prettier --write {,Shapes/,Example/}*.js README.md"
   },
   "keywords": [
     "react-native",
@@ -48,7 +48,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^6.4.1",
-    "prettier": "^1.13.3"
+    "prettier": "^1.16.4"
   },
   "dependencies": {
     "prop-types": "^15.5.8"
