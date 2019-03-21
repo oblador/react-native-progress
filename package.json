@@ -51,7 +51,7 @@
     "prettier": "^1.16.4"
   },
   "dependencies": {
-    "prop-types": "^15.5.8"
+    "prop-types": "^15.7.2"
   },
   "typings": "index.d.ts"
 }
