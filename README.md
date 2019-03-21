@@ -44,6 +44,7 @@ import * as Progress from 'react-native-progress';
 |---|---|---|
 |**`animated`**|Whether or not to animate changes to `progress`. |`true`|
 |**`indeterminate`**|If set to true, the indicator will spin and `progress` prop will be ignored. |`false`|
+|**`indeterminateAnimationDuration`**|Sets animation duration in milliseconds when indeterminate is set. |`1000`|
 |**`progress`**|Progress of whatever the indicator is indicating. A number between 0 and 1. |`0`|
 |**`color`**|Fill color of the indicator. |`rgba(0, 122, 255, 1)`|
 |**`unfilledColor`**|Color of the remaining progress. |*None*|
