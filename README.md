@@ -77,6 +77,7 @@ All of the props under _Properties_ in addition to the following:
 | **`showsText`**            | Whether or not to show a text representation of current progress.                                                            | `false`            |
 | **`formatText(progress)`** | A function returning a string to be displayed for the textual representation.                                                | _See source_       |
 | **`textStyle`**            | Styles for progress text, defaults to a same `color` as circle and `fontSize` proportional to `size` prop.                   | _None_             |
+| **`allowFontScaling`**     | Whether or not to respect device font scale setting.                                                                         | _true_             |
 | **`direction`**            | Direction of the circle `clockwise` or `counter-clockwise`.                                                                  | `clockwise`        |
 | **`strokeCap`**            | Stroke Cap style for the circle `butt`, `square` or `round`.                                                                 | `butt`             |
 | **`fill`**                 | Fill color of the inner circle.                                                                                              | None (transparent) |
@@ -115,4 +116,4 @@ To [Mandarin Drummond](https://github.com/MandarinConLaBarba) for giving me the 
 
 ## License
 
-[MIT License](http://opensource.org/licenses/mit-license.html). © Joel Arvidsson 2015
+[MIT License](http://opensource.org/licenses/mit-license.html). © Joel Arvidsson 2015-
