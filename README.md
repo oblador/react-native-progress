@@ -103,6 +103,7 @@ All of the props under *Properties* in addition to the following:
 ## Examples
 
 * [`Example` project bundled with this module](https://github.com/oblador/react-native-progress/tree/master/Example)
+* You can see and change the example app via [Appitr IDE](https://ide.appitr.com/public/ide/52-elated-toe) online.
 * [react-native-image-progress](https://github.com/oblador/react-native-image-progress)
 
 ## [Changelog](https://github.com/oblador/react-native-progress/releases)
