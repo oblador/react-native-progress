@@ -1,6 +1,3 @@
-/* eslint new-cap: ["error", { "capIsNew": false }] */
-/* eslint no-unexpected-multiline: 0 */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ART } from 'react-native';

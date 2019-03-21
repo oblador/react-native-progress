@@ -23,8 +23,7 @@ export default class ProgressBar extends Component {
     unfilledColor: PropTypes.string,
     width: PropTypes.number,
     useNativeDriver: PropTypes.bool,
-    // eslint-disable-next-line react/forbid-prop-types
-    animationConfig: PropTypes.object.isRequired,
+    animationConfig: PropTypes.object,
     animationType: PropTypes.oneOf(['decay', 'timing', 'spring']),
   };
 
@@ -93,6 +92,15 @@ export default class ProgressBar extends Component {
     }
   }
 
+  handleLayout = event => {
+    if (!this.props.width) {
+      this.setState({ width: event.nativeEvent.layout.width });
+    }
+    if (this.props.onLayout) {
+      this.props.onLayout(event);
+    }
+  };
+
   animate() {
     this.state.animationValue.setValue(0);
     Animated.timing(this.state.animationValue, {
@@ -107,15 +115,6 @@ export default class ProgressBar extends Component {
       }
     });
   }
-
-  handleLayout = event => {
-    if (!this.props.width) {
-      this.setState({ width: event.nativeEvent.layout.width });
-    }
-    if (this.props.onLayout) {
-      this.props.onLayout(event);
-    }
-  };
 
   render() {
     const {
