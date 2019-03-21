@@ -16,7 +16,7 @@ export default class ProgressBar extends Component {
     color: PropTypes.string,
     height: PropTypes.number,
     indeterminate: PropTypes.bool,
-    indeterminateMoveSpeed: PropTypes.number,
+    indeterminateAnimationDuration: PropTypes.number,
     onLayout: PropTypes.func,
     progress: PropTypes.number,
     style: PropTypes.any,
@@ -35,7 +35,7 @@ export default class ProgressBar extends Component {
     color: 'rgba(0, 122, 255, 1)',
     height: 6,
     indeterminate: false,
-    indeterminateMoveSpeed: 1000,
+    indeterminateAnimationDuration: 1000,
     progress: 0,
     width: 150,
     useNativeDriver: false,
@@ -97,7 +97,7 @@ export default class ProgressBar extends Component {
     this.state.animationValue.setValue(0);
     Animated.timing(this.state.animationValue, {
       toValue: 1,
-      duration: this.props.indeterminateMoveSpeed,
+      duration: this.props.indeterminateAnimationDuration,
       easing: Easing.linear,
       isInteraction: false,
       useNativeDriver: this.props.useNativeDriver,
