@@ -27,7 +27,7 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
     constructor(props) {
       super(props);
 
-      this.progressValue = Math.min(Math.max(props.progress, 0), 1);
+      this.progressValue = 0;
       this.rotationValue = 0;
       this.state = {
         progress: new Animated.Value(this.progressValue),
@@ -36,6 +36,7 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
     }
 
     componentDidMount() {
+      this.updateProgress(this.props);
       this.state.progress.addListener(event => {
         this.progressValue = event.value;
       });
@@ -66,6 +67,10 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
           });
         }
       }
+      this.updateProgress(props)
+    }
+
+    updateProgress(props) {
       const progress = props.indeterminate
         ? indeterminateProgress || 0
         : Math.min(Math.max(props.progress, 0), 1);
