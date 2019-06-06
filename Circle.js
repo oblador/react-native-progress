@@ -104,7 +104,8 @@ export class ProgressCircle extends Component {
 
     const Surface = rotation ? AnimatedSurface : ART.Surface;
     const Shape = animated ? AnimatedArc : Arc;
-    const progressValue = animated ? progress._value : progress;
+    // eslint-disable-next-line no-underscore-dangle
+    const progressValue = animated ? progress.__getValue() : progress;
     const angle = animated
       ? Animated.multiply(progress, CIRCLE)
       : progress * CIRCLE;
