@@ -183,7 +183,7 @@ export class ProgressCircle extends Component {
               justifyContent: 'center',
             }}
           >
-            <Animated.Text
+            <Text
               style={[
                 {
                   color,
@@ -195,7 +195,7 @@ export class ProgressCircle extends Component {
               allowFontScaling={allowFontScaling}
             >
               {formatText(progressValue)}
-            </Animated.Text>
+            </Text>
           </View>
         ) : false}
         {children}
