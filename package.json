@@ -2,7 +2,7 @@
   "name": "@draftbit/react-native-progress",
   "version": "3.6.0",
   "description": "Progress indicators and spinners for React Native using ReactART",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "eslint *.js Shapes",
     "format": "./node_modules/.bin/prettier --write {,Shapes/,Example/}*.js README.md *.ts",
