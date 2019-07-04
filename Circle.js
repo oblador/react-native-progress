@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Animated, ART, StyleSheet, Text, View } from 'react-native';
+import { Animated, StyleSheet, Text, View } from 'react-native';
+import { Surface as ARTSurface } from '@react-native-community/art';
 
 import Arc from './Shapes/Arc';
 import withAnimation from './withAnimation';
 
 const CIRCLE = Math.PI * 2;
 
-const AnimatedSurface = Animated.createAnimatedComponent(ART.Surface);
+const AnimatedSurface = Animated.createAnimatedComponent(ARTSurface);
 const AnimatedArc = Animated.createAnimatedComponent(Arc);
 
 const styles = StyleSheet.create({
@@ -109,7 +110,7 @@ export class ProgressCircle extends Component {
     const textOffset = border + thickness;
     const textSize = size - textOffset * 2;
 
-    const Surface = rotation ? AnimatedSurface : ART.Surface;
+    const Surface = rotation ? AnimatedSurface : ARTSurface;
     const Shape = animated ? AnimatedArc : Arc;
     const progressValue = animated ? this.progressValue : progress;
     const angle = animated

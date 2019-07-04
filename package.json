@@ -1,6 +1,6 @@
 {
   "name": "react-native-progress",
-  "version": "3.6.0",
+  "version": "3.7.0",
   "description": "Progress indicators and spinners for React Native using ReactART",
   "main": "index.js",
   "scripts": {
@@ -49,8 +49,12 @@
     "eslint-plugin-react": "^7.11.0",
     "prettier": "^1.16.4"
   },
+  "typings": "index.d.ts",
+  "peerDependencies": {
+    "@react-native-community/art": "^1.0.0",
+    "react-native": ">=0.60.0"
+  },
   "dependencies": {
     "prop-types": "^15.7.2"
-  },
-  "typings": "index.d.ts"
+  }
 }

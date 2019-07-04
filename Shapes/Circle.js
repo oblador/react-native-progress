@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ART } from 'react-native';
+import { Shape, Path } from '@react-native-community/art';
 
 function makeCirclePath(x, y, radius, direction) {
   const arcMethod = direction === 'counter-clockwise' ? 'counterArc' : 'arc';
 
-  return ART.Path()
+  return new Path()
     .moveTo(x, y)
     .move(radius, 0)
     [arcMethod](0, radius * 2, radius, radius)
@@ -38,8 +38,9 @@ export default class Circle extends Component {
       radius - strokeWidth / 2,
       direction
     );
+    console.log(path);
     return (
-      <ART.Shape
+      <Shape
         d={path}
         strokeCap="butt"
         strokeWidth={strokeWidth}

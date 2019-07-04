@@ -12,7 +12,11 @@ Progress indicators and spinners for React Native using ReactART.
 
 To use the `Pie` or `Circle` components, you need to include the ART library in your project on iOS, for android it's already included.
 
-#### For CocoaPod users:
+#### For react-native >= 0.60.0
+
+Install [art from the community repository](https://github.com/react-native-community/art) and link it.
+
+#### For CocoaPod users and react-native < 0.60.0:
 
 Add the `ART` subspec like so:
 

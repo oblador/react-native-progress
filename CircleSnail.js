@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Animated, ART, Easing } from 'react-native';
+import { Animated, Easing } from 'react-native';
+import { Surface } from '@react-native-community/art';
 
 import Arc from './Shapes/Arc';
 
@@ -157,7 +158,7 @@ export default class CircleSnail extends Component {
           },
         ]}
       >
-        <ART.Surface width={size} height={size}>
+        <Surface width={size} height={size}>
           <AnimatedArc
             direction={
               direction === 'counter-clockwise'
@@ -172,7 +173,7 @@ export default class CircleSnail extends Component {
             strokeCap={strokeCap}
             strokeWidth={thickness}
           />
-        </ART.Surface>
+        </Surface>
         {children}
       </Animated.View>
     );
