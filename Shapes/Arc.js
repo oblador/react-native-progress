@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ART } from 'react-native';
+import * as ART from '@react-native-community/art';
 
 const CIRCLE = Math.PI * 2;
 

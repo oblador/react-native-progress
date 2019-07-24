@@ -52,5 +52,8 @@
   "dependencies": {
     "prop-types": "^15.7.2"
   },
+  "peerDependencies": {
+    "@react-native-community/art": "x"
+  },
   "typings": "index.d.ts"
 }
