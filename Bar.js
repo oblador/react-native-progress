@@ -60,7 +60,7 @@ export default class ProgressBar extends Component {
     }
   }
 
-  componentWillReceiveProps(props) {
+  componentDidUpdate(props) {
     if (props.indeterminate !== this.props.indeterminate) {
       if (props.indeterminate) {
         this.animate();
