@@ -38,15 +38,6 @@ declare module 'react-native-progress' {
     progress?: number;
 
     /**
-     * Fill color of the indicator.
-     *
-     * @type {string}
-     * @memberof DefaultPropTypes
-     * @default rgba(0, 122, 255, 1)
-     */
-    color?: string;
-
-    /**
      * Color of the remaining progress.
      *
      * @type {string}
@@ -99,6 +90,15 @@ declare module 'react-native-progress' {
      * @default 6
      */
     height?: number;
+
+    /**
+     * Fill color of the indicator.
+     *
+     * @type {string}
+     * @memberof DefaultPropTypes
+     * @default rgba(0, 122, 255, 1)
+     */
+    color?: string;
 
     /**
      * Rounding of corners, set to `0` to disable.
@@ -162,6 +162,15 @@ declare module 'react-native-progress' {
      * @default 40
      */
     size?: number;
+
+    /**
+     * Fill color of the indicator.
+     *
+     * @type {string}
+     * @memberof DefaultPropTypes
+     * @default rgba(0, 122, 255, 1)
+     */
+    color?: string;
 
     /**
      * Thickness of the inner circle.
@@ -251,6 +260,15 @@ declare module 'react-native-progress' {
      * @default 40
      */
     size?: number;
+
+    /**
+     * Fill color of the indicator.
+     *
+     * @type {string}
+     * @memberof DefaultPropTypes
+     * @default rgba(0, 122, 255, 1)
+     */
+    color?: string;
   }
 
   /**
@@ -291,11 +309,11 @@ declare module 'react-native-progress' {
     /**
      * Color of the circle, use an array of colors for rainbow effect.
      *
-     * @type {string}
+     * @type {string | string[]}
      * @memberof CircleSnailPropTypes
      * @default rgba(0, 122, 255, 1)
      */
-    color?: string;
+    color?: string | string[];
 
     /**
      * Thickness of the circle.
