@@ -224,6 +224,15 @@ declare module 'react-native-progress' {
      * @default butt
      */
     strokeCap?: 'butt' | 'square' | 'round';
+
+    /**
+     * Fill color of the inner circle.
+     *
+     * @type {string}
+     * @memberof CirclePropTypes
+     * @default None
+     */
+    fill?: string;
   }
 
   /**
