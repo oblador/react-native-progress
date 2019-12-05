@@ -5,7 +5,7 @@ import { Shape as ARTShape, Path as ARTPath } from '@react-native-community/art'
 function makeCirclePath(x, y, radius, direction) {
   const arcMethod = direction === 'counter-clockwise' ? 'counterArc' : 'arc';
 
-  return ARTPath()
+  return (new ARTPath())
     .moveTo(x, y)
     .move(radius, 0)
     [arcMethod](0, radius * 2, radius, radius)

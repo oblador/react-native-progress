@@ -6,7 +6,7 @@ const CIRCLE = Math.PI * 2;
 
 function makeSectorPath(x, y, angle, radius) {
   if (angle >= CIRCLE) {
-    return ARTPath()
+    return (new ARTPath())
       .moveTo(x, y)
       .move(radius, 0)
       .arc(0, radius * 2, radius, radius)
