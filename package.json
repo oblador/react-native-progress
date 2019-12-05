@@ -1,6 +1,6 @@
 {
   "name": "react-native-progress",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Progress indicators and spinners for React Native using ReactART",
   "main": "index.js",
   "scripts": {
@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "prop-types": "^15.7.2",
-    "@react-native-community/art": "^1.0.1"
+    "@react-native-community/art": "^1.0.3"
   },
   "typings": "index.d.ts"
 }
