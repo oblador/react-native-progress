@@ -19,7 +19,7 @@ function makeArcPath(x, y, startAngleArg, endAngleArg, radius, direction) {
       : endAngle - startAngle;
 
   if (angle >= CIRCLE) {
-    return ARTPath()
+    return (new ARTPath())
       .moveTo(x + radius, y)
       .arc(0, radius * 2, radius, radius)
       .arc(0, radius * -2, radius, radius)
