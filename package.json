@@ -50,8 +50,8 @@
     "prettier": "^1.16.4"
   },
   "dependencies": {
-    "prop-types": "^15.7.2",
-    "@react-native-community/art": "^1.0.3"
+    "@react-native-community/art": "https://github.com/danielwinkler/react-native-community-art#790437fc5b97bc343360a981d2f0bb3936adc409",
+    "prop-types": "^15.7.2"
   },
   "typings": "index.d.ts"
 }
