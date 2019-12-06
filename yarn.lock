@@ -90,9 +90,9 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@react-native-community/art@https://github.com/danielwinkler/react-native-community-art#790437fc5b97bc343360a981d2f0bb3936adc409":
+"@react-native-community/art@https://github.com/danielwinkler/react-native-community-art":
   version "1.0.3"
-  resolved "https://github.com/danielwinkler/react-native-community-art#790437fc5b97bc343360a981d2f0bb3936adc409"
+  resolved "https://github.com/danielwinkler/react-native-community-art#4d31a67f538807e89111bb35ec0e30587b57a61f"
   dependencies:
     art "^0.10.3"
     invariant "^2.2.4"
