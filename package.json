@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "prop-types": "^15.7.2",
-    "@react-native-community/art": "^1.0.3"
+    "@react-native-community/art": "^1.1.2"
   },
   "typings": "index.d.ts"
 }
