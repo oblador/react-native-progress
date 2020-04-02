@@ -47,6 +47,7 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
         if (indeterminateProgress) {
           Animated.spring(this.state.progress, {
             toValue: indeterminateProgress,
+            useNativeDriver: false
           }).start();
         }
       }
@@ -59,6 +60,7 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
         } else {
           Animated.spring(this.state.rotation, {
             toValue: this.rotationValue > 0.5 ? 1 : 0,
+            useNativeDriver: false
           }).start(endState => {
             if (endState.finished) {
               this.state.rotation.setValue(0);
@@ -74,6 +76,7 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
           Animated.spring(this.state.progress, {
             toValue: progress,
             bounciness: 0,
+            useNativeDriver: false
           }).start();
         } else {
           this.state.progress.setValue(progress);
@@ -93,6 +96,7 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
         duration: this.props.indeterminateAnimationDuration,
         easing: Easing.linear,
         isInteraction: false,
+        useNativeDriver: false
       }).start(endState => {
         if (endState.finished) {
           this.spin();
