@@ -26,6 +26,7 @@ export default class CircleSnail extends Component {
     style: PropTypes.any,
     thickness: PropTypes.number,
     strokeCap: PropTypes.string,
+    useNativeDriver: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -36,6 +37,7 @@ export default class CircleSnail extends Component {
     size: 40,
     thickness: 3,
     strokeCap: 'round',
+    useNativeDriver: false,
   };
 
   constructor(props) {
@@ -74,12 +76,14 @@ export default class CircleSnail extends Component {
         duration: this.props.duration || 1000,
         isInteraction: false,
         easing: Easing.inOut(Easing.quad),
+        useNativeDriver: this.props.useNativeDriver,
       }),
       Animated.timing(this.state.endAngle, {
         toValue: -MAX_ARC_ANGLE * iteration,
         duration: this.props.duration || 1000,
         isInteraction: false,
         easing: Easing.inOut(Easing.quad),
+        useNativeDriver: this.props.useNativeDriver,
       }),
     ]).start(endState => {
       if (endState.finished) {
