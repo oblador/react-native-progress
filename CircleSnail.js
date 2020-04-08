@@ -103,6 +103,7 @@ export default class CircleSnail extends Component {
       duration: this.props.spinDuration || 5000,
       easing: Easing.linear,
       isInteraction: false,
+      useNativeDriver: this.props.useNativeDriver,
     }).start(endState => {
       if (endState.finished) {
         this.state.rotation.setValue(0);
