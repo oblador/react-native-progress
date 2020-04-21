@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Animated, Easing } from 'react-native';
-import * as ART from '@react-native-community/art';
+import { Surface as ARTSurface } from '@react-native-community/art';
 
 import Arc from './Shapes/Arc';
 
@@ -26,6 +26,7 @@ export default class CircleSnail extends Component {
     style: PropTypes.any,
     thickness: PropTypes.number,
     strokeCap: PropTypes.string,
+    useNativeDriver: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -36,6 +37,7 @@ export default class CircleSnail extends Component {
     size: 40,
     thickness: 3,
     strokeCap: 'round',
+    useNativeDriver: false,
   };
 
   constructor(props) {
@@ -74,12 +76,14 @@ export default class CircleSnail extends Component {
         duration: this.props.duration || 1000,
         isInteraction: false,
         easing: Easing.inOut(Easing.quad),
+        useNativeDriver: this.props.useNativeDriver,
       }),
       Animated.timing(this.state.endAngle, {
         toValue: -MAX_ARC_ANGLE * iteration,
         duration: this.props.duration || 1000,
         isInteraction: false,
         easing: Easing.inOut(Easing.quad),
+        useNativeDriver: this.props.useNativeDriver,
       }),
     ]).start(endState => {
       if (endState.finished) {
@@ -99,6 +103,7 @@ export default class CircleSnail extends Component {
       duration: this.props.spinDuration || 5000,
       easing: Easing.linear,
       isInteraction: false,
+      useNativeDriver: this.props.useNativeDriver,
     }).start(endState => {
       if (endState.finished) {
         this.state.rotation.setValue(0);
@@ -154,7 +159,7 @@ export default class CircleSnail extends Component {
           },
         ]}
       >
-        <ART.Surface width={size} height={size}>
+        <ARTSurface width={size} height={size}>
           <AnimatedArc
             direction={
               direction === 'counter-clockwise'
@@ -168,7 +173,7 @@ export default class CircleSnail extends Component {
             strokeCap={strokeCap}
             strokeWidth={thickness}
           />
-        </ART.Surface>
+        </ARTSurface>
         {children}
       </Animated.View>
     );
