@@ -350,6 +350,15 @@ declare module 'react-native-progress' {
      * @default round
      */
     strokeCap?: 'butt' | 'square' | 'round';
+
+    /**
+     * Direction in which the circle spins, either "clockwise" or "counter-clockwise" (default).
+     *
+     * @type {('clockwise' | 'counter-clockwise')}
+     * @memberof CircleSnailPropTypes
+     * @default counter-clockwise
+     */
+    direction?: 'clockwise' | 'counter-clockwise';
   }
 
   export class Bar extends React.Component<BarPropTypes> {}
