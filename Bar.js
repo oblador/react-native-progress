@@ -25,6 +25,7 @@ export default class ProgressBar extends Component {
     useNativeDriver: PropTypes.bool,
     animationConfig: PropTypes.object,
     animationType: PropTypes.oneOf(['decay', 'timing', 'spring']),
+    progressCustomStyle: PropTypes.any
   };
 
   static defaultProps = {
@@ -124,6 +125,7 @@ export default class ProgressBar extends Component {
       children,
       color,
       height,
+      progressCustomStyle,
       style,
       unfilledColor,
       width,
@@ -140,6 +142,7 @@ export default class ProgressBar extends Component {
       backgroundColor: unfilledColor,
     };
     const progressStyle = {
+      ...progressCustomStyle,
       backgroundColor: color,
       height,
       transform: [
