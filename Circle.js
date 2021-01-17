@@ -196,12 +196,13 @@ export class ProgressCircle extends Component {
               style={[
                 {
                   color,
-                  fontSize: textSize / 4.5,
+                  fontSize: textSize / 2,
                   fontWeight: '300',
                 },
                 textStyle,
               ]}
               allowFontScaling={allowFontScaling}
+              numberOfLines={1}
             >
               {!text ? formatText(progressValue) : text}
             </Text>
