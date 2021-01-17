@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Animated, StyleSheet, Text, View } from 'react-native';
 import { Surface as ARTSurface } from '@react-native-community/art';
-
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { Animated, StyleSheet, Text, View } from 'react-native';
 import Arc from './Shapes/Arc';
 import withAnimation from './withAnimation';
 
@@ -43,7 +42,7 @@ export class ProgressCircle extends Component {
     unfilledColor: PropTypes.string,
     endAngle: PropTypes.number,
     allowFontScaling: PropTypes.bool,
-    text: PropTypes.string
+    text: PropTypes.string,
   };
 
   static defaultProps = {
@@ -204,7 +203,7 @@ export class ProgressCircle extends Component {
               ]}
               allowFontScaling={allowFontScaling}
             >
-              !text ? {formatText(progressValue)} : text
+              {!text ? formatText(progressValue) : text}
             </Text>
           </View>
         ) : (
