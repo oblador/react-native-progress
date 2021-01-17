@@ -196,7 +196,7 @@ declare module 'react-native-progress' {
      * @type {boolean}
      * @memberof CirclePropTypes
      */
-    text?: string;
+    text?: string | number;
 
     /**
      * A function returning a string to be displayed for the textual representation.
