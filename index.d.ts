@@ -189,6 +189,14 @@ declare module 'react-native-progress' {
      * @default false
      */
     showsText?: boolean;
+    
+     /**
+     * You can show custom text instead of progress value.
+     *
+     * @type {boolean}
+     * @memberof CirclePropTypes
+     */
+    text?: string;
 
     /**
      * A function returning a string to be displayed for the textual representation.
