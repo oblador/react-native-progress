@@ -43,6 +43,7 @@ export class ProgressCircle extends Component {
     unfilledColor: PropTypes.string,
     endAngle: PropTypes.number,
     allowFontScaling: PropTypes.bool,
+    text: PropTypes.string
   };
 
   static defaultProps = {
@@ -97,6 +98,7 @@ export class ProgressCircle extends Component {
       unfilledColor,
       endAngle,
       allowFontScaling,
+      text,
       ...restProps
     } = this.props;
 
@@ -202,7 +204,7 @@ export class ProgressCircle extends Component {
               ]}
               allowFontScaling={allowFontScaling}
             >
-              {formatText(progressValue)}
+              !text ? {formatText(progressValue)} : text
             </Text>
           </View>
         ) : (
