@@ -7,7 +7,7 @@ const CIRCLE = Math.PI * 2;
 function makeSectorPath(x, y, angle, radius) {
   if (angle >= CIRCLE) {
     return `M${x} ${y}
-            m${radius} ${0}
+            m${radius} 0
             a${radius} ${radius} 0 0 1 0 ${radius * 2}
             a${radius} ${radius} 0 0 1 0 ${radius * -2}`;
   }
