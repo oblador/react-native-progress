@@ -50,8 +50,10 @@
     "prettier": "^1.16.4"
   },
   "dependencies": {
-    "prop-types": "^15.7.2",
-    "@react-native-community/art": "^1.1.2"
+    "prop-types": "^15.7.2"
+  },
+  "peerDependencies": {
+    "react-native-svg": "^12.1.1"
   },
   "typings": "index.d.ts"
 }

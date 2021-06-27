@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Shape as ARTShape, Path as ARTPath } from '@react-native-community/art';
+import { Path } from 'react-native-svg';
 
 const CIRCLE = Math.PI * 2;
 
@@ -19,11 +19,9 @@ function makeArcPath(x, y, startAngleArg, endAngleArg, radius, direction) {
       : endAngle - startAngle;
 
   if (angle >= CIRCLE) {
-    return (new ARTPath())
-      .moveTo(x + radius, y)
-      .arc(0, radius * 2, radius, radius)
-      .arc(0, radius * -2, radius, radius)
-      .close();
+    return `M${x + radius} ${y}
+            a${radius} ${radius} 0 0 1 0 ${radius * 2}
+            a${radius} ${radius} 0 0 1 0 ${radius * -2}`;
   }
 
   const directionFactor = direction === 'counter-clockwise' ? -1 : 1;
@@ -86,9 +84,9 @@ export default class Arc extends Component {
     );
 
     return (
-      <ARTShape
+      <Path
         d={path}
-        strokeCap={strokeCap}
+        strokeLinecap={strokeCap}
         strokeWidth={strokeWidth}
         {...restProps}
       />

@@ -8,13 +8,13 @@ Progress indicators and spinners for React Native using ReactART.
 
 `$ npm install react-native-progress --save`
 
-### ReactART based components
+### React Native SVG based components
 
-To use the `Pie` or `Circle` components, you need to install [React Native Art](https://github.com/react-native-community/art) in your project.
+To use the `Pie` or `Circle` components, you need to install [React Native SVG](https://github.com/react-native-svg/react-native-svg) in your project.
 
 ## Usage
 
-_Note: If you don't want the ReactART based components and it's dependencies, do a deep require instead: `import ProgressBar from 'react-native-progress/Bar';`._
+_Note: If you don't want the React Native SVG based components and it's dependencies, do a deep require instead: `import ProgressBar from 'react-native-progress/Bar';`._
 
 ```js
 import * as Progress from 'react-native-progress';

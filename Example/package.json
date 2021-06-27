@@ -12,7 +12,8 @@
   "dependencies": {
     "react": "16.11.0",
     "react-native": "0.62.0",
-    "react-native-progress": "*"
+    "react-native-progress": "*",
+    "react-native-svg": "^12.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
