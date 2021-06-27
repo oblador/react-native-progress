@@ -6,7 +6,7 @@ function makeCirclePath(x, y, radius, direction) {
   const reverseFlag = direction === 'counter-clockwise' ? 0 : 1;
 
   return `M${x} ${y}
-          m${radius} ${0}
+          m${radius} 0
           a${radius} ${radius} 0 0 ${reverseFlag} 0 ${radius * 2}
           a${radius} ${radius} 0 0 ${reverseFlag} 0 ${radius * -2}`;
 }
