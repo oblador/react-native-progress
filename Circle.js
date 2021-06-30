@@ -122,19 +122,20 @@ export class ProgressCircle extends Component {
         <Surface
           width={size}
           height={size}
-          style={{
-            transform: [
-              {
-                rotate:
-                  indeterminate && rotation
-                    ? rotation.interpolate({
+          style={
+            indeterminate && rotation
+              ? {
+                  transform: [
+                    {
+                      rotate: rotation.interpolate({
                         inputRange: [0, 1],
                         outputRange: ['0deg', '360deg'],
-                      })
-                    : '0deg',
-              },
-            ],
-          }}
+                      }),
+                    },
+                  ],
+                }
+              : undefined
+          }
         >
           {unfilledColor && progressValue !== 1 ? (
             <Shape
