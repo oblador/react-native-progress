@@ -5,24 +5,23 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "postinstall": "DESTINATION='node_modules/react-native-progress' LIB_FILE=`cd .. && echo \\`pwd\\`/\\`npm pack\\`` && (rm -rf $DESTINATION || true) && mkdir $DESTINATION && tar -xvzf $LIB_FILE -C $DESTINATION --strip-components 1 && rm $LIB_FILE",
     "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
+    "test": "jest"
   },
   "dependencies": {
-    "react": "16.11.0",
-    "react-native": "0.62.0",
+    "@react-native-community/art": "^1.2.0",
+    "react": "17.0.1",
+    "react-native": "0.64.2",
     "react-native-progress": "*"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/runtime": "^7.9.2",
-    "@react-native-community/eslint-config": "^1.0.0",
-    "babel-jest": "^25.2.4",
-    "eslint": "^6.8.0",
-    "jest": "^25.2.4",
-    "metro-react-native-babel-preset": "^0.59.0",
-    "react-test-renderer": "16.11.0"
+    "@babel/core": "^7.14.6",
+    "@babel/runtime": "^7.14.6",
+    "babel-jest": "^27.0.6",
+    "jest": "^27.0.6",
+    "metro-react-native-babel-preset": "^0.66.0",
+    "react-test-renderer": "17.0.1"
   },
   "jest": {
     "preset": "react-native"
