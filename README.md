@@ -1,6 +1,6 @@
 # react-native-progress
 
-Progress indicators and spinners for React Native using ReactART.
+Progress indicators and spinners for React Native using React Native SVG.
 
 ![progress-demo](https://cloud.githubusercontent.com/assets/378279/11212043/64fb1420-8d01-11e5-9ec0-5e175a837c62.gif)
 
