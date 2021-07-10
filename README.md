@@ -81,7 +81,7 @@ All of the props under _Properties_ in addition to the following:
 | Prop                   | Description                                                     | Default                |
 | ---------------------- | --------------------------------------------------------------- | ---------------------- |
 | **`animating`**        | If the circle should animate.                                   | `true`                 |
-| **`hidesWhenStopped`** | If the circle should be removed when not animating.             | `true`                 |
+| **`hidesWhenStopped`** | If the circle should be removed when not animating.             | `false`                |
 | **`size`**             | Diameter of the circle.                                         | `40`                   |
 | **`color`**            | Color of the circle, use an array of colors for rainbow effect. | `rgba(0, 122, 255, 1)` |
 | **`thickness`**        | Thickness of the circle.                                        | `3`                    |
