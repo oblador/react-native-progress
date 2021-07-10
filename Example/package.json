@@ -10,10 +10,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "@react-native-community/art": "^1.2.0",
     "react": "17.0.1",
     "react-native": "0.64.2",
-    "react-native-progress": "*"
+    "react-native-progress": "*",
+    "react-native-svg": "^12.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",

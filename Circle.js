@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Animated, StyleSheet, Text, View } from 'react-native';
-import { Surface as ARTSurface } from '@react-native-community/art';
+import { Svg } from 'react-native-svg';
 
 import Arc from './Shapes/Arc';
 import withAnimation from './withAnimation';
 
 const CIRCLE = Math.PI * 2;
 
-const AnimatedSurface = Animated.createAnimatedComponent(ARTSurface);
+const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 const AnimatedArc = Animated.createAnimatedComponent(Arc);
 
 const styles = StyleSheet.create({
@@ -110,7 +110,7 @@ export class ProgressCircle extends Component {
     const textOffset = border + thickness;
     const textSize = size - textOffset * 2;
 
-    const Surface = rotation ? AnimatedSurface : ARTSurface;
+    const Surface = rotation ? AnimatedSvg : Svg;
     const Shape = animated ? AnimatedArc : Arc;
     const progressValue = animated ? this.progressValue : progress;
     const angle = animated
@@ -122,19 +122,20 @@ export class ProgressCircle extends Component {
         <Surface
           width={size}
           height={size}
-          style={{
-            transform: [
-              {
-                rotate:
-                  indeterminate && rotation
-                    ? rotation.interpolate({
+          style={
+            indeterminate && rotation
+              ? {
+                  transform: [
+                    {
+                      rotate: rotation.interpolate({
                         inputRange: [0, 1],
                         outputRange: ['0deg', '360deg'],
-                      })
-                    : '0deg',
-              },
-            ],
-          }}
+                      }),
+                    },
+                  ],
+                }
+              : undefined
+          }
         >
           {unfilledColor && progressValue !== 1 ? (
             <Shape
