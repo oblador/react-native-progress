@@ -150,6 +150,7 @@ export default class CircleSnail extends Component {
         style={[
           style,
           {
+            alignSelf: 'center',
             backgroundColor: 'transparent',
             overflow: 'hidden',
             transform: [
