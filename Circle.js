@@ -117,8 +117,8 @@ export class ProgressCircle extends Component {
     const Shape = animated ? AnimatedArc : Arc;
     const progressValue = animated ? this.progressValue : progress;
     const angle = animated
-        ? Animated.multiply(Animated.multiply(progress, CIRCLE), unfilledEndAngle)
-        : progress * CIRCLE * unfilledEndAngle;
+      ? Animated.multiply(Animated.multiply(progress, CIRCLE), unfilledEndAngle)
+      : progress * CIRCLE * unfilledEndAngle;
     const endUnfilledAngleValue = animated
       ? Animated.multiply(unfilledEndAngle, CIRCLE)
       : unfilledEndAngle * CIRCLE;
