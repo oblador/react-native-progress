@@ -117,8 +117,8 @@ export class ProgressCircle extends Component {
     const Shape = animated ? AnimatedArc : Arc;
     const progressValue = animated ? this.progressValue : progress;
     const angle = animated
-      ? Animated.multiply(progress, CIRCLE)
-      : progress * CIRCLE;
+        ? Animated.multiply(Animated.multiply(progress, CIRCLE), unfilledEndAngle)
+        : progress * CIRCLE * unfilledEndAngle;
     const endUnfilledAngleValue = animated
       ? Animated.multiply(unfilledEndAngle, CIRCLE)
       : unfilledEndAngle * CIRCLE;
@@ -143,13 +143,13 @@ export class ProgressCircle extends Component {
               : undefined
           }
         >
-          {unfilledColor && progressValue !== 1 ? (
+          {unfilledColor ? (
             <Shape
               fill={fill}
               radius={radius}
               offset={offset}
               startAngle={angle}
-              endAngle={unfilledEndAngle >= progress._value ? endUnfilledAngleValue : angle}
+              endAngle={endUnfilledAngleValue}
               direction={direction}
               stroke={unfilledColor}
               strokeWidth={thickness}
