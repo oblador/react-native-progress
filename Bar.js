@@ -11,6 +11,7 @@ export default class ProgressBar extends Component {
     animated: PropTypes.bool,
     borderColor: PropTypes.string,
     borderRadius: PropTypes.number,
+    progressBorderRadius: PropTypes.number,
     borderWidth: PropTypes.number,
     children: PropTypes.node,
     color: PropTypes.string,
@@ -127,6 +128,7 @@ export default class ProgressBar extends Component {
       style,
       unfilledColor,
       width,
+      progressBorderRadius,
       ...restProps
     } = this.props;
 
@@ -142,6 +144,7 @@ export default class ProgressBar extends Component {
     const progressStyle = {
       backgroundColor: color,
       height,
+      borderRadius: progressBorderRadius,
       transform: [
         {
           translateX: this.state.animationValue.interpolate({
