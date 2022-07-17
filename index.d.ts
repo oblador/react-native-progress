@@ -241,7 +241,7 @@ declare module 'react-native-progress' {
      * @memberof CirclePropTypes
      * @default 0.9
      */
-     endAngle?: string;
+     endAngle?: number;
     }
 
   /**
