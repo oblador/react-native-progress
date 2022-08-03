@@ -25,6 +25,7 @@ export default class ProgressBar extends Component {
     useNativeDriver: PropTypes.bool,
     animationConfig: PropTypes.object,
     animationType: PropTypes.oneOf(['decay', 'timing', 'spring']),
+    progressCustomStyle:PropTypes.any,
   };
 
   static defaultProps = {
@@ -125,6 +126,7 @@ export default class ProgressBar extends Component {
       color,
       height,
       style,
+      progressCustomStyle,
       unfilledColor,
       width,
       ...restProps
@@ -140,6 +142,11 @@ export default class ProgressBar extends Component {
       backgroundColor: unfilledColor,
     };
     const progressStyle = {
+      ...progressCustomStyle,
+      width: this.state.progress.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0.0001, innerWidth]
+     }),
       backgroundColor: color,
       height,
       transform: [
@@ -149,19 +156,7 @@ export default class ProgressBar extends Component {
             outputRange: [innerWidth * -INDETERMINATE_WIDTH_FACTOR, innerWidth],
           }),
         },
-        {
-          translateX: this.state.progress.interpolate({
-            inputRange: [0, 1],
-            outputRange: [innerWidth / (I18nManager.isRTL ? 2 : -2), 0],
-          }),
-        },
-        {
-          // Interpolation a temp workaround for https://github.com/facebook/react-native/issues/6278
-          scaleX: this.state.progress.interpolate({
-            inputRange: [0, 1],
-            outputRange: [0.0001, 1],
-          }),
-        },
+        
       ],
     };
 
