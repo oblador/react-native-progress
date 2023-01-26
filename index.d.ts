@@ -29,6 +29,15 @@ declare module 'react-native-progress' {
     indeterminate?: boolean;
 
     /**
+     * Sets animation duration in milliseconds when indeterminate is set.
+     *
+     * @type {number}
+     * @memberof BarPropTypes
+     * @default 1000
+     */
+    indeterminateAnimationDuration?: number;
+
+    /**
      * Progress of whatever the indicator is indicating. A number between `0` and `1`
      *
      * @type {(0 | 1)}
@@ -36,6 +45,15 @@ declare module 'react-native-progress' {
      * @default 0
      */
     progress?: number;
+
+    /**
+     * Fill color of the indicator.
+     *
+     * @type {string}
+     * @memberof DefaultPropTypes
+     * @default rgba(0, 122, 255, 1)
+     */
+     color?: string;
 
     /**
      * Color of the remaining progress.
@@ -92,15 +110,6 @@ declare module 'react-native-progress' {
     height?: number;
 
     /**
-     * Fill color of the indicator.
-     *
-     * @type {string}
-     * @memberof DefaultPropTypes
-     * @default rgba(0, 122, 255, 1)
-     */
-    color?: string;
-
-    /**
      * Rounding of corners, set to `0` to disable.
      *
      * @type {number}
@@ -135,15 +144,6 @@ declare module 'react-native-progress' {
      * @default spring
      */
     animationType?: 'decay' | 'timing' | 'spring';
-
-    /**
-     * Sets animation duration in milliseconds when indeterminate is set.
-     *
-     * @type {number}
-     * @memberof BarPropTypes
-     * @default 1000
-     */
-    indeterminateAnimationDuration?: number;
   }
 
   /**
@@ -162,15 +162,6 @@ declare module 'react-native-progress' {
      * @default 40
      */
     size?: number;
-
-    /**
-     * Fill color of the indicator.
-     *
-     * @type {string}
-     * @memberof DefaultPropTypes
-     * @default rgba(0, 122, 255, 1)
-     */
-    color?: string;
 
     /**
      * Thickness of the inner circle.
@@ -242,7 +233,16 @@ declare module 'react-native-progress' {
      * @default None
      */
     fill?: string;
-  }
+
+    /**
+     * Determines the endAngle of the circle.
+     *
+     * @type {number}
+     * @memberof CirclePropTypes
+     * @default 0.9
+     */
+     endAngle?: number;
+    }
 
   /**
    * Properties for `PiePropTypes` components
@@ -260,17 +260,8 @@ declare module 'react-native-progress' {
      * @default 40
      */
     size?: number;
-
-    /**
-     * Fill color of the indicator.
-     *
-     * @type {string}
-     * @memberof DefaultPropTypes
-     * @default rgba(0, 122, 255, 1)
-     */
-    color?: string;
   }
-
+  
   /**
    * Properties for `CircleSnailPropTypes` components
    *
@@ -278,7 +269,7 @@ declare module 'react-native-progress' {
    * @interface CircleSnailPropTypes
    * @extends {DefaultPropTypes}
    */
-  export interface CircleSnailPropTypes extends DefaultPropTypes {
+  export interface CircleSnailPropTypes extends Omit<DefaultPropTypes, 'color'> {
     /**
      * If the circle should animate.
      *
