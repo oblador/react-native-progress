@@ -27,6 +27,7 @@ export default class CircleSnail extends Component {
     thickness: PropTypes.number,
     strokeCap: PropTypes.string,
     useNativeDriver: PropTypes.bool,
+    fill: PropTypes.string,
   };
 
   static defaultProps = {
@@ -38,6 +39,7 @@ export default class CircleSnail extends Component {
     thickness: 3,
     strokeCap: 'round',
     useNativeDriver: false,
+    fill: 'transparent',
   };
 
   constructor(props) {
@@ -85,7 +87,7 @@ export default class CircleSnail extends Component {
         easing: Easing.inOut(Easing.quad),
         useNativeDriver: this.props.useNativeDriver,
       }),
-    ]).start(endState => {
+    ]).start((endState) => {
       if (endState.finished) {
         if (Array.isArray(this.props.color)) {
           this.setState({
@@ -104,7 +106,7 @@ export default class CircleSnail extends Component {
       easing: Easing.linear,
       isInteraction: false,
       useNativeDriver: this.props.useNativeDriver,
-    }).start(endState => {
+    }).start((endState) => {
       if (endState.finished) {
         this.state.rotation.setValue(0);
         this.spin();
@@ -163,7 +165,7 @@ export default class CircleSnail extends Component {
           },
         ]}
       >
-        <Svg width={size} height={size}>
+        <Svg width={size} height={size} fill={fill}>
           <AnimatedArc
             direction={
               direction === 'counter-clockwise'
