@@ -131,6 +131,7 @@ export default class CircleSnail extends Component {
       style,
       thickness,
       strokeCap,
+      fill,
       ...restProps
     } = this.props;
 
