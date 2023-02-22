@@ -43,6 +43,7 @@ export class ProgressCircle extends Component {
     unfilledColor: PropTypes.string,
     endAngle: PropTypes.number,
     allowFontScaling: PropTypes.bool,
+    archPercentage: PropTypes.number,
   };
 
   static defaultProps = {
@@ -55,6 +56,7 @@ export class ProgressCircle extends Component {
     size: 40,
     thickness: 3,
     endAngle: 0.9,
+    archPercentage: 1,
     allowFontScaling: true,
   };
 
@@ -96,12 +98,14 @@ export class ProgressCircle extends Component {
       thickness,
       unfilledColor,
       endAngle,
+      archPercentage,
       allowFontScaling,
       ...restProps
     } = this.props;
 
     const border = borderWidth || (indeterminate ? 1 : 0);
 
+    const circle = CIRCLE * archPercentage;
     const radius = size / 2 - border;
     const offset = {
       top: border,
@@ -114,8 +118,8 @@ export class ProgressCircle extends Component {
     const Shape = animated ? AnimatedArc : Arc;
     const progressValue = animated ? this.progressValue : progress;
     const angle = animated
-      ? Animated.multiply(progress, CIRCLE)
-      : progress * CIRCLE;
+      ? Animated.multiply(progress, circle)
+      : progress * circle;
 
     return (
       <View style={[styles.container, style]} {...restProps}>
@@ -143,7 +147,7 @@ export class ProgressCircle extends Component {
               radius={radius}
               offset={offset}
               startAngle={angle}
-              endAngle={CIRCLE}
+              endAngle={circle}
               direction={direction}
               stroke={unfilledColor}
               strokeWidth={thickness}

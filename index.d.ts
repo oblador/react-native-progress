@@ -242,6 +242,16 @@ declare module 'react-native-progress' {
      * @default 0.9
      */
      endAngle?: number;
+
+
+    /**
+     * A percentage of the circle to render. Value less than 1 renders an arc
+     * 
+     * @type {number}
+     * @memberof CirclePropTypes
+     * @default 1
+     */
+    archPercentage?: number
     }
 
   /**
