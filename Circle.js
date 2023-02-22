@@ -90,6 +90,7 @@ export class ProgressCircle extends Component {
       indeterminate,
       progress,
       rotation,
+      rotationStatic,
       showsText,
       size,
       style,
@@ -126,7 +127,7 @@ export class ProgressCircle extends Component {
         <Surface
           width={size}
           height={size}
-          style={
+          style={[
             indeterminate && rotation
               ? {
                   transform: [
@@ -138,8 +139,11 @@ export class ProgressCircle extends Component {
                     },
                   ],
                 }
-              : undefined
-          }
+              : undefined,
+            rotationStatic ? {
+              transform: [{ rotate: `${rotationStatic}rad` }]
+            } : undefined
+          ]}
         >
           {unfilledColor && progressValue !== 1 ? (
             <Shape

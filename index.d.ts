@@ -252,6 +252,15 @@ declare module 'react-native-progress' {
      * @default 1
      */
     archPercentage?: number
+
+    /**
+     * Static amount in radians to rotate the circle
+     * 
+     * @type {number}
+     * @memberof CirclePropTypes
+     * @default None
+     */
+    rotationStatic?: number
     }
 
   /**
