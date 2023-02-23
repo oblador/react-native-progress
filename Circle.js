@@ -106,7 +106,7 @@ export class ProgressCircle extends Component {
 
     const border = borderWidth || (indeterminate ? 1 : 0);
 
-    const circle = CIRCLE * archPercentage;
+    const circleAngle = CIRCLE * archPercentage;
     const radius = size / 2 - border;
     const offset = {
       top: border,
@@ -119,8 +119,8 @@ export class ProgressCircle extends Component {
     const Shape = animated ? AnimatedArc : Arc;
     const progressValue = animated ? this.progressValue : progress;
     const angle = animated
-      ? Animated.multiply(progress, circle)
-      : progress * circle;
+      ? Animated.multiply(progress, circleAngle)
+      : progress * circleAngle;
 
     return (
       <View style={[styles.container, style]} {...restProps}>
@@ -151,7 +151,7 @@ export class ProgressCircle extends Component {
               radius={radius}
               offset={offset}
               startAngle={angle}
-              endAngle={circle}
+              endAngle={circleAngle}
               direction={direction}
               stroke={unfilledColor}
               strokeWidth={thickness}
