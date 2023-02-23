@@ -34,6 +34,7 @@ export class ProgressCircle extends Component {
       PropTypes.instanceOf(Animated.Value),
     ]),
     rotation: PropTypes.instanceOf(Animated.Value),
+    rotationStatic: PropTypes.number,
     showsText: PropTypes.bool,
     size: PropTypes.number,
     style: PropTypes.any,
