@@ -165,6 +165,7 @@ export default class CircleSnail extends Component {
       >
         <Svg width={size} height={size}>
           <AnimatedArc
+            fill="transparent"
             direction={
               direction === 'counter-clockwise'
                 ? 'clockwise'
