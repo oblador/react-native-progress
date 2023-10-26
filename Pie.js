@@ -75,6 +75,7 @@ export class ProgressPie extends Component {
         <Surface
           width={size}
           height={size}
+          fill="none"
           style={
             rotation
               ? {
