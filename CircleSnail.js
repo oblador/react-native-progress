@@ -136,11 +136,7 @@ export default class CircleSnail extends Component {
       return null;
     }
 
-    const radius = size / 2 - thickness;
-    const offset = {
-      top: thickness,
-      left: thickness,
-    };
+    const radius = size / 2;
 
     const directionFactor = direction === 'counter-clockwise' ? -1 : 1;
 
@@ -173,7 +169,6 @@ export default class CircleSnail extends Component {
             }
             radius={radius}
             stroke={Array.isArray(color) ? color[this.state.colorIndex] : color}
-            offset={offset}
             startAngle={this.state.startAngle}
             endAngle={this.state.endAngle}
             strokeCap={strokeCap}
