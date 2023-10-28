@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Animated, Easing, View, I18nManager } from 'react-native';
+import { Animated, Easing, View } from 'react-native';
 
 const INDETERMINATE_WIDTH_FACTOR = 0.3;
 const BAR_WIDTH_ZERO_POSITION =
@@ -142,24 +142,16 @@ export default class ProgressBar extends Component {
     const progressStyle = {
       backgroundColor: color,
       height,
+      borderRadius: 1000,
+      width: this.state.progress.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0.0001, innerWidth]
+      }),
       transform: [
         {
           translateX: this.state.animationValue.interpolate({
             inputRange: [0, 1],
             outputRange: [innerWidth * -INDETERMINATE_WIDTH_FACTOR, innerWidth],
-          }),
-        },
-        {
-          translateX: this.state.progress.interpolate({
-            inputRange: [0, 1],
-            outputRange: [innerWidth / (I18nManager.isRTL ? 2 : -2), 0],
-          }),
-        },
-        {
-          // Interpolation a temp workaround for https://github.com/facebook/react-native/issues/6278
-          scaleX: this.state.progress.interpolate({
-            inputRange: [0, 1],
-            outputRange: [0.0001, 1],
           }),
         },
       ],
