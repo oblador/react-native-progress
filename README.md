@@ -58,6 +58,7 @@ All of the props under _Properties_ in addition to the following:
 | Prop                       | Description                                                                                                                  | Default            |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------ |
 | **`size`**                 | Diameter of the circle.                                                                                                      | `40`               |
+| **`alwaysUseEndAngle`**             | endAngle, by default, is only used when `indeterminate` is  `true`. This prop ensures endAngle is always used | `false`              |
 | **`endAngle`**             | Determines the endAngle of the circle. A number between `0` and `1`. The final endAngle would be the number multiplied by 2π | `0.9`              |
 | **`thickness`**            | Thickness of the inner circle.                                                                                               | `3`                |
 | **`showsText`**            | Whether or not to show a text representation of current progress.                                                            | `false`            |

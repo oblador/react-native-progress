@@ -41,6 +41,7 @@ export class ProgressCircle extends Component {
     textStyle: PropTypes.any,
     thickness: PropTypes.number,
     unfilledColor: PropTypes.string,
+    alwaysUseEndAngle: PropTypes.bool,
     endAngle: PropTypes.number,
     allowFontScaling: PropTypes.bool,
   };
@@ -54,6 +55,7 @@ export class ProgressCircle extends Component {
     showsText: false,
     size: 40,
     thickness: 3,
+    alwaysUseEndAngle: false,
     endAngle: 0.9,
     allowFontScaling: true,
   };
@@ -95,6 +97,7 @@ export class ProgressCircle extends Component {
       textStyle,
       thickness,
       unfilledColor,
+      alwaysUseEndAngle,
       endAngle,
       allowFontScaling,
       ...restProps
@@ -172,7 +175,7 @@ export class ProgressCircle extends Component {
               fill={fill}
               radius={size / 2}
               startAngle={0}
-              endAngle={(indeterminate ? endAngle * 2 : 2) * Math.PI}
+              endAngle={(indeterminate ? endAngle * 2 : alwaysUseEndAngle ? endAngle * 2 : 2) * Math.PI}
               stroke={borderColor || color}
               strokeCap={strokeCap}
               strokeWidth={border}
