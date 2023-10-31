@@ -205,7 +205,7 @@ export class ProgressCircle extends Component {
               ]}
               allowFontScaling={allowFontScaling}
             >
-              {formatText(progressValue)}
+              {progress ? formatText(progress._value) : 0}
             </Text>
           </View>
         ) : (
