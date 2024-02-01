@@ -25,6 +25,7 @@ export default class ProgressBar extends Component {
     useNativeDriver: PropTypes.bool,
     animationConfig: PropTypes.object,
     animationType: PropTypes.oneOf(['decay', 'timing', 'spring']),
+    progressStyle: PropTypes.object
   };
 
   static defaultProps = {
@@ -142,6 +143,7 @@ export default class ProgressBar extends Component {
     const progressStyle = {
       backgroundColor: color,
       height,
+      ...this.props.progressStyle,
       transform: [
         {
           translateX: this.state.animationValue.interpolate({
