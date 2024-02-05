@@ -143,28 +143,8 @@ export default class ProgressBar extends Component {
     const progressStyle = {
       backgroundColor: color,
       height,
-      ...this.props.progressStyle,
-      transform: [
-        {
-          translateX: this.state.animationValue.interpolate({
-            inputRange: [0, 1],
-            outputRange: [innerWidth * -INDETERMINATE_WIDTH_FACTOR, innerWidth],
-          }),
-        },
-        {
-          translateX: this.state.progress.interpolate({
-            inputRange: [0, 1],
-            outputRange: [innerWidth / (I18nManager.isRTL ? 2 : -2), 0],
-          }),
-        },
-        {
-          // Interpolation a temp workaround for https://github.com/facebook/react-native/issues/6278
-          scaleX: this.state.progress.interpolate({
-            inputRange: [0, 1],
-            outputRange: [0.0001, 1],
-          }),
-        },
-      ],
+      borderRadius,
+      width: (this.props.progress*(innerWidth)) ,
     };
 
     return (
@@ -173,7 +153,7 @@ export default class ProgressBar extends Component {
         onLayout={this.handleLayout}
         {...restProps}
       >
-        <Animated.View style={progressStyle} />
+        <Animated.View style={[progressStyle]} />
         {children}
       </View>
     );
